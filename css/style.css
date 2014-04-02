@@ -45,10 +45,10 @@ a:hover {
 }
 
 .selected {
-  background-color:#ddd;
+  background-color:#444;
   font-size:28pt;
   font-weight:bold;
-  color:#000;
+  color:#fff;
 }
 
 .poiret {
