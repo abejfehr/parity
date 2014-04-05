@@ -1,0 +1,23 @@
+[
+  {
+    "type": "overlay",
+    "contents": [
+      {
+        "title": "Hello World!",
+        "content": "These are contents.",
+        "button": "look at me!"
+      },
+      {
+        "title": "The second screen",
+        "content": "There are more contents here.",
+        "button": "play the game"
+      }
+    ]
+  },
+  {
+    "type": "level",
+    "number": 1,
+    "contents": [ 1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1 ],
+    "initialSelected": { "x":1, "y":2 }
+  }
+]

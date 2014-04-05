@@ -28,11 +28,76 @@ a:hover {
   display:table;
 }
 
+#box {
+    background-color:#333;
+    min-width:388px;
+    min-height:410px;
+}
+
 #board {
-  background-color:#333;
+  display:none;
   padding:5px;
   margin:10px auto;
 }
+
+#overlay {
+  display:none;
+  margin:0px auto;
+  text-align:center;
+}
+
+#overlay h1 {
+  color:#bbb;
+  font-family: 'Poiret One', cursive;
+}
+
+#overlay p {
+  padding:10px;
+  color:#ddd;
+  font-family: 'Poiret One', sans-serif;
+}
+
+#overlay button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #b3b3b3;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b3b3b3;
+	box-shadow:inset 0px 1px 0px 0px #b3b3b3;
+	background-color:#707070;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:1px solid #000000;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:30px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #2e4d6b;
+}
+
+#overlay button:hover {
+	background-color:#3e474f;
+}
+
+#overlay button:active {
+  bottom:69px;
+}
+/* This button was generated using CSSButtonGenerator.com */
 
 .cell {
   font-family: 'Open Sans', sans-serif;
