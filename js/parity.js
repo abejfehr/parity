@@ -10,7 +10,7 @@ $(document).ready(function() {
   var resetLink = $('#reset');
   var levelText = $('#level');
   var overlay   = $('#overlay');
-  var button    = $('#overlay > button');
+  var button    = $('#overlay > #holder > button');
   var board     = $('#board');
   var cells = [];
   for(var i=0;i<4;++i) {
@@ -33,6 +33,8 @@ $(document).ready(function() {
   //where we'll store the instructions and the levels
   var story;
 
+
+
   $(document).keydown(function(e){
     if(story[bookmark].type == 'level') {
       if(e.keyCode == 37) {
@@ -53,14 +55,15 @@ $(document).ready(function() {
       }
     }
     else if(story[bookmark].type == 'overlay') {
-      if(e.keyCode == 13 || e.keyCode == 32) {
-        $('#overlay > button').trigger('click');
+      if(e.keyCode == 32) {
+        button.trigger('click');
       }
     }
   });
 
 
 
+  //selects the cell to the left of the current cell
   function left() {
     if(level.selected.x > 0) {
       select(--level.selected.x, level.selected.y);
@@ -70,6 +73,7 @@ $(document).ready(function() {
 
 
 
+  //selects the cell above the current cell
   function up() {
     if(level.selected.y > 0) {
       select(level.selected.x, --level.selected.y);
@@ -79,6 +83,7 @@ $(document).ready(function() {
 
 
 
+  //selects the cell to the right of the current cell
   function right() {
     if(level.selected.x < 3) {
       select(++level.selected.x, level.selected.y);
@@ -88,6 +93,7 @@ $(document).ready(function() {
 
 
 
+  //selects the cell under the current cell
   function down() {
     if(level.selected.y < 3) {
       select(level.selected.x, ++level.selected.y);
@@ -97,6 +103,7 @@ $(document).ready(function() {
 
 
 
+  //selects a cell and increases its value
   function select(x, y) {
     //increase the number in the selected cell
     cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
@@ -104,8 +111,6 @@ $(document).ready(function() {
 
 
 
-  // Function: update
-  //
   // goes through the model(the story), draws the board accordingly,
   // and checks if it's a win scenario
   function update() {
@@ -124,8 +129,6 @@ $(document).ready(function() {
 
 
 
-  // Function: loadScreen
-  //
   // gets the level in the current page of the story, parses
   // it, and puts it in the grid
   function loadScreen() {
@@ -137,21 +140,26 @@ $(document).ready(function() {
 
       level.selected = story[bookmark].initialSelected;
 
+      //put the level number in the corner
+      levelText.html("level " + level.number + "/" + numLevels());
+
       //fade in the level
-      board.fadeIn(options['fade'], function() {
-        //put the level number in the corner
-        levelText.html("level " + level.number + "/" + numLevels());
-      });
+      board.fadeIn(options['fade']);
     }
     else if(story[bookmark].type == 'overlay') {
+      //get the current slide that the overlay is on
+      if(!story[bookmark].current)
+        story[bookmark].current = 0;
+      var slide = story[bookmark].current;
+
       //put the text from the thingy into the overlay
-      var title   = story[bookmark].contents[0].title;
-      var content = story[bookmark].contents[0].content;
-      var butt    = story[bookmark].contents[0].button;
+      var title   = story[bookmark].contents[slide].title;
+      var content = story[bookmark].contents[slide].content;
+      var action  = story[bookmark].contents[slide].button;
 
       $('#overlay > h1').html(title);
       $('#overlay > p').html(content);
-      button.html(butt);
+      button.html(action);
 
       overlay.fadeIn(options['fade']);
     }
@@ -161,12 +169,15 @@ $(document).ready(function() {
 
 
 
+  //resets the board back to the level's beginning
   function reset() {
-    //
+    loadScreen();
   }
 
 
 
+  //checks to see if there's a win condition or not
+  //returns: boolean
   function isWin() {
     var value = cell(0,0);
     for(var i=0;i<4;++i) {
@@ -175,12 +186,16 @@ $(document).ready(function() {
           return false
       }
     }
-
     return true;
   }
 
 
 
+  //gets or sets a cells
+  //input: -the x/y location of a cell
+  //       -the value to put into the cell(optional)
+  //returns: -the contents of the cell(if no value is given)
+  //         -nothing, if a value is given
   function cell(x, y, value) {
     //either gets the contents of x, y or sets them
     if(arguments.length==3) {
@@ -194,20 +209,36 @@ $(document).ready(function() {
 
 
 
+  //starts the game by initializing the level text and displaying
+  //the first level
   function start() {
     //put the level number in the corner
     levelText.html("level 0/" + numLevels());
-    loadScreen(); //loads either the overlay or the bookmark, whatever is necessary
+    loadScreen();
   }
 
 
+
+  //fades out the board
+  //input: -the callback to call when the fade is completed
   function fadeOut(callback) {
-    board.fadeOut(options['fade']);
-    overlay.fadeOut(options['fade'], callback);
+    if(board.is(':visible'))
+      board.fadeOut(options['fade'], callback);
+    if(overlay.is(':visible'))
+      overlay.fadeOut(options['fade'], callback);
   }
 
 
+
+  //tries to advance the story
   function advanceStory() {
+    //tries to advance the current slide first if it's an overlay
+    if(story[bookmark].type == 'overlay') {
+      if(++story[bookmark].current < story[bookmark].contents.length) {
+          fadeOut(loadScreen);
+          return;
+      }
+    }
     if(++bookmark < story.length) {
       fadeOut(loadScreen);
     }
@@ -219,8 +250,6 @@ $(document).ready(function() {
 
 
 
-  //function: numLevels
-  //
   //gets the number of levels in the story
   function numLevels() {
     //go through the stuff in the story
@@ -233,14 +262,20 @@ $(document).ready(function() {
     return sum;
   }
 
-  button.click(function() {
-    advanceStory();
-  });
 
+
+  //what happens when the game is finished
   function end() {
     alert('the end!');
   }
 
+
+
+  //event assignments
+  button.click(advanceStory);
+  resetLink.click(reset);
+
+  //start the game off by getting the story
   $.getJSON('story.json', function(data) {
     story = data;
     start();
