@@ -1,8 +1,7 @@
 TODO
 ====
-*make reset button work
-*make multiple overlays work
-*add animations
-*fix fade
+*fix reset button
+*fix multiple slides in overlays
+*add instructional animations
 *make level generator
 *add end screen
