@@ -24,7 +24,7 @@ $(document).ready(function() {
   var bookmark = 0;
 
   var options = {
-    fade: 300
+    fade: 300 //the time in ms for the fade
   }
 
   //where we'll store the current level
@@ -85,7 +85,7 @@ $(document).ready(function() {
 
   //selects the cell to the right of the current cell
   function right() {
-    if(level.selected.x < 3) {
+    if(level.selected.x < 2) {
       select(++level.selected.x, level.selected.y);
       update();
     }
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
   //selects the cell under the current cell
   function down() {
-    if(level.selected.y < 3) {
+    if(level.selected.y < 2) {
       select(level.selected.x, ++level.selected.y);
       update();
     }
@@ -118,8 +118,6 @@ $(document).ready(function() {
       //go through the board and clear it of all the "selected" classes
       $('td.selected').removeClass('selected');
 
-      console.log(level.selected);
-
       cells[level.selected.x][level.selected.y].addClass('selected');
 
       //check if it's a win
@@ -131,9 +129,9 @@ $(document).ready(function() {
 
 
 
-  // gets the level in the current page of the story, parses
+  // gets the current page of the story where the bookmark is, parses
   // it, and puts it in the grid
-  function loadScreen() {
+  function loadCurrentPage() {
     if(story[bookmark].type == 'level') {
       if(story[bookmark].contents == 'generated') {
         //generate a level
@@ -160,9 +158,8 @@ $(document).ready(function() {
       button.html(action);
 
       overlay.fadeIn(options['fade']);
+      update();
     }
-
-    update();
   }
 
 
@@ -176,20 +173,23 @@ $(document).ready(function() {
         if(y == 0) {
           return false;
         }
+        return true;
       case 2: //east
-        if(x == 3) {
+        if(x == 2) {
           return false;
         }
+        return true;
       case 3: //south
-        if(y == 3) {
+        if(y == 2) {
           return false;
         }
+        return true;
       case 4: //west
         if(x == 0) {
           return false;
         }
+        return true;
     }
-    return true;
   }
 
 
@@ -201,7 +201,7 @@ $(document).ready(function() {
     var content = [];
 
     //push the initial value into the array that number of times
-    for(var i=0;i<16;++i) {
+    for(var i=0;i<9;++i) {
       content.push(level.schema.end);
     }
 
@@ -210,32 +210,33 @@ $(document).ready(function() {
     var numMoves = level.schema.minNumMoves + Math.random()*(moveRange);
 
     //generate a random starting location
-    var x = Math.floor(Math.random()*4);
-    var y = Math.floor(Math.random()*4);
+    var x = Math.floor(Math.random()*3);
+    var y = Math.floor(Math.random()*3);
 
     //loop through all the moves
     for(var i=0;i<numMoves;++i) {
       //for each time, move the coordinates by one in a random direction...
-      var direction = 0; //initialize it to 0(impossible)
-      while(!valid(direction)) {
-        direction = Math.floor(Math.random()*4);
+      var direction = 0; //initialize it to 0(non-real direction)
+      while(!valid(direction, x, y)) {
+        //generate a number between 1 and 4 inclusive
+        direction = Math.floor(1 + Math.random()*4);
       }
       //at this point, the direction is valid so we're just moving it one
       switch(direction) {
         case 1: //north
-          --content[y*4+x];
+          --content[y*3+x];
           --y;
           break;
         case 2: //east
-          --content[y*4+x];
+          --content[y*3+x];
           ++x;
           break;
         case 3: //south
-          --content[y*4+x];
+          --content[y*3+x];
           ++y;
           break;
         case 4: //west
-          --content[y*4+x];
+          --content[y*3+x];
           --x;
           break;
       }
@@ -253,13 +254,19 @@ $(document).ready(function() {
 
   //loads a level
   function loadLevel(data) {
+    //set the level data
     level = data;
+
+    //parse its contents
     for(var i=0;i<level.contents.length;++i) {
-      cell(i%4,Math.floor(i/4),level.contents[i]);
+      cell(i%3,Math.floor(i/3),level.contents[i]);
     }
 
-    level.selected = level.initialSelected;
-    console.log(level.selected);
+    //set the currently selected cell
+    level.selected = {
+      x: data.initialSelected.x,
+      y: data.initialSelected.y
+    };
 
     //put the level number in the corner
     levelText.html("level " + level.number + "/" + numLevels());
@@ -267,13 +274,15 @@ $(document).ready(function() {
     //fade in the level
     board.fadeIn(options['fade']);
 
+    //update the screen
+    update();
   }
 
 
 
   //resets the board back to the level's beginning
   function reset() {
-    loadScreen();
+    loadLevel(level);
   }
 
 
@@ -282,8 +291,8 @@ $(document).ready(function() {
   //returns: boolean
   function isWin() {
     var value = cell(0,0);
-    for(var i=0;i<4;++i) {
-      for(var j=0;j<4;++j) {
+    for(var i=0;i<3;++i) {
+      for(var j=0;j<3;++j) {
         if(cell(i,j) != value)
           return false
       }
@@ -301,7 +310,6 @@ $(document).ready(function() {
   function cell(x, y, value) {
     //either gets the contents of x, y or sets them
     if(arguments.length==3) {
-      console.log(x + ", " + y);
       cells[x][y].html(value);
     }
     else {
@@ -317,7 +325,7 @@ $(document).ready(function() {
   function start() {
     //put the level number in the corner
     levelText.html("level 0/" + numLevels());
-    loadScreen();
+    loadCurrentPage();
   }
 
 
@@ -325,8 +333,10 @@ $(document).ready(function() {
   //fades out the board
   //input: -the callback to call when the fade is completed
   function fadeOut(callback) {
+    //only fade out that visible component
     if(board.is(':visible'))
       board.fadeOut(options['fade'], callback);
+
     if(overlay.is(':visible'))
       overlay.fadeOut(options['fade'], callback);
   }
@@ -338,15 +348,15 @@ $(document).ready(function() {
     //tries to advance the current slide first if it's an overlay
     if(story[bookmark].type == 'overlay') {
       if(++story[bookmark].current < story[bookmark].contents.length) {
-          fadeOut(loadScreen);
+          fadeOut(loadCurrentPage);
           return;
       }
     }
+
     if(++bookmark < story.length) {
-      fadeOut(loadScreen);
+      fadeOut(loadCurrentPage);
     }
     else {
-      //show the end
       end();
     }
   }
@@ -367,7 +377,7 @@ $(document).ready(function() {
 
 
 
-  //what happens when the game is finished
+  //what happens when the game is finished, still needs to be made
   function end() {
     alert('the end!');
   }
