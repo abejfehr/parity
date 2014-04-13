@@ -10,14 +10,14 @@
       {
         "title": "The second screen",
         "content": "There are more contents here.",
-        "button": "play the game"
+        "button": "play"
       }
     ]
   },
   {
     "type": "level",
     "number": 1,
-    "contents": [ 1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1 ],
+    "contents": [ 1,1,1,1,1,1,1,0,0 ],
     "initialSelected": { "x":1, "y":2 }
   },
   {
@@ -26,15 +26,15 @@
     "contents": "generated",
     "schema" :
     {
-      "end" : 6,
-      "minNumMoves" : 9,
-      "maxNumMoves" : 13
+      "end" : 3,
+      "minNumMoves" : 12,
+      "maxNumMoves" : 29
     }
   },
   {
     "type": "level",
     "number": "9\u00BE",
-    "contents": [ 1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1 ],
+    "contents": [ 1,1,1,1,1,1,0,1,1 ],
     "initialSelected": { "x":1, "y":2 }
   }
 ]
