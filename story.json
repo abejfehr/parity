@@ -4,13 +4,18 @@
     "contents": [
       {
         "title": "Hello World!",
-        "content": "These are contents.",
-        "button": "look at me!"
+        "content": "Welcome to parity, a numbers puzzle game.",
+        "button": "Sweet! How do I play?"
       },
       {
-        "title": "The second screen",
-        "content": "There are more contents here.",
-        "button": "play"
+        "title": "How to play",
+        "content": "All you need to play are the arrow keys.",
+        "button": "Okay..."
+      },
+      {
+        "title": "How to play",
+        "content": "The goal is to get each number on the board to be the same.",
+        "button": "Let's do this"
       }
     ]
   },
