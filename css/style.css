@@ -93,8 +93,8 @@ a:hover {
 	font-weight:bold;
 	font-style:normal;
 	height:40px;
+  min-width:100px;
 	line-height:30px;
-	width:100px;
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #2e4d6b;
@@ -113,8 +113,8 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
   font-size:24pt;
   color:#555;
-  width:90px;
-  height:90px;
+  width:120px;
+  height:120px;
   background-color:#999;
   margin:5px;
 }
