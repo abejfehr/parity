@@ -118,6 +118,8 @@ $(document).ready(function() {
       //go through the board and clear it of all the "selected" classes
       $('td.selected').removeClass('selected');
 
+      console.log(level.selected);
+
       cells[level.selected.x][level.selected.y].addClass('selected');
 
       //check if it's a win
@@ -133,18 +135,14 @@ $(document).ready(function() {
   // it, and puts it in the grid
   function loadScreen() {
     if(story[bookmark].type == 'level') {
-      level = story[bookmark];
-      for(var i=0;i<story[bookmark].contents.length;++i) {
-        cell(i%4,Math.floor(i/4),story[bookmark].contents[i]);
+      if(story[bookmark].contents == 'generated') {
+        //generate a level
+        data = generate(story[bookmark]);
+        loadLevel(data);
       }
-
-      level.selected = story[bookmark].initialSelected;
-
-      //put the level number in the corner
-      levelText.html("level " + level.number + "/" + numLevels());
-
-      //fade in the level
-      board.fadeIn(options['fade']);
+      else {
+        loadLevel(story[bookmark]);
+      }
     }
     else if(story[bookmark].type == 'overlay') {
       //get the current slide that the overlay is on
@@ -165,6 +163,110 @@ $(document).ready(function() {
     }
 
     update();
+  }
+
+
+
+  //validation function to be used later
+  function valid(direction, x, y) {
+    switch(direction) {
+      case 0:
+        return false;
+      case 1: //north
+        if(y == 0) {
+          return false;
+        }
+      case 2: //east
+        if(x == 3) {
+          return false;
+        }
+      case 3: //south
+        if(y == 3) {
+          return false;
+        }
+      case 4: //west
+        if(x == 0) {
+          return false;
+        }
+    }
+    return true;
+  }
+
+
+
+  //generates a level
+  function generate(level) {
+    //create a new object
+    //create an array for the level data
+    var content = [];
+
+    //push the initial value into the array that number of times
+    for(var i=0;i<16;++i) {
+      content.push(level.schema.end);
+    }
+
+    //generate a random number of steps in the bounds
+    var moveRange = level.schema.maxNumMoves - level.schema.minNumMoves;
+    var numMoves = level.schema.minNumMoves + Math.random()*(moveRange);
+
+    //generate a random starting location
+    var x = Math.floor(Math.random()*4);
+    var y = Math.floor(Math.random()*4);
+
+    //loop through all the moves
+    for(var i=0;i<numMoves;++i) {
+      //for each time, move the coordinates by one in a random direction...
+      var direction = 0; //initialize it to 0(impossible)
+      while(!valid(direction)) {
+        direction = Math.floor(Math.random()*4);
+      }
+      //at this point, the direction is valid so we're just moving it one
+      switch(direction) {
+        case 1: //north
+          --content[y*4+x];
+          --y;
+          break;
+        case 2: //east
+          --content[y*4+x];
+          ++x;
+          break;
+        case 3: //south
+          --content[y*4+x];
+          ++y;
+          break;
+        case 4: //west
+          --content[y*4+x];
+          --x;
+          break;
+      }
+    }
+
+    return {
+      type: level.type,
+      number: level.number,
+      contents: content,
+      initialSelected: { x: x, y: y }
+    };
+  }
+
+
+
+  //loads a level
+  function loadLevel(data) {
+    level = data;
+    for(var i=0;i<level.contents.length;++i) {
+      cell(i%4,Math.floor(i/4),level.contents[i]);
+    }
+
+    level.selected = level.initialSelected;
+    console.log(level.selected);
+
+    //put the level number in the corner
+    levelText.html("level " + level.number + "/" + numLevels());
+
+    //fade in the level
+    board.fadeIn(options['fade']);
+
   }
 
 
@@ -199,6 +301,7 @@ $(document).ready(function() {
   function cell(x, y, value) {
     //either gets the contents of x, y or sets them
     if(arguments.length==3) {
+      console.log(x + ", " + y);
       cells[x][y].html(value);
     }
     else {
