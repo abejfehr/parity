@@ -22,6 +22,17 @@
   },
   {
     "type": "level",
+    "number": "2",
+    "contents": "generated",
+    "schema" :
+    {
+      "end" : 6,
+      "minNumMoves" : 9,
+      "maxNumMoves" : 13
+    }
+  },
+  {
+    "type": "level",
     "number": "9\u00BE",
     "contents": [ 1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1 ],
     "initialSelected": { "x":1, "y":2 }
