@@ -41,5 +41,14 @@
     "number": "9\u00BE",
     "contents": [ 1,1,1,1,1,1,0,1,1 ],
     "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "overlay",
+    "contents": [
+      {
+        "title": "Yay! You finished!",
+        "content": "You've beaten every level that currently exists in parity, congratulations! Why don't you go ahead and challenge your friends?"
+      }
+    ]
   }
 ]
