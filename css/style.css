@@ -44,6 +44,7 @@ a:hover {
   display:none;
   position:relative;
   min-height:400px;
+  max-width:382px;
   margin:0px auto;
   text-align:center;
 }
