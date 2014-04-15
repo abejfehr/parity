@@ -19,15 +19,21 @@
       }
     ]
   },
+{
+  "type": "level",
+  "number": 1,
+  "contents": [ 1,0,0,1,1,0,1,1,0 ],
+  "initialSelected": { "x":0, "y":0 }
+},
+{
+  "type": "level",
+  "number": 2,
+  "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
+  "initialSelected": { "x":1, "y":2 }
+},
   {
     "type": "level",
-    "number": 1,
-    "contents": [ 1,1,1,1,1,1,1,0,0 ],
-    "initialSelected": { "x":1, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": "2",
+    "number": 3,
     "contents": "generated",
     "schema" :
     {
@@ -46,7 +52,7 @@
     "type": "overlay",
     "contents": [
       {
-        "title": "Yay! You finished!",
+        "title": "You finished the game!",
         "content": "You've beaten every level that currently exists in parity, congratulations! Why don't you go ahead and challenge your friends?"
       }
     ]
