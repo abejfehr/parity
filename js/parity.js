@@ -155,7 +155,12 @@ $(document).ready(function() {
 
       $('#overlay > h1').html(title);
       $('#overlay > p').html(content);
-      button.html(action);
+      if(action) {
+        button.show();
+        button.html(action);
+      }
+      else
+        button.hide();
 
       overlay.fadeIn(options['fade']);
       update();
