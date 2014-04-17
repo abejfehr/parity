@@ -3,13 +3,13 @@
     "type": "overlay",
     "contents": [
       {
-        "title": "Hello World!",
-        "content": "Welcome to parity, a numbers puzzle game.",
+        "title": "Welcome!",
+        "content": "This is parity, a numbers puzzle game.",
         "button": "Sweet! How do I play?"
       },
       {
         "title": "How to play",
-        "content": "All you need to play are the arrow keys.",
+        "content": "All you need to play are the *arrow keys*.",
         "button": "Okay..."
       },
       {
