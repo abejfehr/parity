@@ -41,7 +41,6 @@ a:hover {
 }
 
 #overlay {
-  display:none;
   position:relative;
   min-height:400px;
   max-width:382px;
