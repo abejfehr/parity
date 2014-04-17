@@ -9,7 +9,6 @@ $(document).ready(function() {
   //all the page objects
   var resetLink   = $('#reset');
   var levelLink   = $('#level');
-  var levelSelect = $('#levelselect');
   var overlay     = $('#overlay');
   var button      = $('#overlay > #holder > button');
   var board       = $('#board');
@@ -147,24 +146,10 @@ $(document).ready(function() {
       //get the current slide that the overlay is on
       if(!story[bookmark].current)
         story[bookmark].current = 0;
-      var slide = story[bookmark].current;
+      var index = story[bookmark].current;
+      var slide = story[bookmark].contents[index];
 
-      //put the text from the thingy into the overlay
-      var title   = story[bookmark].contents[slide].title;
-      var content = story[bookmark].contents[slide].content;
-      var action  = story[bookmark].contents[slide].button;
-
-      $('#overlay > h1').html(title);
-      $('#overlay > p').html(content);
-      if(action) {
-        button.show();
-        button.html(action);
-      }
-      else
-        button.hide();
-
-      overlay.fadeIn(options['fade']);
-      update();
+      showOverlay(slide);
     }
   }
 
@@ -275,7 +260,7 @@ $(document).ready(function() {
     };
 
     //put the level number in the corner
-    levelLink.html("level " + level.number + "/" + numLevels());
+    levelLink.html('level ' + level.number + '/' + numLevels());
 
     //fade in the level
     board.fadeIn(options['fade']);
@@ -330,7 +315,7 @@ $(document).ready(function() {
   //the first level
   function start() {
     //put the level number in the corner
-    levelLink.html("level 0/" + numLevels());
+    levelLink.html('level 0/' + numLevels());
     loadCurrentPage();
   }
 
@@ -380,10 +365,45 @@ $(document).ready(function() {
 
 
 
+
+  function showOverlay(slide) {
+    //hide whatever was previously displayed
+
+    //put the text from the thingy into the overlay
+    var title   = slide.title;
+    var content = slide.content;
+    var action  = slide.button;
+
+    $('#overlay > h1').html(title);
+    $('#overlay > p').html(content);
+    if(action) {
+      button.show();
+      button.html(action);
+    }
+    else
+      button.hide();
+
+    overlay.fadeIn(options['fade']);
+    update();
+  }
+
+
+
   //brings up the level selector
   function levelSelect() {
-    levelSelectScreen.toggle();
+    //create the level select object
+    var levelselect = {
+      title: 'Level Select',
+    };
+    //go through all of the levels in the story
+    for(var i=0;i<story.length;++i) {
+      levelselect.content += '<p>' + i + '</p>'
+    }
+
+    //show that as an overlay
+    showOverlay(levelselect);
   }
+  
 
 
   //event assignments
