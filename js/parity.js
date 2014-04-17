@@ -114,7 +114,6 @@ $(document).ready(function() {
   // goes through the model(the story), draws the board accordingly,
   // and checks if it's a win scenario
   function update() {
-    console.log("(5)");
     if(story[bookmark].type == 'level') {
       //go through the board and clear it of all the "selected" classes
       $('td.selected').removeClass('selected');
@@ -133,7 +132,6 @@ $(document).ready(function() {
   // gets the current page of the story where the bookmark is, parses
   // it, and puts it in the grid
   function loadCurrentPage() {
-    console.log("(1)");
     if(story[bookmark].type == 'level') {
       if(story[bookmark].contents == 'generated') {
         //generate a level
@@ -152,7 +150,6 @@ $(document).ready(function() {
       var slide = story[bookmark].contents[index];
 
       showOverlay(slide);
-      console.log("(3)");
     }
   }
 
@@ -321,16 +318,8 @@ $(document).ready(function() {
     levelLink.html('level 0/' + numLevels());
     loadCurrentPage();
 
-    //for debug
-    console.log("(4)");
-
     //update the stuff
     update();
-
-    console.log(overlay.is(':hidden'));
-
-    //fade in the overlay if need be
-    overlay.fadeIn(options['fade']);
   }
 
 
@@ -397,7 +386,6 @@ $(document).ready(function() {
     else
       button.hide();
 
-    console.log("(2)");
     overlay.fadeIn(options['fade']);
   }
 
