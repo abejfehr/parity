@@ -6,7 +6,8 @@ TODO
   * happens mainly when pressing enter after url instead of using refresh button
 * fix 2px extra padding on right side of board
 * add ability to format text inside "content" of overlays
-* add level select screen
+* experiment with level selector as grid instead of list
+* make level select screen show finished levels
 * add save feature with cookies
-* add level anchors
+* make level anchors functional
 * remove generated levels in the future once there's enough levels
