@@ -356,7 +356,7 @@ $(document).ready(function() {
     //go through the stuff in the story
     var sum = 0;
     for(var i=0;i<story.length;++i) {
-      if(story[i].type=='level') {
+      if(story[i].type == 'level') {
         ++sum;
       }
     }
@@ -393,23 +393,29 @@ $(document).ready(function() {
   function levelSelect() {
     //create the level select object
     var levelselect = {
-      title: 'Level Select',
+      title:   'Level Select',
+      content: ''
     };
     //go through all of the levels in the story
     for(var i=0;i<story.length;++i) {
-      levelselect.content += '<p>' + i + '</p>'
+      if(story[i].type == 'level') {
+        var num = story[i].number;
+        levelselect.content += '<p><a href="#' + num + '">Level ' + num + '</a></p>';
+      }
     }
 
     //show that as an overlay
     showOverlay(levelselect);
   }
-  
+
 
 
   //event assignments
   button.click(advanceStory);
   resetLink.click(reset);
-  levelLink.click(levelSelect);
+  levelLink.click(function() {
+    fadeOut(levelSelect);
+  });
 
   //start the game off by getting the story
   $.getJSON('story.json', function(data) {
