@@ -7,11 +7,12 @@
 $(document).ready(function() {
 
   //all the page objects
-  var resetLink = $('#reset');
-  var levelText = $('#level');
-  var overlay   = $('#overlay');
-  var button    = $('#overlay > #holder > button');
-  var board     = $('#board');
+  var resetLink   = $('#reset');
+  var levelLink   = $('#level');
+  var levelSelect = $('#levelselect');
+  var overlay     = $('#overlay');
+  var button      = $('#overlay > #holder > button');
+  var board       = $('#board');
   var cells = [];
   for(var i=0;i<4;++i) {
     cells.push([]);
@@ -274,7 +275,7 @@ $(document).ready(function() {
     };
 
     //put the level number in the corner
-    levelText.html("level " + level.number + "/" + numLevels());
+    levelLink.html("level " + level.number + "/" + numLevels());
 
     //fade in the level
     board.fadeIn(options['fade']);
@@ -329,7 +330,7 @@ $(document).ready(function() {
   //the first level
   function start() {
     //put the level number in the corner
-    levelText.html("level 0/" + numLevels());
+    levelLink.html("level 0/" + numLevels());
     loadCurrentPage();
   }
 
@@ -361,9 +362,6 @@ $(document).ready(function() {
     if(++bookmark < story.length) {
       fadeOut(loadCurrentPage);
     }
-    else {
-      end();
-    }
   }
 
 
@@ -382,16 +380,16 @@ $(document).ready(function() {
 
 
 
-  //what happens when the game is finished, still needs to be made
-  function end() {
-    alert('the end!');
+  //brings up the level selector
+  function levelSelect() {
+    levelSelectScreen.toggle();
   }
-
 
 
   //event assignments
   button.click(advanceStory);
   resetLink.click(reset);
+  levelLink.click(levelSelect);
 
   //start the game off by getting the story
   $.getJSON('story.json', function(data) {
