@@ -316,6 +316,11 @@ $(document).ready(function() {
   function start() {
     //put the level number in the corner
     levelLink.html('level 0/' + numLevels());
+
+    //set the level and bookmark based on the hash
+    setLevelFromHash();
+
+    //load whatever the level is set to
     loadCurrentPage();
 
     //update the stuff
@@ -408,6 +413,37 @@ $(document).ready(function() {
 
     //show that as an overlay
     showOverlay(levelselect);
+  }
+
+
+
+
+  //
+  function setLevelFromHash() {
+    levelNo = window.location.hash.substring(1);
+
+    //now we just need to make sure it exists
+    var bookmarkNo = getBookmarkOfLevel(levelNo)
+
+    alert(bookmarkNo + ', ' + levelNo);
+    if(bookmarkNo != -1) {
+      bookmark = bookmarkNo;
+
+      //hide the overlay
+      overlay.hide();
+    }
+  }
+
+
+
+  //
+  function getBookmarkOfLevel(n) {
+    for(var i=0;i<story.length;++i) {
+      if(story[i].number == n) {
+        return i;
+      }
+    }
+    return -1;
   }
 
 
