@@ -6,7 +6,6 @@ TODO
 * add ability to have rich text inside "content" of overlays
 * experiment with level selector as grid instead of list
 * make level select screen show finished levels
-* add save feature with cookies
 * levels are locked until they're reached
 * remove generated levels in the future once there's enough levels
   * need to wait until there's enough levels
