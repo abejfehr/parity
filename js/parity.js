@@ -13,9 +13,9 @@ $(document).ready(function() {
   var button      = $('#overlay > #holder > button');
   var board       = $('#board');
   var cells = [];
-  for(var i=0;i<4;++i) {
+  for(var i = 0; i < 4; ++i) {
     cells.push([]);
-    for(var j=0;j<4;++j) {
+    for(var j = 0; j < 4; ++j) {
       cells[i].push($('td[data-x="' + i + '"][data-y="' + j + '"]'));
     }
   }
@@ -249,8 +249,8 @@ $(document).ready(function() {
     level = data;
 
     //parse its contents
-    for(var i=0;i<level.contents.length;++i) {
-      cell(i%3,Math.floor(i/3),level.contents[i]);
+    for(var i = 0; i < level.contents.length; ++i) {
+      cell(i % 3,Math.floor(i / 3), level.contents[i]);
     }
 
     //set the currently selected cell
@@ -267,6 +267,12 @@ $(document).ready(function() {
 
     //update the screen
     update();
+
+    //save it in a cookie
+    saveProgress();
+
+    //add the anchor to the url
+    document.location.hash = "#" + level.number;
   }
 
 
@@ -282,8 +288,8 @@ $(document).ready(function() {
   //returns: boolean
   function isWin() {
     var value = cell(0,0);
-    for(var i=0;i<3;++i) {
-      for(var j=0;j<3;++j) {
+    for(var i = 0; i < 3; ++i) {
+      for(var j = 0; j < 3; ++j) {
         if(cell(i,j) != value)
           return false
       }
@@ -317,10 +323,27 @@ $(document).ready(function() {
     //put the level number in the corner
     levelLink.html('level 0/' + numLevels());
 
-    //set the level and bookmark based on the hash
-    setLevelFromHash();
+    /*
+     * at this point, the level must be loaded.
+     *
+     * it can either be loaded from the anchor in the url
+     * or the last level from the cookie...so which do we
+     * choose? first we'll check to see if there's an anchor,
+     * and we'll actually save THAT level in the cookie.
+     *
+     * if there is no anchor, just load whatever is in the
+     * cookie.
+     */
+    levelNo = window.location.hash.substring(1);
 
-    //load whatever the level is set to
+    if(levelNo) {
+      setLevel(levelNo);
+    }
+    else {
+      loadProgress();
+    }
+
+    //actually load the level
     loadCurrentPage();
 
     //update the stuff
@@ -363,7 +386,7 @@ $(document).ready(function() {
   function numLevels() {
     //go through the stuff in the story
     var sum = 0;
-    for(var i=0;i<story.length;++i) {
+    for(var i=0; i < story.length; ++i) {
       if(story[i].type == 'level') {
         ++sum;
       }
@@ -404,10 +427,10 @@ $(document).ready(function() {
       content: ''
     };
     //go through all of the levels in the story
-    for(var i=0;i<story.length;++i) {
+    for(var i = 0; i < story.length; ++i) {
       if(story[i].type == 'level') {
         var num = story[i].number;
-        levelselect.content += '<p><a href="#' + num + '">Level ' + num + '</a></p>';
+        levelselect.content += '<p><a href="#" onclick="window.location.href=\"#' + num + '\"";>Level ' + num + '</a></p>';
       }
     }
 
@@ -417,15 +440,11 @@ $(document).ready(function() {
 
 
 
-
-  //
-  function setLevelFromHash() {
-    levelNo = window.location.hash.substring(1);
-
+  //sets the current level to whatever
+  function setLevel(n) {
     //now we just need to make sure it exists
-    var bookmarkNo = getBookmarkOfLevel(levelNo)
+    var bookmarkNo = getBookmarkOfLevel(n)
 
-    alert(bookmarkNo + ', ' + levelNo);
     if(bookmarkNo != -1) {
       bookmark = bookmarkNo;
 
@@ -436,9 +455,11 @@ $(document).ready(function() {
 
 
 
-  //
+  //gets the bookmark number for a level number
+  //input:   -the level number
+  //returns: -the bookmark number
   function getBookmarkOfLevel(n) {
-    for(var i=0;i<story.length;++i) {
+    for(var i = 0; i < story.length; ++i) {
       if(story[i].number == n) {
         return i;
       }
@@ -446,6 +467,30 @@ $(document).ready(function() {
     return -1;
   }
 
+
+
+  //saves a cookie with the current level
+  function saveProgress() {
+    var d = new Date();
+    d.setTime(d.getTime()+(365*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = "parity_last_level=" + level.number + "; " + expires;
+  }
+
+  //gets the last level from a cookie
+  function loadProgress() {
+    var name = "parity_last_level=";
+    var cookieArray = document.cookie.split(';');
+    var levelNo = -1;
+    for(var i=0; i<cookieArray.length; ++i) {
+      var cookie = cookieArray[i].trim();
+      if (cookie.indexOf(name) == 0) {
+        levelNo = cookie.substring(name.length,cookie.length);
+      }
+    }
+
+    setLevel(levelNo);
+  }
 
 
   //event assignments
