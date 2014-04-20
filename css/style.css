@@ -36,7 +36,8 @@ a:hover {
 
 #board {
   display:none;
-  padding:5px;
+  border-spacing:0px;
+  padding:7px;
   margin:0px auto;
 }
 
@@ -116,7 +117,7 @@ a:hover {
   width:120px;
   height:120px;
   background-color:#999;
-  margin:5px;
+  border:1px solid #333;
 }
 
 .selected {
