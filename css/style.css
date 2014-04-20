@@ -159,10 +159,23 @@ a:hover {
   font-family:'Poiret One', sans-serif;
 }
 
-.cell a {
+.lscell {
+  font-family: 'Open Sans', sans-serif;
+  font-size:24pt;
   color:#555;
+  width:120px;
+  height:120px;
+  background-color:#999;
+  border:1px solid #333;
 }
 
-.cell a : hover {
-  color:#999;
+.lscell : hover {
+  background-color:#000;
+}
+
+.lscell a {
+  color:#555;
+  display:table;
+  width:100%;
+  height:100%;
 }

@@ -435,7 +435,7 @@ $(document).ready(function() {
         if(j % 3 == 0) {
           levelselect.content += '<tr>'
         }
-        levelselect.content += '<td class="cell"><a href="#">' + num + '</a></td>';
+        levelselect.content += '<td class="lscell"><a href="#"><div style="display:table-cell;vertical-align:middle;">' + num + '</div></a></td>';
         if(j+1 % 3 == 0) {
           levelselect.content += '</tr>'
         }
