@@ -406,7 +406,7 @@ $(document).ready(function() {
     var action  = slide.button;
 
     $('#overlay > h1').html(title);
-    $('#overlay > p').html(content);
+    $('#overlay > #content').html(content);
     if(action) {
       button.show();
       button.html(action);
@@ -427,12 +427,22 @@ $(document).ready(function() {
       content: ''
     };
     //go through all of the levels in the story
+    levelselect.content += '<table>'
+    var j = 0; //for counting the columns
     for(var i = 0; i < story.length; ++i) {
       if(story[i].type == 'level') {
         var num = story[i].number;
-        levelselect.content += '<p><a href="#" onclick="window.location.href=\"#' + num + '\"";>Level ' + num + '</a></p>';
+        if(j % 3 == 0) {
+          levelselect.content += '<tr>'
+        }
+        levelselect.content += '<td class="cell"><a href="#">' + num + '</a></td>';
+        if(j+1 % 3 == 0) {
+          levelselect.content += '</tr>'
+        }
+        ++j;
       }
     }
+    levelselect.content += '</table>'
 
     //show that as an overlay
     showOverlay(levelselect);
