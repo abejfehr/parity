@@ -1,10 +1,7 @@
 TODO
 ====
 * style the intro text
-* user can still "move" selected square after parity has been achieved
-* fix 2px extra padding on right side of board
 * add ability to have rich text inside "content" of overlays
-* experiment with level selector as grid instead of list
 * make level select screen show finished levels
 * levels are locked until they're reached
 * remove generated levels in the future once there's enough levels
