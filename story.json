@@ -4,17 +4,17 @@
     "contents": [
       {
         "title": "Welcome!",
-        "content": "This is parity, a numbers puzzle game.",
+        "content": "<p class=\"center\">This is parity, a numbers puzzle game.</p>",
         "button": "Sweet! How do I play?"
       },
       {
         "title": "How to play",
-        "content": "All you need to play are the *arrow keys*.",
+        "content": "<p class=\"center\">All you need to play are the *arrow keys*.</p>",
         "button": "Okay..."
       },
       {
         "title": "How to play",
-        "content": "The goal is to get each number on the board to be the same.",
+        "content": "<p class=\"center\">The goal is to get each number on the board to be the same.</p>",
         "button": "Let's do this"
       }
     ]
@@ -53,7 +53,7 @@
     "contents": [
       {
         "title": "You finished the game!",
-        "content": "You've beaten every level that currently exists in parity, congratulations! Why don't you go ahead and challenge your friends?"
+        "content": "<p class=\"center\">You've beaten every level that currently exists in parity, congratulations! Why don't you go ahead and challenge your friends?</p>"
       }
     ]
   }
