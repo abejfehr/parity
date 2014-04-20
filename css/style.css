@@ -30,8 +30,10 @@ a:hover {
 
 #box {
     background-color:#333;
-    min-width:388px;
-    min-height:410px;
+    width:382px;
+    height:410px;
+    padding-left:1px;
+    overflow:hidden;
 }
 
 #board {
@@ -44,9 +46,12 @@ a:hover {
 #overlay {
   position:relative;
   min-height:400px;
-  max-width:382px;
+  width:397px;
   margin:0px auto;
   text-align:center;
+  padding-right:15px;
+  height:100%;
+  overflow: auto;
 }
 
 #overlay h1 {
@@ -147,4 +152,17 @@ a:hover {
 .right {
   text-align:right;
   float:right;
+}
+
+#content {
+  color:#ddd;
+  font-family:'Poiret One', sans-serif;
+}
+
+.cell a {
+  color:#555;
+}
+
+.cell a : hover {
+  color:#999;
 }
