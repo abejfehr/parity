@@ -398,8 +398,6 @@ $(document).ready(function() {
 
 
   function showOverlay(slide) {
-    //hide whatever was previously displayed
-
     //put the text from the thingy into the overlay
     var title   = slide.title;
     var content = slide.content;
@@ -433,11 +431,11 @@ $(document).ready(function() {
       if(story[i].type == 'level') {
         var num = story[i].number;
         if(j % 3 == 0) {
-          levelselect.content += '<tr>'
+          levelselect.content += '<tr>';
         }
         levelselect.content += '<td class="lscell"><a href="#"><div style="display:table-cell;vertical-align:middle;">' + num + '</div></a></td>';
         if(j+1 % 3 == 0) {
-          levelselect.content += '</tr>'
+          levelselect.content += '</tr>';
         }
         ++j;
       }
