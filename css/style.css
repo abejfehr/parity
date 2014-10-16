@@ -46,10 +46,9 @@ a:hover {
 #overlay {
   position:relative;
   min-height:400px;
-  width:397px;
+  width:383px;
   margin:0px auto;
   text-align:center;
-  padding-right:15px;
   height:100%;
   overflow: auto;
 }
