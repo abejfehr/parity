@@ -4,6 +4,7 @@ TODO
 * make level select screen show finished levels
 * make level select screen links load levels
 * levels are locked until they're reached
+* make the selector bit animated
 * remove generated levels in the future once there's enough levels
   * need to wait until there's enough levels
 * create instructional animations
