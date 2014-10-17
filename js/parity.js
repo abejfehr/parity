@@ -6,6 +6,7 @@
 // Contains the main game logic for parity
 //
 
+//the main entry point for the game
 $(document).ready(function() {
 
   //all the page objects
