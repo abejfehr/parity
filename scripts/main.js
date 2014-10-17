@@ -272,7 +272,7 @@ $(document).ready(function() {
     update();
 
     //save it in a cookie
-    saveProgress();
+    cookieManager.saveProgress();
 
     //add the anchor to the url
     document.location.hash = "#" + level.number;
@@ -343,7 +343,7 @@ $(document).ready(function() {
       setLevel(levelNo);
     }
     else {
-      loadProgress();
+      cookieManager.loadProgress();
     }
 
     //actually load the level
@@ -447,35 +447,6 @@ $(document).ready(function() {
 
     //show that as an overlay
     showOverlay(levelselect);
-  }
-
-
-
-  //sets the current level to whatever
-  function setLevel(n) {
-    //now we just need to make sure it exists
-    var bookmarkNo = getBookmarkOfLevel(n)
-
-    if(bookmarkNo != -1) {
-      bookmark = bookmarkNo;
-
-      //hide the overlay
-      overlay.hide();
-    }
-  }
-
-
-
-  //gets the bookmark number for a level number
-  //input:   -the level number
-  //returns: -the bookmark number
-  function getBookmarkOfLevel(n) {
-    for(var i = 0; i < story.length; ++i) {
-      if(story[i].number == n) {
-        return i;
-      }
-    }
-    return -1;
   }
 
   //event assignments
