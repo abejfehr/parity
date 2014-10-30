@@ -1,60 +1,90 @@
 [
   {
-    "type": "overlay",
-    "contents": [
-      {
-        "title": "Welcome!",
-        "content": "<p class=\"center\">This is parity, a numbers puzzle game.</p>",
-        "button": "Sweet! How do I play?"
-      },
-      {
-        "title": "How to play",
-        "content": "<p class=\"center\">All you need to play are the *arrow keys*.</p>",
-        "button": "Okay..."
-      },
-      {
-        "title": "How to play",
-        "content": "<p class=\"center\">The goal is to get each number on the board to be the same.</p>",
-        "button": "Let's do this"
-      }
-    ]
+    "type": "instruction",
+    "title": "Welcome",
+    "button": "continue"
+  },
+  {
+    "type": "instruction",
+    "title": "How to play",
+    "text": "Parity is a numbers puzzle game.\nThe aim of the game is to get each number on the a 9x9 board of numbers to be exactly the same.",
+    "button": "okay..."
+  },
+  {
+    "type": "instruction",
+    "title": "How to play",
+    "text": "One of the numbers is always selected. This number can be moved by using the arrow keys",
+    "button": "sounds easy"
+  },
+  {
+    "type": "instruction",
+    "title": "How to play",
+    "text": "Each time you move the selector, the number you select will increase in number by one.",
+    "button": "I got this!"
   },
   {
     "type": "level",
     "number": 1,
+    "mode": "vanilla",
     "contents": [ 1,0,0,1,1,0,1,1,0 ],
     "initialSelected": { "x":0, "y":0 }
   },
   {
     "type": "level",
     "number": 2,
-    "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
-    "initialSelected": { "x":1, "y":2 }
+    "mode": "vanilla",
+    "contents": [ 1,0,1,0,0,0,0,0,0 ],
+    "initialSelected": { "x":0, "y":0 }
   },
   {
     "type": "level",
     "number": 3,
-    "contents": "generated",
-    "schema" :
-    {
-      "end" : 3,
-      "minNumMoves" : 12,
-      "maxNumMoves" : 29
-    }
+    "mode": "vanilla",
+    "contents": [ 1,2,2,2,3,2,3,2,2 ],
+    "initialSelected": { "x":0, "y":2 }
   },
   {
     "type": "level",
-    "number": "9\u00BE",
-    "contents": [ 1,1,1,1,1,1,0,1,1 ],
+    "number": 4,
+    "mode": "vanilla",
+    "contents": [ 3,4,3,1,3,2,1,1,2 ],
+    "initialSelected": { "x":0, "y":0 }
+  },
+  {
+    "type": "instruction",
+    "title": "Negative numbers",
+    "text": "Numbers on the board can be negative too.",
+    "button": "interesting"
+  },
+  {
+    "type": "level",
+    "number": 5,
+    "mode": "vanilla",
+    "contents": [ 1,-1,0,0,-1,0,0,1,0 ],
     "initialSelected": { "x":1, "y":2 }
   },
   {
-    "type": "overlay",
-    "contents": [
-      {
-        "title": "You finished the game!",
-        "content": "<p class=\"center\">You've beaten every level that currently exists in parity, congratulations! Why don't you go ahead and challenge your friends?</p>"
-      }
-    ]
+    "type": "level",
+    "number": 6,
+    "mode": "vanilla",
+    "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
+    "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "The following few puzzles get even more complicated...",
+    "button": "uh oh"
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "The board contains black and white tiles, each of which has different behaviour",
+    "button": "continue"
+  },
+  {
+    "type": "instruction",
+    "title": "The End",
+    "text": "Congratulations, you've successfully finished all the levels in the game. "
   }
 ]
