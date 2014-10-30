@@ -11,6 +11,12 @@ var BoardModule = (function() {
   var level; //actually contains the level data
   var numLevels = -1; //to store the total number of levels
 
+  var reset = function() {
+    render(level);
+  }
+
+  resetLink.on('click', reset);
+
   //populates cells with the actual cells on the board
   for(var i = 0; i < 4; ++i) {
     cells.push([]);
