@@ -10,8 +10,19 @@ var StoryModule = (function() {
   var getStory = function() {
     $.getJSON('story.json', function(data) {
       story = data;
+      mediator.publish('story_num_levels', getNumLevels());
       mediator.publish('story_story_loaded');
     });
+  }
+
+  var getNumLevels = function() {
+    var c = 0;
+    for(var i=0;i<story.length;++i) {
+      if(story[i].type == 'level') {
+        ++c;
+      }
+    }
+    return c;
   }
 
   var setBookmark = function(val) {

@@ -1,11 +1,17 @@
 //define the module
 var BoardModule = (function() {
+
   var board = $('#board');
   var cells = [];
   var levelLink = $('#level');
-  var level; //actually contains the level data
   var overlay = $('#overlay');
   var resetLink = $('#reset');
+
+  var active = false;
+  var level; //actually contains the level data
+  var numLevels = -1; //to store the total number of levels
+
+  //populates cells with the actual cells on the board
   for(var i = 0; i < 4; ++i) {
     cells.push([]);
     for(var j = 0; j < 4; ++j) {
@@ -41,7 +47,7 @@ var BoardModule = (function() {
 
     //selects the cell to the left of the current cell
   function left() {
-    if(level.selected.x > 0) {
+    if(active && level.selected.x > 0) {
       select(--level.selected.x, level.selected.y);
       update();
     }
@@ -49,7 +55,7 @@ var BoardModule = (function() {
 
   //selects the cell above the current cell
   function up() {
-    if(level.selected.y > 0) {
+    if(active && level.selected.y > 0) {
       select(level.selected.x, --level.selected.y);
       update();
     }
@@ -57,7 +63,7 @@ var BoardModule = (function() {
 
   //selects the cell to the right of the current cell
   function right() {
-    if(level.selected.x < 2) {
+    if(active && level.selected.x < 2) {
       select(++level.selected.x, level.selected.y);
       update();
     }
@@ -65,7 +71,7 @@ var BoardModule = (function() {
 
   //selects the cell under the current cell
   function down() {
-    if(level.selected.y < 2) {
+    if(active && level.selected.y < 2) {
       select(level.selected.x, ++level.selected.y);
       update();
     }
@@ -76,7 +82,6 @@ var BoardModule = (function() {
     //increase the number in the selected cell
     cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
   }
-
 
   //gets or sets a cells
   //input: -the x/y location of a cell
@@ -94,10 +99,9 @@ var BoardModule = (function() {
     }
   }
 
-
   var render = function(data) {
     //hide the overlay if needbe
-    overlay.fadeOut(options['fade']);
+    mediator.publish('overlay_set_inactive');
 
     //do things here
     level = data;
@@ -114,10 +118,11 @@ var BoardModule = (function() {
     };
 
     //put the level number in the corner
-    levelLink.html('level ' + level.number + '/' + 5); //TODO: fix this 5
+    levelLink.html('level ' + level.number + '/' + numLevels); //hard code the levels?
 
     //fade in the level
     board.fadeIn(options['fade']);
+    active = true;
 
     //update the screen
     update();
@@ -126,12 +131,21 @@ var BoardModule = (function() {
     document.location.hash = "#" + level.number; //TODO: move this elsewhere
   }
 
+  var setNumLevels = function(num) { numLevels = num; }
+
+  var setInactive = function() {
+    board.fadeOut(options['fade']);
+    active = false;
+  }
+
   return {
     render: render,
     up: up,
     down: down,
     left: left,
-    right: right
+    right: right,
+    setNumLevels: setNumLevels,
+    setInactive: setInactive
   }
 }())
 
@@ -140,7 +154,9 @@ mediator.installTo(BoardModule);
 
 //subscribe to messages
 BoardModule.subscribe('board_render', BoardModule.render);
+BoardModule.subscribe('board_set_inactive', BoardModule.setNumLevels);
 BoardModule.subscribe('controls_key_down', BoardModule.down);
 BoardModule.subscribe('controls_key_left', BoardModule.left);
-BoardModule.subscribe('controls_key_up', BoardModule.up);
 BoardModule.subscribe('controls_key_right', BoardModule.right);
+BoardModule.subscribe('controls_key_up', BoardModule.up);
+BoardModule.subscribe('story_num_levels', BoardModule.setNumLevels);
