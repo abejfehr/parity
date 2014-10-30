@@ -2,13 +2,8 @@
 var CookieDataModule = (function() {
 
   var load = function() {
-    //put the level number in the corner
-//    levelLink.html('level 0/' + numLevels()); TODO: re-add this somewhere
-
     /*
-    * at this point, the level must be loaded.
-    *
-    * it can either be loaded from the anchor in the url
+    * the level can either be loaded from the anchor in the url
     * or the last level from the cookie...so which do we
     * choose? first we'll check to see if there's an anchor,
     * and we'll actually save THAT level in the cookie.
