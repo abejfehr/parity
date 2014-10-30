@@ -29,15 +29,15 @@ a:hover {
 }
 
 #box {
-    background-color:#333;
-    width:382px;
-    height:410px;
-    padding-left:1px;
-    overflow:hidden;
+  background-color:#333;
+  width:382px;
+  height:410px;
+  padding-left:1px;
+  overflow:hidden;
 }
 
 #board {
-  display:none;
+//  display:none;
   border-spacing:0px;
   padding:7px;
   margin:0px auto;
@@ -109,7 +109,7 @@ a:hover {
 	background-color:#3e474f;
 }
 
-#overlay button:active {
+#overlay button:active, .active {
   bottom:69px;
 }
 /* This button was generated using CSSButtonGenerator.com */
