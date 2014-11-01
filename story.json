@@ -84,6 +84,34 @@
   },
   {
     "type": "instruction",
+    "title": "Black & White",
+    "text": "Stepping on black tiles increases the numbers by one...",
+    "button": "continue"
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "...whereas stepping on white tiles decreases the numbers by one.",
+    "button": "okay, let's do this"
+  },
+  {
+    "type": "level",
+    "number": 7,
+    "mode": "b&w",
+    "contents": [ 0,3,0,3,-2,3,0,2,0 ],
+    "colors": ["b","w","b","w","b","w","b","w","b"],
+    "initialSelected": { "x":2, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 8,
+    "mode": "b&w",
+    "contents": [ 7,2,6,3,9,1,7,3,7 ],
+    "colors": ["w","b","w","b","w","b","w","b","w"],
+    "initialSelected": { "x":1, "y":1 }
+  },
+  {
+    "type": "instruction",
     "title": "The End",
     "text": "Congratulations, you've successfully finished all the levels in the game. "
   }

@@ -1,4 +1,3 @@
-//define the module
 var BoardModule = (function() {
 
   var board = $('#board');
@@ -25,8 +24,8 @@ var BoardModule = (function() {
     }
   }
 
-  // goes through the model(the story), draws the board accordingly,
-  // and checks if it's a win scenario
+  //goes through the model(the story), draws the board accordingly,
+  //and checks if it's a win scenario
   var update = function() {
     $('td.selected').removeClass('selected');
 
@@ -85,8 +84,15 @@ var BoardModule = (function() {
 
   //selects a cell and increases its value
   function select(x, y) {
-    //increase the number in the selected cell
-    cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
+    if(cells[level.selected.x][level.selected.y].hasClass('black')) {
+      cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
+    }
+    else if(cells[level.selected.x][level.selected.y].hasClass('white')) {
+      cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)-1);
+    }
+    else {
+      cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
+    }
   }
 
   //gets or sets a cells
@@ -96,25 +102,34 @@ var BoardModule = (function() {
   //         -nothing, if a value is given
   function cell(x, y, value) {
     //either gets the contents of x, y or sets them
-    if(arguments.length==3) {
+    if(arguments.length == 3)
       cells[x][y].html(value);
-    }
-    else {
-      //return the value
+    else
       return parseInt(cells[x][y].html());
-    }
   }
 
   var render = function(data) {
     //hide the overlay if needbe
     mediator.publish('overlay_set_inactive');
 
-    //do things here
+    //store the level
     level = data;
 
     //parse its contents
     for(var i = 0; i < level.contents.length; ++i) {
-      cell(i % 3, Math.floor(i / 3), level.contents[i]);
+      var x = i % 3;
+      var y = Math.floor(i / 3);
+      cell(x, y, level.contents[i]);
+      if(level.mode == "b&w") {
+        if(level.colors[i] == "b") {
+          cells[x][y].removeClass('white');
+          cells[x][y].addClass('black');
+        }
+        else {
+          cells[x][y].removeClass('black');
+          cells[x][y].addClass('white')
+        }
+      }
     }
 
     //set the currently selected cell
@@ -135,7 +150,7 @@ var BoardModule = (function() {
 
     //add the anchor to the url
     document.location.hash = "#" + level.number; //TODO: move this elsewhere
-  }
+  };
 
   var setNumLevels = function(num) { numLevels = num; }
 
