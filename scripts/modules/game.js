@@ -14,6 +14,6 @@ GameModule.subscribe('loader_story_loaded', function() {
 })
 
 // Sets bookmark for the story at the level loaded by the CookieDataManager
-GameModule.subscribe('cookie_data_load_complete', function(level) {
-  mediator.publish('story_set_bookmark_at_level', level);
+GameModule.subscribe('cookie_data_load_complete', function(saveObject) {
+  mediator.publish('story_set_bookmark_at_level', saveObject);
 })

@@ -16,34 +16,34 @@ var CookieDataModule = (function() {
     *
     * If there is no cookie, start at the beginning.
     */
-    var levelNo = -1;
-    var name = "parity_last_level=";
+    var name = "parity_save_data=";
     var cookieArray = document.cookie.split(';');
+    var saveObject = { level: -1, visited_instructions: [] }
     for(var i=0; i<cookieArray.length; ++i) {
       var cookie = cookieArray[i].trim();
       if (cookie.indexOf(name) == 0) {
-        levelNo = parseInt(cookie.substring(name.length,cookie.length));
+        saveObject = JSON.parse(cookie.substring(name.length,cookie.length));
       }
     }
 
     var hash = parseInt(window.location.hash.substring(1));
-    if(hash && hash <= levelNo) {
-      levelNo = hash;
+    if(hash && hash <= saveObject.level) {
+      saveObject.level = hash;
     }
 
-    return levelNo;
+    return saveObject;
   }
 
   // Saves the level in the cookie and updates the URL
-  var save = function(levelNo) {
+  var save = function(saveObject) {
     // Places the level number in a cookie
     var d = new Date();
     d.setTime(d.getTime()+(365*24*60*60*1000));
     var expires = "expires="+d.toGMTString();
-    document.cookie = "parity_last_level=" + levelNo + "; " + expires;
+    document.cookie = "parity_save_data=" + JSON.stringify(saveObject) + "; " + expires;
 
     // Updates the hash with the level number
-    document.location.hash = "#" + levelNo;
+    document.location.hash = "#" + saveObject.level;
   }
 
   // The public facade
@@ -59,8 +59,8 @@ mediator.installTo(CookieDataModule);
 // Subscribe to messages
 
 // Save the progress when asked
-CookieDataModule.subscribe('cookie_data_save', function(levelNo) {
-  CookieDataModule.save(levelNo);
+CookieDataModule.subscribe('cookie_data_save', function(saveObject) {
+  CookieDataModule.save(saveObject);
   mediator.publish('cookie_data_save_complete');
 });
 

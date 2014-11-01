@@ -4,6 +4,7 @@ var StoryModule = (function() {
   // Variables for the module
   var story;
   var bookmark;
+  var saveObject;
 
   // Load the story
   var getStory = function() {
@@ -25,33 +26,48 @@ var StoryModule = (function() {
     return c;
   }
 
-  //Set the bookmark of the current level
+  // Set the bookmark of the current level
   var setBookmark = function(val) {
     bookmark = val;
 
     //Render it, and save it if it's a playable item
     if(story[bookmark].type == 'instruction') {
       mediator.publish('overlay_render', story[bookmark]);
+      saveObject.visited_instructions.push(bookmark);
+      mediator.publish('cookie_data_save', saveObject);
     }
     else {
       mediator.publish('board_render', story[bookmark]);
-      mediator.publish('cookie_data_save', story[bookmark].number);
+      saveObject.level = story[bookmark].number;
+      mediator.publish('cookie_data_save', saveObject);
     }
   }
 
   // Advances the story
   var advance = function() {
-    if(bookmark < story.length-1) {
-      setBookmark(++bookmark);
+    if(bookmark < story.length - 1) {
+      // Passes all the previously visited instruction pages
+      while(visited(++bookmark)) { }
+      setBookmark(bookmark);
     }
   }
 
+  // Returns whether or not the instruction screen at the bookmark has
+  // previously been visited
+  var visited = function(bookmarkNo) {
+    return (saveObject.visited_instructions.indexOf(bookmarkNo) >= 0);
+  }
+
   // Sets the bookmark to the given point
-  var setBookmarkAtLevel = function(level) {
-    if(level < 0)
+  var setBookmarkAtLevel = function(so) {
+    saveObject = so;
+    if(saveObject.level < 0) {
+      setBookmark(0);
       return;
+    }
+
     for(var i=0;i<story.length;++i) {
-      if(story[i].number == level) {
+      if(story[i].number == saveObject.level) {
         setBookmark(i);
         return;
       }
