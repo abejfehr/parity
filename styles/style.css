@@ -37,7 +37,6 @@ a:hover {
 }
 
 #board {
-//  display:none;
   border-spacing:0px;
   padding:7px;
   margin:0px auto;
@@ -126,9 +125,18 @@ a:hover {
 
 .selected {
   background-color:#444;
+  border: 3px solid #227687;
+  box-sizing:border-box;
   font-size:28pt;
   font-weight:bold;
   color:#fff;
+  -moz-box-shadow: inset 0 0 10px #227687;
+  -webkit-box-shadow: inset 0 0 10px #227687;
+   box-shadow: inset 0 0 10px #227687;
+}
+
+.selected.white {
+  color:#000;
 }
 
 .poiret {
@@ -141,6 +149,14 @@ a:hover {
 
 .light {
   color:#ddd;
+}
+
+.black {
+  background-color:#333;
+}
+
+.white {
+  background-color:#ccc;
 }
 
 .left {
@@ -156,25 +172,4 @@ a:hover {
 #content {
   color:#ddd;
   font-family:'Poiret One', sans-serif;
-}
-
-.lscell {
-  font-family: 'Open Sans', sans-serif;
-  font-size:24pt;
-  color:#555;
-  width:120px;
-  height:120px;
-  background-color:#999;
-  border:1px solid #333;
-}
-
-.lscell : hover {
-  background-color:#000;
-}
-
-.lscell a {
-  color:#555;
-  display:table;
-  width:100%;
-  height:100%;
 }
