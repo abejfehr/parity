@@ -1,5 +1,8 @@
-//define the module
+// controls.js(ControlModule)
+
 var ControlModule = (function() {
+
+  // Adds an event listener to the entire document
   document.addEventListener('keydown', function(event) {
     if(event.keyCode == 13) {
       mediator.publish('controls_key_enter');
@@ -20,10 +23,10 @@ var ControlModule = (function() {
       mediator.publish('controls_key_down');
     }
   });
+
+  // This module doesn't need any public interface, it only publishes
   return { }
 }())
 
-//add the mediator to the module
+// Add the mediator to the module
 mediator.installTo(ControlModule);
-
-//no messages to subscribe to

@@ -1,12 +1,12 @@
-//define the module
+// story.js(StoryModule)
 var StoryModule = (function() {
-  //the purpose of this module is to get and manage the story. we'll keep track
-  //of the story we're currently in among other things in here
+
+  // Variables for the module
   var story;
   var bookmark;
-  //other variables go here
+  var saveObject;
 
-  //get the story
+  // Load the story
   var getStory = function() {
     $.getJSON('story.json', function(data) {
       story = data;
@@ -15,6 +15,7 @@ var StoryModule = (function() {
     });
   }
 
+  // Gets the total number of levels in the story
   var getNumLevels = function() {
     var c = 0;
     for(var i=0;i<story.length;++i) {
@@ -25,40 +26,55 @@ var StoryModule = (function() {
     return c;
   }
 
+  // Set the bookmark of the current level
   var setBookmark = function(val) {
     bookmark = val;
 
-    //render the item for the bookmark we just received
+    //Render it, and save it if it's a playable item
     if(story[bookmark].type == 'instruction') {
-      //make the overlay module draw the item
       mediator.publish('overlay_render', story[bookmark]);
+      saveObject.visited_instructions.push(bookmark);
+      mediator.publish('cookie_data_save', saveObject);
     }
     else {
-      //make the board module draw the item
       mediator.publish('board_render', story[bookmark]);
-
-      //save it in a cookie if it's a level
-      mediator.publish('cookie_data_save', story[bookmark].number);
+      saveObject.level = story[bookmark].number;
+      mediator.publish('cookie_data_save', saveObject);
     }
   }
 
+  // Advances the story
   var advance = function() {
-    if(bookmark < story.length-1) {
-      setBookmark(++bookmark);
+    if(bookmark < story.length - 1) {
+      // Passes all the previously visited instruction pages
+      while(visited(++bookmark) && bookmark != story.length - 1) { }
+      setBookmark(bookmark);
     }
   }
 
-  var setBookmarkAtLevel = function(level) {
-    if(level < 0)
+  // Returns whether or not the instruction screen at the bookmark has
+  // previously been visited
+  var visited = function(bookmarkNo) {
+    return (saveObject.visited_instructions.indexOf(bookmarkNo) >= 0);
+  }
+
+  // Sets the bookmark to the given point
+  var setBookmarkAtLevel = function(so) {
+    saveObject = so;
+    if(saveObject.level < 0) {
+      setBookmark(0);
       return;
+    }
+
     for(var i=0;i<story.length;++i) {
-      if(story[i].number == level) {
+      if(story[i].number == saveObject.level) {
         setBookmark(i);
         return;
       }
     }
   }
 
+  // The publicly visible methods are available by this facade
   return {
     getStory: getStory,
     setBookmark: setBookmark,
@@ -67,10 +83,16 @@ var StoryModule = (function() {
   }
 }())
 
-//add the mediator to the module
+// Add the mediator to the module
 mediator.installTo(StoryModule);
 
+// Subscribe to messages
+
+// Get the story, advance it, and set the bookmark when told
 mediator.subscribe('story_get_story', StoryModule.getStory);
-mediator.subscribe('story_set_bookmark_at_level', StoryModule.setBookmarkAtLevel);
+mediator.subscribe('story_set_bookmark_at_level',
+  StoryModule.setBookmarkAtLevel);
 mediator.subscribe('story_advance', StoryModule.advance);
+
+// Advance the story when notified that the current level has been completed
 mediator.subscribe('board_level_complete', StoryModule.advance);
