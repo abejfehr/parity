@@ -1,3 +1,5 @@
+// core.js
+
 var mediator = (function() {
   var subscribe = function(channel, fn) {
     if(!mediator.channels[channel]) mediator.channels[channel] = [];
