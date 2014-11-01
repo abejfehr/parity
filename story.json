@@ -111,6 +111,22 @@
     "initialSelected": { "x":1, "y":1 }
   },
   {
+    "type": "level",
+    "number": 9,
+    "mode": "b&w",
+    "contents": [ 5,0,2,6,7,4,5,1,2 ],
+    "colors": ["w","b","b","w","w","w","w","b","b"],
+    "initialSelected": { "x":1, "y":0 }
+  },
+  {
+    "type": "level",
+    "number": 10,
+    "mode": "b&w",
+    "contents": [ 10,11,9,6,5,10,8,6,6 ],
+    "colors": ["w","w","w","b","b","w","w","b","b"],
+    "initialSelected": { "x":0, "y":2 }
+  },
+  {
     "type": "instruction",
     "title": "The End",
     "text": "Congratulations, you've successfully finished all the levels in the game. "
