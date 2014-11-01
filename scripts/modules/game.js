@@ -1,21 +1,19 @@
-//define the module
+// game.js(GameModule)
+
 var GameModule = (function() {
-  return {
-    write: function(text) {
-      document.getElementById('canvas').innerHTML = text;
-    }
-  }
+  // Doesn't need to be interacted with, only mediates at a high level
+  return { }
 }())
 
-//add the mediator to the module
+// Add the mediator to the module
 mediator.installTo(GameModule);
 
+// Loads the cookies when the story is finally loaded
 GameModule.subscribe('loader_story_loaded', function() {
-  //check to see if there's any save data
   mediator.publish('cookie_data_load');
 })
 
-GameModule.subscribe('cookie_data_load_complete', function(level) {
-  //level is the level to be loaded
-  mediator.publish('story_set_bookmark_at_level', level);
+// Sets bookmark for the story at the level loaded by the CookieDataManager
+GameModule.subscribe('cookie_data_load_complete', function(saveObject) {
+  mediator.publish('story_set_bookmark_at_level', saveObject);
 })

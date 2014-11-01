@@ -2,19 +2,19 @@
   {
     "type": "instruction",
     "title": "Welcome",
-    "button": "Continue"
+    "button": "continue"
   },
   {
     "type": "instruction",
     "title": "How to play",
     "text": "Parity is a numbers puzzle game.\nThe aim of the game is to get each number on the a 9x9 board of numbers to be exactly the same.",
-    "button": "Okay..."
+    "button": "okay..."
   },
   {
     "type": "instruction",
     "title": "How to play",
     "text": "One of the numbers is always selected. This number can be moved by using the arrow keys",
-    "button": "Sounds easy"
+    "button": "sounds easy"
   },
   {
     "type": "instruction",
@@ -30,10 +30,101 @@
     "initialSelected": { "x":0, "y":0 }
   },
   {
+    "type": "level",
+    "number": 2,
+    "mode": "vanilla",
+    "contents": [ 1,0,1,0,0,0,0,0,0 ],
+    "initialSelected": { "x":0, "y":0 }
+  },
+  {
+    "type": "level",
+    "number": 3,
+    "mode": "vanilla",
+    "contents": [ 1,2,2,2,3,2,3,2,2 ],
+    "initialSelected": { "x":0, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 4,
+    "mode": "vanilla",
+    "contents": [ 3,4,3,1,3,2,1,1,2 ],
+    "initialSelected": { "x":0, "y":0 }
+  },
+  {
     "type": "instruction",
     "title": "Negative numbers",
     "text": "Numbers on the board can be negative too.",
-    "button": "Interesting"
+    "button": "interesting"
+  },
+  {
+    "type": "level",
+    "number": 5,
+    "mode": "vanilla",
+    "contents": [ 1,-1,0,0,-1,0,0,1,0 ],
+    "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 6,
+    "mode": "vanilla",
+    "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
+    "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "The following few puzzles get even more complicated...",
+    "button": "uh oh"
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "The board contains black and white tiles, each of which has different behaviour",
+    "button": "continue"
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "Stepping on black tiles increases the numbers by one...",
+    "button": "continue"
+  },
+  {
+    "type": "instruction",
+    "title": "Black & White",
+    "text": "...whereas stepping on white tiles decreases the numbers by one.",
+    "button": "okay, let's do this"
+  },
+  {
+    "type": "level",
+    "number": 7,
+    "mode": "b&w",
+    "contents": [ 0,3,0,3,-2,3,0,2,0 ],
+    "colors": ["b","w","b","w","b","w","b","w","b"],
+    "initialSelected": { "x":2, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 8,
+    "mode": "b&w",
+    "contents": [ 7,2,6,3,9,1,7,3,7 ],
+    "colors": ["w","b","w","b","w","b","w","b","w"],
+    "initialSelected": { "x":1, "y":1 }
+  },
+  {
+    "type": "level",
+    "number": 9,
+    "mode": "b&w",
+    "contents": [ 5,0,2,6,7,4,5,1,2 ],
+    "colors": ["w","b","b","w","w","w","w","b","b"],
+    "initialSelected": { "x":1, "y":0 }
+  },
+  {
+    "type": "level",
+    "number": 10,
+    "mode": "b&w",
+    "contents": [ 10,11,9,6,5,10,8,6,6 ],
+    "colors": ["w","w","w","b","b","w","w","b","b"],
+    "initialSelected": { "x":0, "y":2 }
   },
   {
     "type": "instruction",

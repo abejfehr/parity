@@ -1,23 +1,25 @@
-//define the module
+// board.js(BoardModule)
+
 var BoardModule = (function() {
 
+  // Components of the DOM
   var board = $('#board');
   var cells = [];
   var levelLink = $('#level');
   var overlay = $('#overlay');
   var resetLink = $('#reset');
 
+  // Variables for the page
   var active = false;
-  var level; //actually contains the level data
-  var numLevels = -1; //to store the total number of levels
+  var level; // Contains the level data
+  var numLevels = -1;
 
+  // Resets the level to its original state
   var reset = function() {
     render(level);
   }
 
-  resetLink.on('click', reset);
-
-  //populates cells with the actual cells on the board
+  // Populates cells array with links to cells in DOM
   for(var i = 0; i < 4; ++i) {
     cells.push([]);
     for(var j = 0; j < 4; ++j) {
@@ -25,14 +27,12 @@ var BoardModule = (function() {
     }
   }
 
-  // goes through the model(the story), draws the board accordingly,
-  // and checks if it's a win scenario
+  // Updates the board, called whenever a change is made
   var update = function() {
     $('td.selected').removeClass('selected');
 
     cells[level.selected.x][level.selected.y].addClass('selected');
 
-    //check if it's a win
     if(isWin()) {
       board.fadeOut(options['fade'], function() {
         mediator.publish('board_level_complete');
@@ -40,6 +40,7 @@ var BoardModule = (function() {
     }
   }
 
+  // Looks for a winning condition on the board, returns true or false
   function isWin() {
     var value = cell(0,0);
     for(var i = 0; i < 3; ++i) {
@@ -51,7 +52,7 @@ var BoardModule = (function() {
     return true;
   }
 
-    //selects the cell to the left of the current cell
+  // Selects the cell to the left of the current cell
   function left() {
     if(active && level.selected.x > 0) {
       select(--level.selected.x, level.selected.y);
@@ -59,7 +60,7 @@ var BoardModule = (function() {
     }
   }
 
-  //selects the cell above the current cell
+  // Selects the cell above the current cell
   function up() {
     if(active && level.selected.y > 0) {
       select(level.selected.x, --level.selected.y);
@@ -67,7 +68,7 @@ var BoardModule = (function() {
     }
   }
 
-  //selects the cell to the right of the current cell
+  // Selects the cell to the right of the current cell
   function right() {
     if(active && level.selected.x < 2) {
       select(++level.selected.x, level.selected.y);
@@ -75,7 +76,7 @@ var BoardModule = (function() {
     }
   }
 
-  //selects the cell under the current cell
+  // Selects the cell under the current cell
   function down() {
     if(active && level.selected.y < 2) {
       select(level.selected.x, ++level.selected.y);
@@ -83,67 +84,81 @@ var BoardModule = (function() {
     }
   }
 
-  //selects a cell and increases its value
+  // Selects a cell and modifies it's value if necessary
   function select(x, y) {
-    //increase the number in the selected cell
-    cell(level.selected.x, level.selected.y, cell(level.selected.x, level.selected.y)+1);
-  }
-
-  //gets or sets a cells
-  //input: -the x/y location of a cell
-  //       -the value to put into the cell(optional)
-  //returns: -the contents of the cell(if no value is given)
-  //         -nothing, if a value is given
-  function cell(x, y, value) {
-    //either gets the contents of x, y or sets them
-    if(arguments.length==3) {
-      cells[x][y].html(value);
+    var sel = level.selected;
+    if(cells[sel.x][sel.y].hasClass('black')) {
+      cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
+    }
+    else if(cells[sel.x][sel.y].hasClass('white')) {
+      cell(sel.x, sel.y, cell(sel.x, sel.y)-1);
     }
     else {
-      //return the value
-      return parseInt(cells[x][y].html());
+      cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
     }
   }
 
+  // Sets the value of a cell at x, y. If no value given, returns the value
+  function cell(x, y, value) {
+    if(arguments.length == 3)
+      cells[x][y].html(value);
+    else
+      return parseInt(cells[x][y].html());
+  }
+
+  // Initially draws the level's cells
   var render = function(data) {
-    //hide the overlay if needbe
+    // Deactivate previous overlays
     mediator.publish('overlay_set_inactive');
 
-    //do things here
     level = data;
 
-    //parse its contents
+    // Parse the level data
     for(var i = 0; i < level.contents.length; ++i) {
-      cell(i % 3, Math.floor(i / 3), level.contents[i]);
+      var x = i % 3;
+      var y = Math.floor(i / 3);
+      cell(x, y, level.contents[i]);
+      if(level.mode == "b&w") {
+        if(level.colors[i] == "b") {
+          cells[x][y].removeClass('white');
+          cells[x][y].addClass('black');
+        }
+        else {
+          cells[x][y].removeClass('black');
+          cells[x][y].addClass('white')
+        }
+      }
     }
 
-    //set the currently selected cell
     level.selected = {
       x: data.initialSelected.x,
       y: data.initialSelected.y
     };
 
-    //put the level number in the corner
-    levelLink.html('level ' + level.number + '/' + numLevels); //hard code the levels?
+    // Set the level text
+    levelLink.html('level ' + level.number + '/' + numLevels);
 
-    //fade in the level
+    // Fade in once populated
     board.fadeIn(options['fade']);
     active = true;
 
-    //update the screen
+    // Update to select the appropriate cell
     update();
+  };
 
-    //add the anchor to the url
-    document.location.hash = "#" + level.number; //TODO: move this elsewhere
-  }
-
+  // Can be called by other modules, setting the total number of levels
   var setNumLevels = function(num) { numLevels = num; }
 
+  // Fades out the board and sets it as inactive
   var setInactive = function() {
     board.fadeOut(options['fade']);
     active = false;
   }
 
+  // Event bindings
+  resetLink.on('click', reset);
+
+  // The facade
   return {
     render: render,
     up: up,
@@ -155,14 +170,22 @@ var BoardModule = (function() {
   }
 }())
 
-//add the mediator to the module
+// Add the mediator to the module
 mediator.installTo(BoardModule);
 
-//subscribe to messages
+// Subscribe to messages
+
+// Draw the board when told
 BoardModule.subscribe('board_render', BoardModule.render);
+
+// Listen to be told when to deactivate the view
 BoardModule.subscribe('board_set_inactive', BoardModule.setNumLevels);
+
+// Listen to the keyboard so the selector can be moved
 BoardModule.subscribe('controls_key_down', BoardModule.down);
 BoardModule.subscribe('controls_key_left', BoardModule.left);
 BoardModule.subscribe('controls_key_right', BoardModule.right);
 BoardModule.subscribe('controls_key_up', BoardModule.up);
+
+// Set the number of levels in this module
 BoardModule.subscribe('story_num_levels', BoardModule.setNumLevels);
