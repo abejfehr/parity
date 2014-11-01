@@ -144,9 +144,6 @@ var BoardModule = (function() {
 
     // Update to select the appropriate cell
     update();
-
-    // Append the level number to the URL
-    document.location.hash = "#" + level.number; //TODO: move this elsewhere
   };
 
   // Can be called by other modules, setting the total number of levels

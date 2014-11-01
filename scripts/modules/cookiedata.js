@@ -1,56 +1,70 @@
-//define the module
+// cookiedata.js(CookieDataModule)
+
 var CookieDataModule = (function() {
 
+  // Loads the appropriate level from the cookie/anchor
   var load = function() {
-    /*
-    * the level can either be loaded from the anchor in the url
-    * or the last level from the cookie...so which do we
-    * choose? first we'll check to see if there's an anchor,
-    * and we'll actually save THAT level in the cookie.
+   /*
+    * The level can either be loaded from the anchor in the url or the last
+    * level from the cookie...so which do we choose? First we'll check to see if
+    * there's an anchor. If there's already a cookie with a level value, we have
+    * to be sure that the level value in the cookie is *higher* than the one in
+    * the hash, to be sure that the user isn't trying to cheat and visit unseen
+    * levels
     *
-    * if there is no anchor, just load whatever is in the
-    * cookie.
+    * If there is no anchor, just load whatever is in the cookie.
+    *
+    * If there is no cookie, start at the beginning.
     */
-    var levelNo = window.location.hash.substring(1);
-
-    if(levelNo) {
-      return levelNo;
-    }
-    else {
-      var name = "parity_last_level=";
-      var cookieArray = document.cookie.split(';');
-      var levelNo = -1;
-      for(var i=0; i<cookieArray.length; ++i) {
-        var cookie = cookieArray[i].trim();
-        if (cookie.indexOf(name) == 0) {
-          levelNo = cookie.substring(name.length,cookie.length);
-        }
+    var levelNo = -1;
+    var name = "parity_last_level=";
+    var cookieArray = document.cookie.split(';');
+    for(var i=0; i<cookieArray.length; ++i) {
+      var cookie = cookieArray[i].trim();
+      if (cookie.indexOf(name) == 0) {
+        levelNo = parseInt(cookie.substring(name.length,cookie.length));
       }
-      return levelNo;
     }
-    return -1;
+
+    var hash = parseInt(window.location.hash.substring(1));
+    if(hash && hash <= levelNo) {
+      levelNo = hash;
+    }
+
+    return levelNo;
   }
 
+  // Saves the level in the cookie and updates the URL
+  var save = function(levelNo) {
+    // Places the level number in a cookie
+    var d = new Date();
+    d.setTime(d.getTime()+(365*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = "parity_last_level=" + levelNo + "; " + expires;
+
+    // Updates the hash with the level number
+    document.location.hash = "#" + levelNo;
+  }
+
+  // The public facade
   return {
-    save: function(levelNo) {
-      var d = new Date();
-      d.setTime(d.getTime()+(365*24*60*60*1000));
-      var expires = "expires="+d.toGMTString();
-      document.cookie = "parity_last_level=" + levelNo + "; " + expires;
-    },
+    save: save,
     load: load
   }
 }())
 
-//add the mediator to the module
+// Add the mediator to the module
 mediator.installTo(CookieDataModule);
 
-//subscribe to messages
+// Subscribe to messages
+
+// Save the progress when asked
 CookieDataModule.subscribe('cookie_data_save', function(levelNo) {
   CookieDataModule.save(levelNo);
   mediator.publish('cookie_data_save_complete');
 });
 
+// Load level progress when asked
 CookieDataModule.subscribe('cookie_data_load', function() {
   mediator.publish('cookie_data_load_complete', CookieDataModule.load());
 });
