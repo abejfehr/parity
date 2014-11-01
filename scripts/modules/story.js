@@ -47,7 +47,7 @@ var StoryModule = (function() {
   var advance = function() {
     if(bookmark < story.length - 1) {
       // Passes all the previously visited instruction pages
-      while(visited(++bookmark)) { }
+      while(visited(++bookmark) && bookmark != story.length - 1) { }
       setBookmark(bookmark);
     }
   }
