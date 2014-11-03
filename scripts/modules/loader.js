@@ -1,6 +1,9 @@
 // loader.js(LoaderModule)
 var LoaderModule = (function() {
 
+  // Libraries to load
+  var libs = ['lib/jquery.jrumble.1.3.min'];
+
   // Available modules to load
   var modules = [
     'modules/game',
@@ -13,9 +16,11 @@ var LoaderModule = (function() {
   // Loads the modules for the game
   var loadModules = function() {
     require(['lib/jquery-2.1.1.min'], function() {
-      require(modules, function() {
+      require(libs, function() {
+        require(modules, function() {
           mediator.publish('loader_modules_loaded');
         });
+      });
     });
   };
 
