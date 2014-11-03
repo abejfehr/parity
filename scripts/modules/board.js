@@ -13,6 +13,8 @@ var BoardModule = (function() {
   var active = false;
   var level; // Contains the level data
   var numLevels = -1;
+  var flipms = 4000; // Milleseconds between flips
+  var intervalID; // A handle for the setInterval function so it can be cleared
 
   // Resets the level to its original state
   var reset = function() {
@@ -32,6 +34,22 @@ var BoardModule = (function() {
     $('td.selected').removeClass('selected');
 
     cells[level.selected.x][level.selected.y].addClass('selected');
+
+    // Ensure that each cell is the color that they should be
+    for(var i = 0; i < level.contents.length; ++i) {
+      var x = i % 3;
+      var y = Math.floor(i / 3);
+      if(level.mode.indexOf('b&w') > -1) {
+        if(level.colors[i] == "b") {
+          cells[x][y].removeClass('white');
+          cells[x][y].addClass('black');
+        }
+        else {
+          cells[x][y].removeClass('black');
+          cells[x][y].addClass('white')
+        }
+      }
+    }
 
     if(isWin()) {
       board.fadeOut(options['fade'], function() {
@@ -112,13 +130,14 @@ var BoardModule = (function() {
     mediator.publish('overlay_set_inactive');
 
     level = data;
+    clearInterval(intervalID);
 
     // Parse the level data
     for(var i = 0; i < level.contents.length; ++i) {
       var x = i % 3;
       var y = Math.floor(i / 3);
       cell(x, y, level.contents[i]);
-      if(level.mode == "b&w") {
+      if(level.mode.indexOf('b&w') > -1) {
         if(level.colors[i] == "b") {
           cells[x][y].removeClass('white');
           cells[x][y].addClass('black');
@@ -128,6 +147,11 @@ var BoardModule = (function() {
           cells[x][y].addClass('white')
         }
       }
+    }
+
+    // Check to see if the level needs to be flipped, and if so, start a timer
+    if(level.mode.indexOf('!') > -1) {
+      intervalID = window.setInterval(flip, flipms);
     }
 
     level.selected = {
@@ -144,15 +168,65 @@ var BoardModule = (function() {
 
     // Update to select the appropriate cell
     update();
-  };
+  }
+
+  var setRumbleSpeed = function(val) {
+    for(var x = 0; x < 3; ++x) {
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].jrumble({x:val,y:val,rotation:val});
+      }
+    }
+  }
+
+  var flip = function() {
+    //for 100 ms, rumble the thingies
+    var start = 0.5;
+    var end = 1.2;
+    var cur = start;
+    setRumbleSpeed(cur);
+    startRumbling();
+    setTimeout(function() {
+      stopRumbling();
+      for(var i = 0; i < level.contents.length; ++i) {
+        if(level.colors[i] == 'b') {
+          level.colors[i] = 'w';
+        }
+        else {
+          level.colors[i] = 'b';
+        }
+      }
+      //stop the rumble on each square
+      update();
+    }, 1500);
+  }
 
   // Can be called by other modules, setting the total number of levels
-  var setNumLevels = function(num) { numLevels = num; }
+  var setNumLevels = function(num) {
+    if(numLevels < 0) // This is a dirty workaround to bug #15, but it works
+      numLevels = num;
+  }
 
   // Fades out the board and sets it as inactive
   var setInactive = function() {
     board.fadeOut(options['fade']);
     active = false;
+  }
+
+  // Remove this when testing is complete
+  var startRumbling = function() {
+    for(var x = 0; x < 3; ++x){
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].trigger('startRumble');
+      }
+    }
+  }
+
+  var stopRumbling = function() {
+    for(var x = 0; x < 3; ++x){
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].trigger('stopRumble');
+      }
+    }
   }
 
   // Event bindings
@@ -166,7 +240,7 @@ var BoardModule = (function() {
     left: left,
     right: right,
     setNumLevels: setNumLevels,
-    setInactive: setInactive
+    setInactive: setInactive,
   }
 }())
 
