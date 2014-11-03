@@ -46,11 +46,11 @@ a:hover {
 
 #overlay {
   position:relative;
-  min-height:400px;
-  width:383px;
+  min-height:381px;
+  width:351px;
+  padding:15px;
   margin:0px auto;
   text-align:center;
-  height:100%;
   overflow: auto;
 }
 
@@ -173,5 +173,6 @@ a:hover {
 
 #content {
   color:#ddd;
+  font-size:13pt;
   font-family:'Poiret One', sans-serif;
 }
