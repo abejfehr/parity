@@ -1,12 +1,9 @@
 // loader.js(LoaderModule)
 var LoaderModule = (function() {
 
-<<<<<<< HEAD
-=======
   // Libraries to load
   var libs = ['lib/jquery.jrumble.1.3.min'];
 
->>>>>>> development
   // Available modules to load
   var modules = [
     'modules/game',
