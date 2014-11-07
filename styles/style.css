@@ -1,5 +1,10 @@
 /* style.css */
 
+* {
+  color:#ccc;
+  font-family:Arial;
+}
+
 body {
   background-image:url('../images/tweed/tweed.png');
 }
@@ -38,10 +43,24 @@ a:hover {
   overflow:hidden;
 }
 
+#loader {
+  height:410px;
+  text-align:center;
+}
+
+#image-container {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 #board {
   border-spacing:0px;
   padding:7px;
   margin:0px auto;
+  display:none;
 }
 
 #overlay {
@@ -52,6 +71,7 @@ a:hover {
   margin:0px auto;
   text-align:center;
   overflow: auto;
+  display:none;
 }
 
 #overlay h1 {
