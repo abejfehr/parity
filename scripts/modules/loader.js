@@ -19,6 +19,7 @@ var LoaderModule = (function() {
       require(libs, function() {
         require(modules, function() {
           mediator.publish('loader_modules_loaded');
+          $('#loader').fadeOut(300);
         });
       });
     });
