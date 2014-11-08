@@ -71,6 +71,27 @@
     "initialSelected": { "x":1, "y":2 }
   },
   {
+    "type": "level",
+    "number": 7,
+    "mode": "vanilla",
+    "contents": [ 4,3,3,3,1,2,5,3,5 ],
+    "initialSelected": { "x":0, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 8,
+    "mode": "vanilla",
+    "contents": [ -7,-9,-7,-8,-12,-9,-6,-7,-7 ],
+    "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 9,
+    "mode": "vanilla",
+    "contents": [ 6,4,5,5,3,4,5,4,5 ],
+    "initialSelected": { "x":2, "y":1 }
+  },
+  {
     "type": "instruction",
     "title": "Black & White",
     "text": "The following few puzzles get even more complicated...",
@@ -96,7 +117,7 @@
   },
   {
     "type": "level",
-    "number": 7,
+    "number": 10,
     "mode": "b&w",
     "contents": [ 0,3,0,3,-2,3,0,2,0 ],
     "colors": ["b","w","b","w","b","w","b","w","b"],
@@ -104,7 +125,7 @@
   },
   {
     "type": "level",
-    "number": 8,
+    "number": 11,
     "mode": "b&w",
     "contents": [ 7,2,6,3,9,1,7,3,7 ],
     "colors": ["w","b","w","b","w","b","w","b","w"],
@@ -112,7 +133,7 @@
   },
   {
     "type": "level",
-    "number": 9,
+    "number": 12,
     "mode": "b&w",
     "contents": [ 5,0,2,6,7,4,5,1,2 ],
     "colors": ["w","b","b","w","w","w","w","b","b"],
@@ -120,7 +141,7 @@
   },
   {
     "type": "level",
-    "number": 10,
+    "number": 13,
     "mode": "b&w",
     "contents": [ 10,11,9,6,5,10,8,6,6 ],
     "colors": ["w","w","w","b","b","w","w","b","b"],

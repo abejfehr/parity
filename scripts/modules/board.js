@@ -33,6 +33,22 @@ var BoardModule = (function() {
 
     cells[level.selected.x][level.selected.y].addClass('selected');
 
+    // Ensure that each cell is the color that they should be
+    for(var i = 0; i < level.contents.length; ++i) {
+      var x = i % 3;
+      var y = Math.floor(i / 3);
+      if(level.mode.indexOf('b&w') > -1) {
+        if(level.colors[i] == "b") {
+          cells[x][y].removeClass('white');
+          cells[x][y].addClass('black');
+        }
+        else {
+          cells[x][y].removeClass('black');
+          cells[x][y].addClass('white')
+        }
+      }
+    }
+
     if(isWin()) {
       board.fadeOut(options['fade'], function() {
         mediator.publish('board_level_complete');
@@ -118,7 +134,7 @@ var BoardModule = (function() {
       var x = i % 3;
       var y = Math.floor(i / 3);
       cell(x, y, level.contents[i]);
-      if(level.mode == "b&w") {
+      if(level.mode.indexOf('b&w') > -1) {
         if(level.colors[i] == "b") {
           cells[x][y].removeClass('white');
           cells[x][y].addClass('black');
@@ -144,10 +160,13 @@ var BoardModule = (function() {
 
     // Update to select the appropriate cell
     update();
-  };
+  }
 
   // Can be called by other modules, setting the total number of levels
-  var setNumLevels = function(num) { numLevels = num; }
+  var setNumLevels = function(num) {
+    if(numLevels < 0) // This is a dirty workaround to bug #15, but it works
+      numLevels = num;
+  }
 
   // Fades out the board and sets it as inactive
   var setInactive = function() {
@@ -166,7 +185,7 @@ var BoardModule = (function() {
     left: left,
     right: right,
     setNumLevels: setNumLevels,
-    setInactive: setInactive
+    setInactive: setInactive,
   }
 }())
 
