@@ -1,5 +1,11 @@
 /* style.css */
 
+/* Begin HTML element styling */
+* {
+  color:#ccc;
+  font-family:Arial;
+}
+
 body {
   background-image:url('../images/tweed/tweed.png');
 }
@@ -9,6 +15,7 @@ p {
 }
 
 a {
+  font-family:'Poiret One', cursive;
   text-decoration:none;
   color:#888;
 }
@@ -16,6 +23,11 @@ a {
 a:hover {
   color:#fff;
 }
+
+/* End HTML element styling */
+
+
+/* Begin IDs */
 
 #title {
   font-size:48pt;
@@ -38,10 +50,24 @@ a:hover {
   overflow:hidden;
 }
 
+#loader {
+  height:410px;
+  text-align:center;
+}
+
+#image-container {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 #board {
   border-spacing:0px;
   padding:7px;
   margin:0px auto;
+  display:none;
 }
 
 #overlay {
@@ -52,6 +78,7 @@ a:hover {
   margin:0px auto;
   text-align:center;
   overflow: auto;
+  display:none;
 }
 
 #overlay h1 {
@@ -115,6 +142,14 @@ a:hover {
 }
 /* This button was generated using CSSButtonGenerator.com */
 
+#overlay #content {
+  color:#ddd;
+  font-size:13pt;
+  font-family:'Poiret One', sans-serif;
+}
+/* End IDs */
+
+/* Begin Classes */
 .cell {
   font-family: 'Open Sans', sans-serif;
   font-size:24pt;
@@ -169,10 +204,4 @@ a:hover {
 .right {
   text-align:right;
   float:right;
-}
-
-#content {
-  color:#ddd;
-  font-size:13pt;
-  font-family:'Poiret One', sans-serif;
 }

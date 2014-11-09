@@ -12,6 +12,12 @@
     <div id="container">
       <h1 id="title" class="light poiret center">parity.</h1>
       <div id="box">
+        <div id="loader">
+          <div id="image-container">
+            <img src="images/loader.gif" />
+            <p>Loading...</p>
+          </div>
+        </div>
         <div id="overlay">
           <h1></h1>
           <div id="content"></div>
@@ -38,7 +44,10 @@
           </tr>
           <tr>
             <td colspan="2"><a id="level" href="#" class="light poiret left">level #</a></td>
-            <td colspan="2"><a id="reset" href="#" class="poiret right">reset</a></td>
+            <td colspan="2" class="right">
+              <a id="toggle_mute" href="#" class="poiret">mute</a>&nbsp;
+              <a id="reset" href="#" class="poiret">reset</a>
+            </td>
           </tr>
         </table>
       </div>

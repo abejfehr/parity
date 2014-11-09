@@ -71,6 +71,27 @@
     "initialSelected": { "x":1, "y":2 }
   },
   {
+    "type": "level",
+    "number": 7,
+    "mode": "vanilla",
+    "contents": [ 4,3,3,3,1,2,5,3,5 ],
+    "initialSelected": { "x":0, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 8,
+    "mode": "vanilla",
+    "contents": [ -7,-9,-7,-8,-12,-9,-6,-7,-7 ],
+    "initialSelected": { "x":1, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 9,
+    "mode": "vanilla",
+    "contents": [ 6,4,5,5,3,4,5,4,5 ],
+    "initialSelected": { "x":2, "y":1 }
+  },
+  {
     "type": "instruction",
     "title": "Black & White",
     "text": "The following few puzzles get even more complicated...",
@@ -85,68 +106,60 @@
   {
     "type": "instruction",
     "title": "Black & White",
-    "text": "Stepping on black tiles increases the numbers by one...",
+    "text": "Stepping on white tiles increases the numbers by one...",
     "button": "continue"
   },
   {
     "type": "instruction",
     "title": "Black & White",
-    "text": "...whereas stepping on white tiles decreases the numbers by one.",
+    "text": "...whereas stepping on black tiles decreases the numbers by one.",
     "button": "okay, let's do this"
-  },
-  {
-    "type": "level",
-    "number": 7,
-    "mode": "b&w",
-    "contents": [ 0,3,0,3,-2,3,0,2,0 ],
-    "colors": ["b","w","b","w","b","w","b","w","b"],
-    "initialSelected": { "x":2, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 8,
-    "mode": "b&w",
-    "contents": [ 7,2,6,3,9,1,7,3,7 ],
-    "colors": ["w","b","w","b","w","b","w","b","w"],
-    "initialSelected": { "x":1, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 9,
-    "mode": "b&w",
-    "contents": [ 5,0,2,6,7,4,5,1,2 ],
-    "colors": ["w","b","b","w","w","w","w","b","b"],
-    "initialSelected": { "x":1, "y":0 }
   },
   {
     "type": "level",
     "number": 10,
     "mode": "b&w",
+    "contents": [ 0,3,0,3,-2,3,0,2,0 ],
+    "colors": ["w","b","w","b","w","b","w","b","w"],
+    "initialSelected": { "x":2, "y":2 }
+  },
+  {
+    "type": "level",
+    "number": 11,
+    "mode": "b&w",
+    "contents": [ 7,2,6,3,9,1,7,3,7 ],
+    "colors": ["b","w","b","w","b","w","b","w","b"],
+    "initialSelected": { "x":1, "y":1 }
+  },
+  {
+    "type": "level",
+    "number": 12,
+    "mode": "b&w",
+    "contents": [ 5,0,2,6,7,4,5,1,2 ],
+    "colors": ["b","w","w","b","b","b","b","w","w"],
+    "initialSelected": { "x":1, "y":0 }
+  },
+  {
+    "type": "level",
+    "number": 13,
+    "mode": "b&w",
     "contents": [ 10,11,9,6,5,10,8,6,6 ],
-    "colors": ["w","w","w","b","b","w","w","b","b"],
+    "colors": ["b","b","b","w","w","b","b","w","w"],
     "initialSelected": { "x":0, "y":2 }
   },
   {
     "type": "instruction",
     "title": "Warning!",
     "text": "The next few levels are *unstable*.\n\nThey flip between black and white at times.",
-    "button": "shit, okay."
+    "button": "shoot, okay."
   },
   {
     "type": "level",
-    "number": 11,
+    "number": 14,
     "mode": "b&w!",
     "contents": [ 6,7,6,7,9,8,7,6,8 ],
-    "colors": ["w","b","w","b","w","b","w","b","w"],
+    "colors": ["b","w","b","w","b","w","b","w","b"],
     "initialSelected": { "x":1, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 12,
-    "mode": "b&w!",
-    "contents": [ 10,11,9,6,5,10,8,6,6 ],
-    "colors": ["w","w","w","b","b","w","w","b","b"],
-    "initialSelected": { "x":0, "y":2 }
   },
   {
     "type": "instruction",

@@ -2,7 +2,10 @@
 var LoaderModule = (function() {
 
   // Libraries to load
-  var libs = ['lib/jquery.jrumble.1.3.min'];
+  var libs = [
+  'lib/jquery.jrumble.1.3.min',
+  'lib/riffwave',
+  'lib/fade'];
 
   // Available modules to load
   var modules = [
@@ -11,7 +14,8 @@ var LoaderModule = (function() {
     'modules/controls',
     'modules/overlay',
     'modules/board',
-    'modules/story'];
+    'modules/story',
+    'modules/sound'];
 
   // Loads the modules for the game
   var loadModules = function() {
@@ -19,6 +23,7 @@ var LoaderModule = (function() {
       require(libs, function() {
         require(modules, function() {
           mediator.publish('loader_modules_loaded');
+          $('#loader').fadeOut(300); // Fades out the loading screen
         });
       });
     });
