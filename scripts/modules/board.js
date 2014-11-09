@@ -114,6 +114,8 @@ var BoardModule = (function() {
     else {
       cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
     }
+    //send a thing
+    mediator.publish('sound_play_tone', cell(sel.x, sel.y));
   }
 
   // Sets the value of a cell at x, y. If no value given, returns the value
