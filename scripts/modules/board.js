@@ -8,6 +8,7 @@ var BoardModule = (function() {
   var levelLink = $('#level');
   var overlay = $('#overlay');
   var resetLink = $('#reset');
+  var toggleMuteLink = $('#toggle_mute');
 
   // Variables for the page
   var active = false;
@@ -19,6 +20,12 @@ var BoardModule = (function() {
   // Resets the level to its original state
   var reset = function() {
     render(level);
+  }
+
+  // Toggles between mute and unmute
+  var toggleMute = function() {
+    mediator.publish('sound_toggle_mute');
+    toggleMuteLink.html(toggleMuteLink.html() == 'mute' ? 'unmute' : 'mute');
   }
 
   // Populates cells array with links to cells in DOM
@@ -106,9 +113,6 @@ var BoardModule = (function() {
   function select(x, y) {
     var sel = level.selected;
     if(cells[sel.x][sel.y].hasClass('black')) {
-      cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
-    }
-    else if(cells[sel.x][sel.y].hasClass('white')) {
       cell(sel.x, sel.y, cell(sel.x, sel.y)-1);
     }
     else {
@@ -233,6 +237,7 @@ var BoardModule = (function() {
 
   // Event bindings
   resetLink.on('click', reset);
+  toggleMuteLink.on('click', toggleMute);
 
   // The facade
   return {

@@ -1,6 +1,9 @@
 // sound.js(SoundModule)
 
 var SoundModule = (function() {
+  var DEFAULT_VOLUME = 0.6
+  var volume = DEFAULT_VOLUME;
+
   var play = function(num) {
     var audio = new Audio(); // Create the HTML5 audio element
     var wave = new Riffwave();
@@ -28,14 +31,24 @@ var SoundModule = (function() {
 
     wave.make(data);
     audio.src = wave.dataURI;
-    audio.volume = 0.6;
+    audio.volume = volume;
     fadeOut(audio, 250, 0, 1);
     audio.play();
   }
 
+  var isMuted = function() {
+    return !volume;
+  }
+
+  var toggleMute = function() {
+    volume = (volume ? 0 : DEFAULT_VOLUME);
+  }
+
   // The facade
   return {
-    play:play
+    play:play,
+    isMuted:isMuted,
+    toggleMute:toggleMute
   }
 }())
 
@@ -45,3 +58,4 @@ mediator.installTo(SoundModule);
 // Subscribe to messages
 
 SoundModule.subscribe('sound_play_tone', SoundModule.play);
+SoundModule.subscribe('sound_toggle_mute', SoundModule.toggleMute);
