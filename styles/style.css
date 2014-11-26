@@ -1,5 +1,6 @@
 /* style.css */
 
+/* Begin HTML element styling */
 * {
   color:#ccc;
   font-family:Arial;
@@ -22,6 +23,11 @@ a {
 a:hover {
   color:#fff;
 }
+
+/* End HTML element styling */
+
+
+/* Begin IDs */
 
 #title {
   font-size:48pt;
@@ -136,6 +142,14 @@ a:hover {
 }
 /* This button was generated using CSSButtonGenerator.com */
 
+#overlay #content {
+  color:#ddd;
+  font-size:13pt;
+  font-family:'Poiret One', sans-serif;
+}
+/* End IDs */
+
+/* Begin Classes */
 .cell {
   font-family: 'Open Sans', sans-serif;
   font-size:24pt;
@@ -190,10 +204,4 @@ a:hover {
 .right {
   text-align:right;
   float:right;
-}
-
-#content {
-  color:#ddd;
-  font-size:13pt;
-  font-family:'Poiret One', sans-serif;
 }

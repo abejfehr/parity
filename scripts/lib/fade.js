@@ -2,7 +2,7 @@
   * Audio fade in support
   */
 
-// Courtesy of Kruso Vice:
+// Courtesy of Mikko Ohtamaa:
 // https://github.com/miohtama/Krusovice/blob/master/src/tools/fade.js
 
 // jslint hints
