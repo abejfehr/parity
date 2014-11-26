@@ -23,7 +23,7 @@ var LoaderModule = (function() {
       require(libs, function() {
         require(modules, function() {
           mediator.publish('loader_modules_loaded');
-          $('#loader').fadeOut(300);
+          $('#loader').fadeOut(300); // Fades out the loading screen
         });
       });
     });
