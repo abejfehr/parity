@@ -14,6 +14,8 @@ var BoardModule = (function() {
   var active = false;
   var level; // Contains the level data
   var numLevels = -1;
+  var flipms = 4000; // Milleseconds between flips
+  var intervalID; // A handle for the setInterval function so it can be cleared
 
   // Resets the level to its original state
   var reset = function() {
@@ -134,6 +136,7 @@ var BoardModule = (function() {
     mediator.publish('overlay_set_inactive');
 
     level = data;
+    clearInterval(intervalID);
 
     // Parse the level data
     for(var i = 0; i < level.contents.length; ++i) {
@@ -152,6 +155,11 @@ var BoardModule = (function() {
       }
     }
 
+    // Check to see if the level needs to be flipped, and if so, start a timer
+    if(level.mode.indexOf('!') > -1) {
+      intervalID = window.setInterval(flip, flipms);
+    }
+
     level.selected = {
       x: data.initialSelected.x,
       y: data.initialSelected.y
@@ -168,6 +176,36 @@ var BoardModule = (function() {
     update();
   }
 
+  var setRumbleSpeed = function(val) {
+    for(var x = 0; x < 3; ++x) {
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].jrumble({x:val,y:val,rotation:val});
+      }
+    }
+  }
+
+  var flip = function() {
+    //for 100 ms, rumble the thingies
+    var start = 0.5;
+    var end = 1.2;
+    var cur = start;
+    setRumbleSpeed(cur);
+    startRumbling();
+    setTimeout(function() {
+      stopRumbling();
+      for(var i = 0; i < level.contents.length; ++i) {
+        if(level.colors[i] == 'b') {
+          level.colors[i] = 'w';
+        }
+        else {
+          level.colors[i] = 'b';
+        }
+      }
+      //stop the rumble on each square
+      update();
+    }, 1500);
+  }
+
   // Can be called by other modules, setting the total number of levels
   var setNumLevels = function(num) {
     if(numLevels < 0) // This is a dirty workaround to bug #15, but it works
@@ -178,6 +216,23 @@ var BoardModule = (function() {
   var setInactive = function() {
     board.fadeOut(options['fade']);
     active = false;
+  }
+
+  // Remove this when testing is complete
+  var startRumbling = function() {
+    for(var x = 0; x < 3; ++x){
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].trigger('startRumble');
+      }
+    }
+  }
+
+  var stopRumbling = function() {
+    for(var x = 0; x < 3; ++x){
+      for(var y = 0; y < 3; ++y) {
+        cells[x][y].trigger('stopRumble');
+      }
+    }
   }
 
   // Event bindings

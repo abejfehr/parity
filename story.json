@@ -51,6 +51,12 @@
     "initialSelected": { "x":0, "y":0 }
   },
   {
+    "type": "instruction",
+    "title": "Negative numbers",
+    "text": "Numbers on the board can be negative too.",
+    "button": "interesting"
+  },
+  {
     "type": "level",
     "number": 5,
     "mode": "vanilla",
@@ -86,20 +92,6 @@
     "initialSelected": { "x":2, "y":1 }
   },
   {
-    "type": "level",
-    "number": 10,
-    "mode": "vanilla",
-    "contents": [ 9,7,8,8,5,6,9,8,7 ],
-    "initialSelected": { "x":0, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 11,
-    "mode": "vanilla",
-    "contents": [ 5,4,6,3,0,4,4,4,6 ],
-    "initialSelected": { "x":2, "y":0 }
-  },
-  {
     "type": "instruction",
     "title": "Black & White",
     "text": "The following few puzzles get even more complicated...",
@@ -125,7 +117,7 @@
   },
   {
     "type": "level",
-    "number": 12,
+    "number": 10,
     "mode": "b&w",
     "contents": [ 0,3,0,3,-2,3,0,2,0 ],
     "colors": ["w","b","w","b","w","b","w","b","w"],
@@ -133,7 +125,7 @@
   },
   {
     "type": "level",
-    "number": 13,
+    "number": 11,
     "mode": "b&w",
     "contents": [ 7,2,6,3,9,1,7,3,7 ],
     "colors": ["b","w","b","w","b","w","b","w","b"],
@@ -141,60 +133,34 @@
   },
   {
     "type": "level",
-    "number": 14,
+    "number": 12,
     "mode": "b&w",
     "contents": [ 5,0,2,6,7,4,5,1,2 ],
     "colors": ["b","w","w","b","b","b","b","w","w"],
     "initialSelected": { "x":1, "y":0 }
   },
-{
-  "type": "level",
-  "number": 15,
-  "mode": "b&w",
-  "contents": [ 10,11,9,6,5,10,8,6,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":0, "y":2 }
-},
-{
-  "type": "level",
-  "number": 16,
-  "mode": "b&w",
-  "contents": [ 7,1,11,4,13,11,4,3,7 ],
-  "colors": ["b","w","b","w","b","b","w","w","b"],
-  "initialSelected": { "x":2, "y":1 }
-},
-{
-  "type": "level",
-  "number": 17,
-  "mode": "b&w",
-  "contents": [ 5,8,6,1,-3,6,4,1,2 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":1, "y":1 }
-},
-{
-  "type": "level",
-  "number": 18,
-  "mode": "b&w",
-  "contents": [ 9,11,9,7,3,10,9,5,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":2, "y":0 }
-},
-{
-  "type": "level",
-  "number": 19,
-  "mode": "b&w",
-  "contents": [ 9,11,9,3,2,10,8,5,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":0, "y":2 }
-},
-{
-  "type": "level",
-  "number": 20,
-  "mode": "b&w",
-  "contents": [ 10,8,11,7,15,7,12,8,11 ],
-  "colors": ["b","w","b","w","b","w","b","w","b"],
-  "initialSelected": { "x":1, "y":1 }
-},
+  {
+    "type": "level",
+    "number": 13,
+    "mode": "b&w",
+    "contents": [ 10,11,9,6,5,10,8,6,6 ],
+    "colors": ["b","b","b","w","w","b","b","w","w"],
+    "initialSelected": { "x":0, "y":2 }
+  },
+  {
+    "type": "instruction",
+    "title": "Warning!",
+    "text": "The next few levels are *unstable*.\n\nThey flip between black and white at times.",
+    "button": "shoot, okay."
+  },
+  {
+    "type": "level",
+    "number": 14,
+    "mode": "b&w!",
+    "contents": [ 6,7,6,7,9,8,7,6,8 ],
+    "colors": ["b","w","b","w","b","w","b","w","b"],
+    "initialSelected": { "x":1, "y":1 }
+  },
   {
     "type": "instruction",
     "title": "The End",
