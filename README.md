@@ -14,6 +14,6 @@ The goal of the game is to make each number on the board equal.
 
 License
 =======
-Parity is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
+Parity is licensed under the [MIT license.](https://github.com/abejfehr/parity/blob/master/LICENSE.txt)
 
 [parity-screenshot]: images/screenshot.png "Gameplay of Parity"
