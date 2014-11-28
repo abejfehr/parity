@@ -1,6 +1,4 @@
-// board.js(BoardModule)
-
-var BoardModule = (function() {
+var Board = (function() {
 
   // Components of the DOM
   var board = $('#board');
@@ -197,21 +195,21 @@ var BoardModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(BoardModule);
+mediator.installTo(Board);
 
 // Subscribe to messages
 
 // Draw the board when told
-BoardModule.subscribe('board_render', BoardModule.render);
+Board.subscribe('board_render', Board.render);
 
 // Listen to be told when to deactivate the view
-BoardModule.subscribe('board_set_inactive', BoardModule.setNumLevels);
+Board.subscribe('board_set_inactive', Board.setNumLevels);
 
 // Listen to the keyboard so the selector can be moved
-BoardModule.subscribe('controls_key_down', BoardModule.down);
-BoardModule.subscribe('controls_key_left', BoardModule.left);
-BoardModule.subscribe('controls_key_right', BoardModule.right);
-BoardModule.subscribe('controls_key_up', BoardModule.up);
+Board.subscribe('controls_key_down', Board.down);
+Board.subscribe('controls_key_left', Board.left);
+Board.subscribe('controls_key_right', Board.right);
+Board.subscribe('controls_key_up', Board.up);
 
 // Set the number of levels in this module
-BoardModule.subscribe('story_num_levels', BoardModule.setNumLevels);
+Board.subscribe('story_num_levels', Board.setNumLevels);

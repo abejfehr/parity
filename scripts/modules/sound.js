@@ -1,6 +1,4 @@
-// sound.js(SoundModule)
-
-var SoundModule = (function() {
+var Sound = (function() {
   var DEFAULT_VOLUME = 0.6
   var volume = DEFAULT_VOLUME;
 
@@ -33,6 +31,8 @@ var SoundModule = (function() {
     audio.src = wave.dataURI;
     audio.volume = volume;
     fadeOut(audio, 250, 0, 1);
+
+    // Play the sound
     audio.play();
   }
 
@@ -53,9 +53,9 @@ var SoundModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(SoundModule);
+mediator.installTo(Sound);
 
 // Subscribe to messages
 
-SoundModule.subscribe('sound_play_tone', SoundModule.play);
-SoundModule.subscribe('sound_toggle_mute', SoundModule.toggleMute);
+Sound.subscribe('sound_play_tone', Sound.play);
+Sound.subscribe('sound_toggle_mute', Sound.toggleMute);

@@ -1,5 +1,4 @@
-// overlay.js(OverlayModule)
-var OverlayModule = (function() {
+var Overlay = (function() {
   // Parts of the DOM
   var button = $('#overlay > #holder > button');
   var overlay = $('#overlay');
@@ -55,16 +54,16 @@ var OverlayModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(OverlayModule);
+mediator.installTo(Overlay);
 
 // Subscribe to messages
 
 // Listen for space and enter to forward the events to the button press
-OverlayModule.subscribe('controls_key_space', OverlayModule.pressButton);
-OverlayModule.subscribe('controls_key_enter', OverlayModule.pressButton);
+Overlay.subscribe('controls_key_space', Overlay.pressButton);
+Overlay.subscribe('controls_key_enter', Overlay.pressButton);
 
 // Listen for instruction to draw the overlay
-OverlayModule.subscribe('overlay_render', OverlayModule.render);
+Overlay.subscribe('overlay_render', Overlay.render);
 
 // Listen for instruction to deactivate this overlay
-OverlayModule.subscribe('overlay_set_inactive', OverlayModule.setInactive);
+Overlay.subscribe('overlay_set_inactive', Overlay.setInactive);
