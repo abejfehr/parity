@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parity Level Generator</title>
+    <script>
+var doThing = function() {
+  // Get the parameters
+  var n = parseInt(document.getElementById("n").value);
+  var minEnd = parseInt(document.getElementById("minEnd").value);
+  var maxEnd = parseInt(document.getElementById("maxEnd").value);
+  var minMoves = parseInt(document.getElementById("minMoves").value);
+  var maxMoves = parseInt(document.getElementById("maxMoves").value);
+  var start = parseInt(document.getElementById("start").value);
+
+  generate(n,minEnd,maxEnd,minMoves,maxMoves,start);
+}
+
+var randRange = function(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start) {
+
+  var outputString = "[\n";
+  for (var i = 0; i < n; i++) {
+    // Figure out a number to end on
+    var end = randRange(minEnd, maxEnd);
+
+    // Create the end of the level
+    var data = [];
+    for (var j = 0; j < 9; j++) {
+      data.push(end);
+    }
+
+    var selected = randRange(0,9);
+    var solution = [];
+
+    data[selected] -= 1;
+
+    // Figure out the number of moves
+    var moves = randRange(minMoves, maxMoves);
+
+    for (var j = 0; j < moves; j++) {
+      // Decide which "direction" I'm going to move by rolling a dice
+      var roll = -1;
+      do {
+        roll = randRange(0,4);
+      }
+      while(!possible(data, selected, roll))
+
+      switch(roll) {
+        case 0: // Up
+          selected -= 3;
+          solution.push("\"d\"");
+          if(j+1 != moves)
+            data[selected] -= 1;
+          break;
+        case 1: // Down
+          selected += 3;
+          solution.push("\"u\"");
+          if(j+1 != moves)
+            data[selected] -= 1;
+          break;
+        case 2: // Left
+          selected -= 1;
+          solution.push("\"r\"");
+          if(j+1 != moves)
+            data[selected] -= 1;
+          break;
+        case 3: // Right
+          selected += 1;
+          solution.push("\"l\"");
+          if(j+1 != moves)
+            data[selected] -= 1;
+          break;
+      }
+    }
+
+    // Record the ending location
+    var x = selected % 3;
+    var y = Math.floor(selected / 3);
+
+    // Get the solution
+    solution = solution.reverse();
+
+    // Add the level to the list
+    outputString += '  {\n    ';
+    outputString += '"type": "level",\n    "number": ' + start++ + ',\n    ';
+    outputString += '"mode": "vanilla",\n    ';
+    outputString += '"contents": [' + data + '],\n    "initialSelected": ';
+    outputString += '{ "x": ' + x + ', "y": ' + y + ' },\n    "solution": ';
+    outputString += '[ ' + solution + ' ]';
+    outputString += '  }'
+    if(i + 1 != n)
+      outputString+=','
+    outputString += '\n'
+  }
+  outputString += ']';
+  // Show the output string
+  document.getElementById("output").value = outputString;
+}
+
+var possible = function(data, selected, roll) {
+  if(roll == -1)
+    return false;
+
+  if(roll == 0) {
+    if(Math.floor(selected / 3) == 0)
+      return false
+  }
+  if(roll == 1) {
+    if(Math.floor(selected / 3) == 2)
+      return false;
+  }
+  if(roll == 2) {
+    if(selected % 3 == 0)
+      return false;
+  }
+  if(roll == 3) {
+    if(selected % 3 == 2)
+      return false;
+  }
+  return true;
+}
+
+    </script>
+  </head>
+  <body>
+    <h1>Parity Level Generator</h1>
+    <h2>Parameters</h2>
+    Number of levels to generate: <input id="n" type="text" value="1" /><br />
+    Min end of level value: <input id="minEnd" type="text" value="2" /><br />
+    Max end of level value: <input id="maxEnd" type="text" value="8" /><br />
+    Min # of moves: <input id="minMoves" type="text" value="9" /><br />
+    Max # of moves: <input id="maxMoves" type="text" value="18" /><br />
+    Starting level number <input id="start" type="text" value="1" /><br />
+    <button onclick="doThing()">Generate</button><br />
+    <h2>Output</h2>
+    <textarea id="output" style="width:400px;height:300px;"></textarea>
+  </body>
+</html>
