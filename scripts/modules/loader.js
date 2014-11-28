@@ -1,17 +1,20 @@
-// loader.js(LoaderModule)
-var LoaderModule = (function() {
+var Loader = (function() {
 
   // Libraries to load
-  var libs = ['lib/jquery.jrumble.1.3.min'];
+  var libs = [
+  'lib/jquery.jrumble.1.3.min',
+  'lib/riffwave',
+  'lib/fade'];
 
   // Available modules to load
   var modules = [
-    'modules/game',
-    'modules/cookiedata',
-    'modules/controls',
-    'modules/overlay',
-    'modules/board',
-    'modules/story'];
+    'modules/Manager',
+    'modules/StateData',
+    'modules/KeyboardControls',
+    'modules/Overlay',
+    'modules/Board',
+    'modules/Story',
+    'modules/Sound'];
 
   // Loads the modules for the game
   var loadModules = function() {
@@ -38,15 +41,15 @@ var LoaderModule = (function() {
 }());
 
 // Add the mediator to the module
-mediator.installTo(LoaderModule);
+mediator.installTo(Loader);
 
 // Subscribe to events
 
 // Instruction to load the modules
-mediator.subscribe('loader_load_modules', LoaderModule.loadModules);
+mediator.subscribe('loader_load_modules', Loader.loadModules);
 
 // Notify that modules are loaded
-mediator.subscribe('loader_modules_loaded', LoaderModule.loadStory);
+mediator.subscribe('loader_modules_loaded', Loader.loadStory);
 
 // Notify that the story is loaded
 mediator.subscribe('story_story_loaded', function() {

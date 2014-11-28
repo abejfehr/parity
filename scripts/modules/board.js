@@ -1,6 +1,4 @@
-// board.js(BoardModule)
-
-var BoardModule = (function() {
+var Board = (function() {
 
   // Components of the DOM
   var board = $('#board');
@@ -8,6 +6,7 @@ var BoardModule = (function() {
   var levelLink = $('#level');
   var overlay = $('#overlay');
   var resetLink = $('#reset');
+  var toggleMuteLink = $('#toggle_mute');
 
   // Variables for the page
   var active = false;
@@ -17,6 +16,12 @@ var BoardModule = (function() {
   // Resets the level to its original state
   var reset = function() {
     render(level);
+  }
+
+  // Toggles between mute and unmute
+  var toggleMute = function() {
+    mediator.publish('sound_toggle_mute');
+    toggleMuteLink.html(toggleMuteLink.html() == 'mute' ? 'unmute' : 'mute');
   }
 
   // Populates cells array with links to cells in DOM
@@ -104,14 +109,13 @@ var BoardModule = (function() {
   function select(x, y) {
     var sel = level.selected;
     if(cells[sel.x][sel.y].hasClass('black')) {
-      cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
-    }
-    else if(cells[sel.x][sel.y].hasClass('white')) {
       cell(sel.x, sel.y, cell(sel.x, sel.y)-1);
     }
     else {
       cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
     }
+    //send a thing
+    mediator.publish('sound_play_tone', cell(sel.x, sel.y));
   }
 
   // Sets the value of a cell at x, y. If no value given, returns the value
@@ -176,6 +180,7 @@ var BoardModule = (function() {
 
   // Event bindings
   resetLink.on('click', reset);
+  toggleMuteLink.on('click', toggleMute);
 
   // The facade
   return {
@@ -190,21 +195,21 @@ var BoardModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(BoardModule);
+mediator.installTo(Board);
 
 // Subscribe to messages
 
 // Draw the board when told
-BoardModule.subscribe('board_render', BoardModule.render);
+Board.subscribe('board_render', Board.render);
 
 // Listen to be told when to deactivate the view
-BoardModule.subscribe('board_set_inactive', BoardModule.setNumLevels);
+Board.subscribe('board_set_inactive', Board.setNumLevels);
 
 // Listen to the keyboard so the selector can be moved
-BoardModule.subscribe('controls_key_down', BoardModule.down);
-BoardModule.subscribe('controls_key_left', BoardModule.left);
-BoardModule.subscribe('controls_key_right', BoardModule.right);
-BoardModule.subscribe('controls_key_up', BoardModule.up);
+Board.subscribe('controls_key_down', Board.down);
+Board.subscribe('controls_key_left', Board.left);
+Board.subscribe('controls_key_right', Board.right);
+Board.subscribe('controls_key_up', Board.up);
 
 // Set the number of levels in this module
-BoardModule.subscribe('story_num_levels', BoardModule.setNumLevels);
+Board.subscribe('story_num_levels', Board.setNumLevels);
