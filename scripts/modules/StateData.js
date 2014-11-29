@@ -25,7 +25,7 @@ var StateData = (function() {
     }
 
     var hash = parseInt(window.location.hash.substring(1));
-    if(hash) {// && hash <= saveObject.level) {
+    if(hash && hash <= saveObject.level) {
       saveObject.level = hash;
     }
 
