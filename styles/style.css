@@ -154,8 +154,8 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
   font-size:24pt;
   color:#555;
-  width:120px;
-  height:120px;
+  width:118px; /* Not 120px because otherwise cells are different widths */
+  height:118px;
   background-color:#999;
   border:1px solid #333;
 }
@@ -204,4 +204,34 @@ a:hover {
 .right {
   text-align:right;
   float:right;
+}
+
+#draggableGrid {
+  position:absolute;
+  top:0px;
+  left:0px;
+  margin:0px;
+  padding:7px;
+  border:1px solid green;
+  overflow: hidden;
+  list-style-type:none;
+}
+
+#draggableGrid li {
+  line-height: 122px;
+  float: left;
+  width: 122px;
+  height: 122px;
+  text-align: center;
+}
+
+.dSelected {
+  border: 3px solid #227687;
+  box-sizing:border-box;
+  font-size:28pt;
+  font-weight:bold;
+  color:#fff;
+  -moz-box-shadow: inset 0 0 10px #227687;
+  -webkit-box-shadow: inset 0 0 10px #227687;
+   box-shadow: inset 0 0 10px #227687;
 }
