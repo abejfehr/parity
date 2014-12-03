@@ -3,20 +3,22 @@ var Loader = (function() {
   // Libraries to load
   var libs = [
   'lib/jquery.jrumble.1.3.min',
-  'lib/jquery.sortable.min',
+  'lib/jquery.touchSwipe.min',
   'lib/riffwave',
   'lib/fade'];
 
   // Available modules to load
   var modules = [
     'modules/Board',
-    'modules/KeyboardControls',
+    'modules/Keyboard',
     'modules/Manager',
     'modules/Overlay',
     'modules/Selector',
     'modules/Sound',
     'modules/StateData',
-    'modules/Story'];
+    'modules/Story',
+    'modules/Swipe',
+    'modules/Window'];
 
   // Loads the modules for the game
   var loadModules = function() {
