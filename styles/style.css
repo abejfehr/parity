@@ -162,14 +162,14 @@ a:hover {
 
 .selected {
   background-color:#444;
-  border: 3px solid #227687;
+/*  border: 3px solid #227687; */
   box-sizing:border-box;
   font-size:28pt;
   font-weight:bold;
   color:#fff;
-  -moz-box-shadow: inset 0 0 10px #227687;
+/*  -moz-box-shadow: inset 0 0 10px #227687;
   -webkit-box-shadow: inset 0 0 10px #227687;
-   box-shadow: inset 0 0 10px #227687;
+   box-shadow: inset 0 0 10px #227687;*/
 }
 
 .selected.white {
@@ -207,22 +207,21 @@ a:hover {
 }
 
 #draggableGrid {
-  position:absolute;
-  top:0px;
-  left:0px;
   margin:0px;
   padding:7px;
   border:1px solid green;
   overflow: hidden;
-  list-style-type:none;
 }
 
-#draggableGrid li {
+#selector {
   line-height: 122px;
   float: left;
   width: 122px;
   height: 122px;
   text-align: center;
+  position:absolute;
+  top:0px;
+  left:0px;
 }
 
 .dSelected {
@@ -233,5 +232,10 @@ a:hover {
   color:#fff;
   -moz-box-shadow: inset 0 0 10px #227687;
   -webkit-box-shadow: inset 0 0 10px #227687;
-   box-shadow: inset 0 0 10px #227687;
+  box-shadow: inset 0 0 10px #227687;
+  display:none;
+}
+
+.disabled {
+  background-color:green;
 }
