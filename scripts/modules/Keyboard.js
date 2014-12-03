@@ -1,4 +1,4 @@
-var KeyboardControls = (function() {
+var Keyboard = (function() {
 
   // Adds an event listener to the entire document
   document.addEventListener('keydown', function(event) {
@@ -27,4 +27,4 @@ var KeyboardControls = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(KeyboardControls);
+mediator.installTo(Keyboard);
