@@ -1,6 +1,8 @@
 var Sound = (function() {
-  var DEFAULT_VOLUME = 0.6
-  var volume = DEFAULT_VOLUME;
+  var MAX_VOLUME = 0.6
+  var volume = 0;
+
+  mediator.publish('sound_volume_changed', volume);
 
   var play = function(num) {
     var audio = new Audio(); // Create the HTML5 audio element
@@ -41,7 +43,8 @@ var Sound = (function() {
   }
 
   var toggleMute = function() {
-    volume = (volume ? 0 : DEFAULT_VOLUME);
+    volume = (volume ? 0 : MAX_VOLUME);
+    mediator.publish('sound_volume_changed', volume);
   }
 
   // The facade
