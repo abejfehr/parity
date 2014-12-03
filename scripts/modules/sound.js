@@ -1,8 +1,8 @@
-// sound.js(SoundModule)
+var Sound = (function() {
+  var MAX_VOLUME = 0.6
+  var volume = 0;
 
-var SoundModule = (function() {
-  var DEFAULT_VOLUME = 0.6
-  var volume = DEFAULT_VOLUME;
+  mediator.publish('sound_volume_changed', volume);
 
   var play = function(num) {
     var audio = new Audio(); // Create the HTML5 audio element
@@ -33,6 +33,8 @@ var SoundModule = (function() {
     audio.src = wave.dataURI;
     audio.volume = volume;
     fadeOut(audio, 250, 0, 1);
+
+    // Play the sound
     audio.play();
   }
 
@@ -41,7 +43,8 @@ var SoundModule = (function() {
   }
 
   var toggleMute = function() {
-    volume = (volume ? 0 : DEFAULT_VOLUME);
+    volume = (volume ? 0 : MAX_VOLUME);
+    mediator.publish('sound_volume_changed', volume);
   }
 
   // The facade
@@ -53,9 +56,9 @@ var SoundModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(SoundModule);
+mediator.installTo(Sound);
 
 // Subscribe to messages
 
-SoundModule.subscribe('sound_play_tone', SoundModule.play);
-SoundModule.subscribe('sound_toggle_mute', SoundModule.toggleMute);
+Sound.subscribe('sound_play_tone', Sound.play);
+Sound.subscribe('sound_toggle_mute', Sound.toggleMute);

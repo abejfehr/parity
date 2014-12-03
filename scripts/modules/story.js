@@ -1,5 +1,4 @@
-// story.js(StoryModule)
-var StoryModule = (function() {
+var Story = (function() {
 
   // Variables for the module
   var story;
@@ -84,15 +83,15 @@ var StoryModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(StoryModule);
+mediator.installTo(Story);
 
 // Subscribe to messages
 
 // Get the story, advance it, and set the bookmark when told
-mediator.subscribe('story_get_story', StoryModule.getStory);
+mediator.subscribe('story_get_story', Story.getStory);
 mediator.subscribe('story_set_bookmark_at_level',
-  StoryModule.setBookmarkAtLevel);
-mediator.subscribe('story_advance', StoryModule.advance);
+  Story.setBookmarkAtLevel);
+mediator.subscribe('story_advance', Story.advance);
 
 // Advance the story when notified that the current level has been completed
-mediator.subscribe('board_level_complete', StoryModule.advance);
+mediator.subscribe('board_level_complete', Story.advance);

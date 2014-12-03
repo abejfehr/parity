@@ -1,6 +1,4 @@
-// cookiedata.js(CookieDataModule)
-
-var CookieDataModule = (function() {
+var StateData = (function() {
 
   // Loads the appropriate level from the cookie/anchor
   var load = function() {
@@ -54,17 +52,17 @@ var CookieDataModule = (function() {
 }())
 
 // Add the mediator to the module
-mediator.installTo(CookieDataModule);
+mediator.installTo(StateData);
 
 // Subscribe to messages
 
 // Save the progress when asked
-CookieDataModule.subscribe('cookie_data_save', function(saveObject) {
-  CookieDataModule.save(saveObject);
+StateData.subscribe('cookie_data_save', function(saveObject) {
+  StateData.save(saveObject);
   mediator.publish('cookie_data_save_complete');
 });
 
 // Load level progress when asked
-CookieDataModule.subscribe('cookie_data_load', function() {
-  mediator.publish('cookie_data_load_complete', CookieDataModule.load());
+StateData.subscribe('cookie_data_load', function() {
+  mediator.publish('cookie_data_load_complete', StateData.load());
 });

@@ -1,6 +1,4 @@
-// board.js(BoardModule)
-
-var BoardModule = (function() {
+var Board = (function() {
 
   // Components of the DOM
   var board = $('#board');
@@ -23,7 +21,6 @@ var BoardModule = (function() {
   // Toggles between mute and unmute
   var toggleMute = function() {
     mediator.publish('sound_toggle_mute');
-    toggleMuteLink.html(toggleMuteLink.html() == 'mute' ? 'unmute' : 'mute');
   }
 
   // Populates cells array with links to cells in DOM
@@ -59,8 +56,15 @@ var BoardModule = (function() {
     if(isWin()) {
       board.fadeOut(options['fade'], function() {
         mediator.publish('board_level_complete');
-      })
+        mediator.publish('board_faded_out');
+      });
+
+      mediator.publish('board_fade_out');
     }
+  }
+
+  var updateMuteButton = function(volume) {
+    toggleMuteLink.html(volume ? 'mute' : 'unmute');
   }
 
   // Looks for a winning condition on the board, returns true or false
@@ -116,7 +120,10 @@ var BoardModule = (function() {
     else {
       cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
     }
-    //send a thing
+    // Move the selector
+    mediator.publish('selector_snap_to', x, y)
+
+    // Play the tone
     mediator.publish('sound_play_tone', cell(sel.x, sel.y));
   }
 
@@ -161,8 +168,16 @@ var BoardModule = (function() {
     levelLink.html('level ' + level.number + '/' + numLevels);
 
     // Fade in once populated
-    board.fadeIn(options['fade']);
+    board.fadeIn(options['fade'], function() {
+      // Move the selector to the right place
+      mediator.publish('selector_snap_to', level.selected.x, level.selected.y);
+
+      mediator.publish('board_faded_in');
+    });
     active = true;
+
+    // Tell everyone we're fading in
+    mediator.publish('board_fade_in');
 
     // Update to select the appropriate cell
     update();
@@ -178,6 +193,9 @@ var BoardModule = (function() {
   var setInactive = function() {
     board.fadeOut(options['fade']);
     active = false;
+
+    // Tell everyone we're fading out
+    mediator.publish('board_fade_out');
   }
 
   // Event bindings
@@ -193,25 +211,34 @@ var BoardModule = (function() {
     right: right,
     setNumLevels: setNumLevels,
     setInactive: setInactive,
+    updateMuteButton: updateMuteButton
   }
 }())
 
 // Add the mediator to the module
-mediator.installTo(BoardModule);
+mediator.installTo(Board);
 
 // Subscribe to messages
 
 // Draw the board when told
-BoardModule.subscribe('board_render', BoardModule.render);
+Board.subscribe('board_render', Board.render);
 
 // Listen to be told when to deactivate the view
-BoardModule.subscribe('board_set_inactive', BoardModule.setNumLevels);
+Board.subscribe('board_set_inactive', Board.setNumLevels);
 
 // Listen to the keyboard so the selector can be moved
-BoardModule.subscribe('controls_key_down', BoardModule.down);
-BoardModule.subscribe('controls_key_left', BoardModule.left);
-BoardModule.subscribe('controls_key_right', BoardModule.right);
-BoardModule.subscribe('controls_key_up', BoardModule.up);
+Board.subscribe('controls_key_down', Board.down);
+Board.subscribe('controls_key_left', Board.left);
+Board.subscribe('controls_key_right', Board.right);
+Board.subscribe('controls_key_up', Board.up);
+
+Board.subscribe('swipe_down_board', Board.down);
+Board.subscribe('swipe_left_board', Board.left);
+Board.subscribe('swipe_right_board', Board.right);
+Board.subscribe('swipe_up_board', Board.up);
 
 // Set the number of levels in this module
-BoardModule.subscribe('story_num_levels', BoardModule.setNumLevels);
+Board.subscribe('story_num_levels', Board.setNumLevels);
+
+// Listen for volume changes
+Board.subscribe('sound_volume_changed', Board.updateMuteButton);

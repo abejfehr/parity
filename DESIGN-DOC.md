@@ -8,13 +8,16 @@ This game is run by a core engine which contains the mediator and potentially so
 ##Modules
 Each of the separate components is this game is distributed as a *module* and has it's own namespace. These are the following modules that currently exist
 
-- BoardModule(board.js)
-- ControlModule(controls.js)
-- CookieDataModule(cookiedata.js)
-- GameModule(game.js)
-- LoaderModule(loader.js)
-- OverlayModule(overlay.js)
-- StoryModule(story.js)
+- Board
+- KeyboardControls
+- Loader
+- Manager
+- Overlay
+- Sound
+- StateData
+- Story
+
+Note: the following modules need to be re-documented, this is all fairly inaccurate.
 
 ###ControlModule
 The ControlModule is going to handle input from the user.

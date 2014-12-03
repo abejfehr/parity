@@ -26,29 +26,32 @@
             <button> </button>
           </div>
         </div>
+        <div class="dSelected" id="selector"></div>
         <table id="board">
-          <tr>
-            <td class="cell center" data-x="0" data-y="0">4</td>
-            <td class="cell center" data-x="1" data-y="0">4</td>
-            <td class="cell center" data-x="2" data-y="0">4</td>
-          </tr>
-          <tr>
-            <td class="cell center" data-x="0" data-y="1">4</td>
-            <td class="cell center" data-x="1" data-y="1">4</td>
-            <td class="cell center" data-x="2" data-y="1">4</td>
-          </tr>
-          <tr>
-            <td class="cell center" data-x="0" data-y="2">4</td>
-            <td class="cell center selected" data-x="1" data-y="2">4</td>
-            <td class="cell center" data-x="2" data-y="2">4</td>
-          </tr>
-          <tr>
-            <td colspan="2"><a id="level" href="#" class="light poiret left">level #</a></td>
-            <td colspan="2" class="right">
-              <a id="toggle_mute" href="#" class="poiret">mute</a>&nbsp;
-              <a id="reset" href="#" class="poiret">reset</a>
-            </td>
-          </tr>
+          <tbody id="board_body">
+            <tr>
+              <td class="cell center" data-x="0" data-y="0">4</td>
+              <td class="cell center" data-x="1" data-y="0">4</td>
+              <td class="cell center" data-x="2" data-y="0">4</td>
+            </tr>
+            <tr>
+              <td class="cell center" data-x="0" data-y="1">4</td>
+              <td class="cell center" data-x="1" data-y="1">4</td>
+              <td class="cell center" data-x="2" data-y="1">4</td>
+            </tr>
+            <tr>
+              <td class="cell center" data-x="0" data-y="2">4</td>
+              <td class="cell center selected" data-x="1" data-y="2">4</td>
+              <td class="cell center" data-x="2" data-y="2">4</td>
+            </tr>
+            <tr>
+              <td colspan="2"><a id="level" href="#" class="light poiret left">level #</a></td>
+              <td colspan="2" class="right">
+                <a id="toggle_mute" href="#" class="poiret">mute</a>&nbsp;
+                <a id="reset" href="#" class="poiret">reset</a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <p id="about" class="light poiret center">A numbers puzzle game by <a href="http://www.abefehr.com/">Abe Fehr</a></p>
