@@ -5,6 +5,9 @@ var Sound = (function() {
   mediator.publish('sound_volume_changed', volume);
 
   var play = function(num) {
+    if(!volume)
+      return;
+
     var audio = new Audio(); // Create the HTML5 audio element
     var wave = new Riffwave();
     var data = [];
