@@ -198,6 +198,16 @@ var Board = (function() {
     mediator.publish('board_fade_out');
   }
 
+  var resize = function() {
+    //var width = 0.6 * parseInt($('#container').css('height')) + 'px';
+    //var height = $('body').css('height');
+
+    //$('body').css('height', '100%');
+
+    //$('#container').css('width', width);
+    //$('#container').css('height', height);
+  }
+
   // Event bindings
   resetLink.on('click', reset);
   toggleMuteLink.on('click', toggleMute);
@@ -211,7 +221,8 @@ var Board = (function() {
     right: right,
     setNumLevels: setNumLevels,
     setInactive: setInactive,
-    updateMuteButton: updateMuteButton
+    updateMuteButton: updateMuteButton,
+    resize: resize
   }
 }())
 
@@ -242,3 +253,6 @@ Board.subscribe('story_num_levels', Board.setNumLevels);
 
 // Listen for volume changes
 Board.subscribe('sound_volume_changed', Board.updateMuteButton);
+
+Board.subscribe('window_resized', Board.resize);
+Board.subscribe('window_loaded', Board.resize);
