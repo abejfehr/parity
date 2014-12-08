@@ -2,10 +2,11 @@ var Loader = (function() {
 
   // Libraries to load
   var libs = [
-  'lib/jquery.jrumble.1.3.min',
-  'lib/jquery.touchSwipe.min',
-  'lib/riffwave',
-  'lib/fade'];
+//  'lib/jquery.jrumble.1.3.min',
+  'lib/jquery.touchSwipe.min'
+//  'lib/riffwave',
+//  'lib/fade'
+];
 
   // Available modules to load
   var modules = [
@@ -14,7 +15,7 @@ var Loader = (function() {
     'modules/Manager',
     'modules/Overlay',
     'modules/Selector',
-    'modules/Sound',
+//    'modules/Sound',
     'modules/StateData',
     'modules/Story',
     'modules/Swipe',
@@ -25,8 +26,9 @@ var Loader = (function() {
     require(['lib/jquery-2.1.1.min'], function() {
       require(libs, function() {
         require(modules, function() {
-          mediator.publish('loader_modules_loaded');
-          $('#loader').fadeOut(300); // Fades out the loading screen
+          $('#loader').fadeOut(300, function(){
+            mediator.publish('loader_modules_loaded');
+          }); // Fades out the loading screen
         });
       });
     });
