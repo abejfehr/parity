@@ -198,19 +198,23 @@ var Board = (function() {
     mediator.publish('board_fade_out');
   }
 
-  var resize = function() {
-    //var width = 0.6 * parseInt($('#container').css('height')) + 'px';
-    //var height = $('body').css('height');
+  var showLevelSelect = function() {
+    mediator.publish('story_select_levels');
+  }
 
-    //$('body').css('height', '100%');
+  var quickHide = function() {
+    board.hide();
+  }
 
-    //$('#container').css('width', width);
-    //$('#container').css('height', height);
+  var quickShow = function() {
+    board.show();
+
   }
 
   // Event bindings
   resetLink.on('click', reset);
   toggleMuteLink.on('click', toggleMute);
+  levelLink.on('click', showLevelSelect);
 
   // The facade
   return {
@@ -222,7 +226,8 @@ var Board = (function() {
     setNumLevels: setNumLevels,
     setInactive: setInactive,
     updateMuteButton: updateMuteButton,
-    resize: resize
+    quickHide: quickHide,
+    quickShow: quickShow
   }
 }())
 
@@ -254,5 +259,4 @@ Board.subscribe('story_num_levels', Board.setNumLevels);
 // Listen for volume changes
 Board.subscribe('sound_volume_changed', Board.updateMuteButton);
 
-Board.subscribe('window_resized', Board.resize);
-Board.subscribe('window_loaded', Board.resize);
+Board.subscribe('story_select_levels', Board.quickHide);

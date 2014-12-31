@@ -1,499 +1,499 @@
 [
   {
-    "type": "instruction",
-    "title": "Welcome",
-    "button": "continue"
+    "name": "Vanilla",
+    "levels": [
+      {
+        "type": "instruction",
+        "title": "How to play",
+        "text": "Parity is a numbers puzzle game.\nThe aim of the game is to get each number on the a 3x3 board of numbers to be exactly the same.",
+        "button": "okay..."
+      },
+      {
+        "type": "instruction",
+        "title": "How to play",
+        "text": "One of the numbers is always selected. This number can be moved by using the arrow keys",
+        "button": "sounds easy"
+      },
+      {
+        "type": "instruction",
+        "title": "How to play",
+        "text": "Each time you move the selector, the number you select will increase in number by one.",
+        "button": "I got this!"
+      },
+      {
+        "type": "level",
+        "number": 1,
+        "mode": "vanilla",
+        "contents": [ 1,0,0,1,1,0,1,1,0 ],
+        "initialSelected": { "x":0, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 2,
+        "mode": "vanilla",
+        "contents": [ 1,0,1,0,0,0,0,0,0 ],
+        "initialSelected": { "x":0, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 3,
+        "mode": "vanilla",
+        "contents": [ 1,2,2,2,3,2,3,2,2 ],
+        "initialSelected": { "x":0, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 4,
+        "mode": "vanilla",
+        "contents": [ 3,4,3,1,3,2,1,1,2 ],
+        "initialSelected": { "x":0, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 5,
+        "mode": "vanilla",
+        "contents": [ 1,-1,0,0,-1,0,0,1,0 ],
+        "initialSelected": { "x":1, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 6,
+        "mode": "vanilla",
+        "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
+        "initialSelected": { "x":1, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 7,
+        "mode": "vanilla",
+        "contents": [ 4,3,3,3,1,2,5,3,5 ],
+        "initialSelected": { "x":0, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 8,
+        "mode": "vanilla",
+        "contents": [ -7,-9,-7,-8,-12,-9,-6,-7,-7 ],
+        "initialSelected": { "x":1, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 9,
+        "mode": "vanilla",
+        "contents": [ 6,4,5,5,3,4,5,4,5 ],
+        "initialSelected": { "x":2, "y":1 }
+      },
+      {
+        "type": "level",
+        "number": 10,
+        "mode": "vanilla",
+        "contents": [ 9,7,8,8,5,6,9,8,7 ],
+        "initialSelected": { "x":0, "y":1 }
+      },
+      {
+        "type": "level",
+        "number": 11,
+        "mode": "vanilla",
+        "contents": [ 5,4,6,3,0,4,4,4,6 ],
+        "initialSelected": { "x":2, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 12,
+        "mode": "vanilla",
+        "contents": [-1,-4,1,1,0,3,3,3,3],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "l","u","r","l","l","d","u","r","l","r","r","l","d","u","l","d","r","u" ]
+      },
+      {
+        "type": "level",
+        "number": 13,
+        "mode": "vanilla",
+        "contents": [-4,-5,-4,-5,-6,-4,-8,-9,-5],
+        "initialSelected": { "x": 1, "y": 2 },
+        "solution": [ "l","r","l","r","r","l","u","d","l","r","l","u","r","u" ]
+      },
+      {
+        "type": "level",
+        "number": 14,
+        "mode": "vanilla",
+        "contents": [7,6,8,8,7,7,9,8,8],
+        "initialSelected": { "x": 2, "y": 0 },
+        "solution": [ "l","l","d","d","u","u","r","d","d","r","u","d","u","u","l","r","d","l","d","u","u","l" ]
+      },
+      {
+        "type": "level",
+        "number": 15,
+        "mode": "vanilla",
+        "contents": [9,11,13,9,11,13,12,12,12],
+        "initialSelected": { "x": 1, "y": 0 },
+        "solution": [ "d","l","u","d","r","l","u","r","l","r","l","d","d","r","r" ]
+      },
+      {
+        "type": "level",
+        "number": 16,
+        "mode": "vanilla",
+        "contents": [-5,-3,0,-4,-1,0,-4,-2,0],
+        "initialSelected": { "x": 0, "y": 1 },
+        "solution": [ "u","d","u","r","l","r","l","d","r","u","l","d","d","r","l","r","l","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 17,
+        "mode": "vanilla",
+        "contents": [2,0,3,0,-4,1,0,1,3],
+        "initialSelected": { "x": 0, "y": 1 },
+        "solution": [ "r","r","l","r","l","d","l","r","l","u","u","d","r","u","d","u","d","u","d","l","d" ]
+      },
+      {
+        "type": "level",
+        "number": 18,
+        "mode": "vanilla",
+        "contents": [9,9,10,4,7,10,8,10,11],
+        "initialSelected": { "x": 0, "y": 2 },
+        "solution": [ "u","d","u","d","u","u","d","r","l","d","u","r","d","u","l","r","r","u","l","l","r" ]
+      },
+      {
+        "type": "level",
+        "number": 19,
+        "mode": "vanilla",
+        "contents": [-2,-1,1,0,2,2,3,3,3],
+        "initialSelected": { "x": 0, "y": 2 },
+        "solution": [ "u","u","d","u","r","l","d","u","r","r","d","u","l","l","r","d" ]
+      },
+      {
+        "type": "level",
+        "number": 20,
+        "mode": "vanilla",
+        "contents": [-4,-7,-7,-4,-9,-9,-3,-3,-4],
+        "initialSelected": { "x": 1, "y": 2 },
+        "solution": [ "u","r","l","r","l","u","r","l","d","r","l","r","u","l","l","d","r","r","u","l","r","d","d" ]
+      },
+      {
+        "type": "level",
+        "number": 21,
+        "mode": "vanilla",
+        "contents": [4,1,1,2,-1,-1,2,0,1],
+        "initialSelected": { "x": 2, "y": 2 },
+        "solution": [ "u","l","r","l","r","d","l","r","u","u","l","r","l","d","d","r","l","l","u","d","r","u","l","r","u","r","d" ]
+      },
+      {
+        "type": "level",
+        "number": 22,
+        "mode": "vanilla",
+        "contents": [-6,-6,-5,-6,-9,-10,-5,-6,-8],
+        "initialSelected": { "x": 2, "y": 2 },
+        "solution": [ "u","l","u","d","d","r","u","d","u","d","u","l","r","l","l","u" ]
+      },
+      {
+        "type": "level",
+        "number": 23,
+        "mode": "vanilla",
+        "contents": [6,6,4,6,4,1,6,3,2],
+        "initialSelected": { "x": 1, "y": 2 },
+        "solution": [ "u","r","d","l","r","l","r","u","l","r","u","d","u","d","d","l" ]
+      },
+      {
+        "type": "level",
+        "number": 24,
+        "mode": "vanilla",
+        "contents": [6,5,7,5,2,7,5,4,7],
+        "initialSelected": { "x": 1, "y": 0 },
+        "solution": [ "d","u","l","r","d","d","l","u","d","r","u","d","u","l","r" ]
+      },
+      {
+        "type": "level",
+        "number": 25,
+        "mode": "vanilla",
+        "contents": [-2,-4,-3,-1,-2,-4,-1,-1,-1],
+        "initialSelected": { "x": 2, "y": 0 },
+        "solution": [ "l","r","d","d","l","l","u","u","r","r","l","l","r","d","r","l","r","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 26,
+        "mode": "vanilla",
+        "contents": [2,-1,0,1,-3,-1,3,1,1],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "d","u","l","l","r","d","u","u","d","l","u","r","d","d","u","r","u","l","r","d","d","u","u","l" ]
+      },
+      {
+        "type": "level",
+        "number": 27,
+        "mode": "vanilla",
+        "contents": [-4,-7,-5,-4,-5,-4,-4,-5,-4],
+        "initialSelected": { "x": 2, "y": 2 },
+        "solution": [ "u","d","l","l","u","u","r","r","l","d","d","u","u","r","l" ]
+      },
+      {
+        "type": "level",
+        "number": 28,
+        "mode": "vanilla",
+        "contents": [6,7,8,4,6,7,5,7,7],
+        "initialSelected": { "x": 1, "y": 0 },
+        "solution": [ "l","d","d","u","u","d","d","u","d","r","u","u","d","r","d" ]
+      },
+      {
+        "type": "level",
+        "number": 29,
+        "mode": "vanilla",
+        "contents": [0,1,4,-2,0,4,1,2,4],
+        "initialSelected": { "x": 0, "y": 1 },
+        "solution": [ "u","r","d","d","u","l","d","u","u","d","r","d","l","u","u","r","l","r","d","l","d","u" ]
+      },
+      {
+        "type": "level",
+        "number": 30,
+        "mode": "vanilla",
+        "contents": [0,-2,0,0,-1,1,-1,-2,-1],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "d","l","r","l","l","r","u","u","d","u","r","l","l","d","d" ]
+      },
+      {
+        "type": "level",
+        "number": 31,
+        "mode": "vanilla",
+        "contents": [3,-1,-2,3,-1,-3,3,0,-1],
+        "initialSelected": { "x": 2, "y": 0 },
+        "solution": [ "l","r","d","u","d","d","u","d","l","r","u","u","l","d","d","r","u","u","l","d","r","l","d","u","u","r" ]
+      },
+      {
+        "type": "level",
+        "number": 32,
+        "mode": "vanilla",
+        "contents": [-2,-2,-2,-2,-3,-4,-3,-4,-2],
+        "initialSelected": { "x": 1, "y": 1 },
+        "solution": [ "d","r","u","u","d","l","r","u","l","l","r","l","d","d","u","r","d","l","r","l","r","r","u","l" ]
+      },
+      {
+        "type": "level",
+        "number": 33,
+        "mode": "vanilla",
+        "contents": [-3,-7,-7,-3,-7,-8,-2,-2,-4],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "u","l","r","l","r","d","d","u","d","u","l","r","l","l","r","r","l","u","d","u","l","r","r","d","u" ]
+      },
+      {
+        "type": "level",
+        "number": 34,
+        "mode": "vanilla",
+        "contents": [6,4,3,3,1,1,3,2,4],
+        "initialSelected": { "x": 2, "y": 0 },
+        "solution": [ "d","l","u","d","l","d","r","r","u","l","l","r","r","u","d","u","l","r","d","d","l","l","r","u","d","l","u" ]
+      },
+      {
+        "type": "level",
+        "number": 35,
+        "mode": "vanilla",
+        "contents": [2,3,5,4,6,5,8,8,6],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "u","l","l","r","d","l","u","r","r","d","l","l","u","r","l","d","u","d","u","r","r","d","d","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 36,
+        "mode": "vanilla",
+        "contents": [11,8,9,10,9,11,11,10,11],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "u","l","r","l","d","l","u","r","d","d","r","l","l","u","d","u","u","r","r","l","d","d","r","u","u","d","l" ]
+      },
+      {
+        "type": "level",
+        "number": 37,
+        "mode": "vanilla",
+        "contents": [4,5,5,0,4,5,1,3,4],
+        "initialSelected": { "x": 1, "y": 2 },
+        "solution": [ "l","r","r","l","r","l","l","u","r","r","u","l","d","l","u","d","u","d","d","u","d","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 38,
+        "mode": "vanilla",
+        "contents": [-3,-6,-6,-3,-5,-8,-3,-5,-9],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "u","l","r","d","d","u","d","u","d","l","r","l","r","u","d","u","l","u","r","l","d" ]
+      },
+      {
+        "type": "level",
+        "number": 39,
+        "mode": "vanilla",
+        "contents": [12,10,12,11,12,13,12,11,12],
+        "initialSelected": { "x": 1, "y": 1 },
+        "solution": [ "l","u","r","r","d","d","l","r","l","u","u","r","l","d","u","l","d","d","u","d","r" ]
+      },
+      {
+        "type": "level",
+        "number": 40,
+        "mode": "vanilla",
+        "contents": [11,10,12,10,9,11,11,11,12],
+        "initialSelected": { "x": 2, "y": 0 },
+        "solution": [ "l","d","u","d","l","u","d","d","r","u","r","l","d","l","u","u","r","r","d","d" ]
+      },
+      {
+        "type": "level",
+        "number": 41,
+        "mode": "vanilla",
+        "contents": [8,7,5,8,5,2,6,5,6],
+        "initialSelected": { "x": 0, "y": 1 },
+        "solution": [ "r","r","u","d","l","u","r","d","d","u","l","r","u","d","d","l","l","r","l","r" ]
+      },
+      {
+        "type": "level",
+        "number": 42,
+        "mode": "vanilla",
+        "contents": [-5,-4,-5,-7,-4,-7,-6,-4,-4],
+        "initialSelected": { "x": 0, "y": 0 },
+        "solution": [ "r","l","d","d","u","u","d","d","u","d","r","u","r","d","u","u","d","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 43,
+        "mode": "vanilla",
+        "contents": [-7,-6,-5,-12,-13,-7,-6,-5,-5],
+        "initialSelected": { "x": 0, "y": 1 },
+        "solution": [ "r","u","d","l","r","r","l","l","d","u","u","d","r","l","u","d","r","l","r","r","l" ]
+      },
+      {
+        "type": "level",
+        "number": 44,
+        "mode": "vanilla",
+        "contents": [8,8,14,12,10,13,14,13,14],
+        "initialSelected": { "x": 1, "y": 0 },
+        "solution": [ "l","r","l","r","l","r","l","r","l","d","r","d","u","l","r","r","l","u","l","r" ]
+      },
+      {
+        "type": "level",
+        "number": 45,
+        "mode": "vanilla",
+        "contents": [-1,-1,1,-3,-6,0,-1,-3,1],
+        "initialSelected": { "x": 1, "y": 0 },
+        "solution": [ "d","u","d","l","r","r","l","d","u","l","d","r","l","u","u","r","l","d","r","d","u","d" ]
+      },
+      {
+        "type": "level",
+        "number": 46,
+        "mode": "vanilla",
+        "contents": [6,5,6,5,3,7,6,4,7],
+        "initialSelected": { "x": 1, "y": 1 },
+        "solution": [ "l","r","d","u","d","l","u","r","d","u","u","l","r","r" ]
+      },
+      {
+        "type": "level",
+        "number": 47,
+        "mode": "vanilla",
+        "contents": [3,2,3,4,1,-2,4,2,-1],
+        "initialSelected": { "x": 2, "y": 1 },
+        "solution": [ "l","d","r","l","r","u","l","r","l","u","l","r","r","d","d","u","d","u","d","u" ]
+      },
+      {
+        "type": "level",
+        "number": 48,
+        "mode": "vanilla",
+        "contents": [1,1,2,-3,0,2,-2,0,2],
+        "initialSelected": { "x": 2, "y": 2 },
+        "solution": [ "l","l","u","r","d","l","u","d","u","d","u","u","r","d","l" ]
+      }
+    ]
   },
   {
-    "type": "instruction",
-    "title": "How to play",
-    "text": "Parity is a numbers puzzle game.\nThe aim of the game is to get each number on the a 9x9 board of numbers to be exactly the same.",
-    "button": "okay..."
-  },
-  {
-    "type": "instruction",
-    "title": "How to play",
-    "text": "One of the numbers is always selected. This number can be moved by using the arrow keys",
-    "button": "sounds easy"
-  },
-  {
-    "type": "instruction",
-    "title": "How to play",
-    "text": "Each time you move the selector, the number you select will increase in number by one.",
-    "button": "I got this!"
-  },
-  {
-    "type": "level",
-    "number": 1,
-    "mode": "vanilla",
-    "contents": [ 1,0,0,1,1,0,1,1,0 ],
-    "initialSelected": { "x":0, "y":0 }
-  },
-  {
-    "type": "level",
-    "number": 2,
-    "mode": "vanilla",
-    "contents": [ 1,0,1,0,0,0,0,0,0 ],
-    "initialSelected": { "x":0, "y":0 }
-  },
-  {
-    "type": "level",
-    "number": 3,
-    "mode": "vanilla",
-    "contents": [ 1,2,2,2,3,2,3,2,2 ],
-    "initialSelected": { "x":0, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 4,
-    "mode": "vanilla",
-    "contents": [ 3,4,3,1,3,2,1,1,2 ],
-    "initialSelected": { "x":0, "y":0 }
-  },
-  {
-    "type": "level",
-    "number": 5,
-    "mode": "vanilla",
-    "contents": [ 1,-1,0,0,-1,0,0,1,0 ],
-    "initialSelected": { "x":1, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 6,
-    "mode": "vanilla",
-    "contents": [ 2,0,1,2,-3,-2,2,1,2 ],
-    "initialSelected": { "x":1, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 7,
-    "mode": "vanilla",
-    "contents": [ 4,3,3,3,1,2,5,3,5 ],
-    "initialSelected": { "x":0, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 8,
-    "mode": "vanilla",
-    "contents": [ -7,-9,-7,-8,-12,-9,-6,-7,-7 ],
-    "initialSelected": { "x":1, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 9,
-    "mode": "vanilla",
-    "contents": [ 6,4,5,5,3,4,5,4,5 ],
-    "initialSelected": { "x":2, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 10,
-    "mode": "vanilla",
-    "contents": [ 9,7,8,8,5,6,9,8,7 ],
-    "initialSelected": { "x":0, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 11,
-    "mode": "vanilla",
-    "contents": [ 5,4,6,3,0,4,4,4,6 ],
-    "initialSelected": { "x":2, "y":0 }
-  },
-    {
-      "type": "level",
-      "number": 12,
-      "mode": "vanilla",
-      "contents": [-1,-4,1,1,0,3,3,3,3],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "l","u","r","l","l","d","u","r","l","r","r","l","d","u","l","d","r","u" ]
-    },
-    {
-      "type": "level",
-      "number": 13,
-      "mode": "vanilla",
-      "contents": [-4,-5,-4,-5,-6,-4,-8,-9,-5],
-      "initialSelected": { "x": 1, "y": 2 },
-      "solution": [ "l","r","l","r","r","l","u","d","l","r","l","u","r","u" ]
-    },
-    {
-      "type": "level",
-      "number": 14,
-      "mode": "vanilla",
-      "contents": [7,6,8,8,7,7,9,8,8],
-      "initialSelected": { "x": 2, "y": 0 },
-      "solution": [ "l","l","d","d","u","u","r","d","d","r","u","d","u","u","l","r","d","l","d","u","u","l" ]
-    },
-    {
-      "type": "level",
-      "number": 15,
-      "mode": "vanilla",
-      "contents": [9,11,13,9,11,13,12,12,12],
-      "initialSelected": { "x": 1, "y": 0 },
-      "solution": [ "d","l","u","d","r","l","u","r","l","r","l","d","d","r","r" ]
-    },
-    {
-      "type": "level",
-      "number": 16,
-      "mode": "vanilla",
-      "contents": [-5,-3,0,-4,-1,0,-4,-2,0],
-      "initialSelected": { "x": 0, "y": 1 },
-      "solution": [ "u","d","u","r","l","r","l","d","r","u","l","d","d","r","l","r","l","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 17,
-      "mode": "vanilla",
-      "contents": [2,0,3,0,-4,1,0,1,3],
-      "initialSelected": { "x": 0, "y": 1 },
-      "solution": [ "r","r","l","r","l","d","l","r","l","u","u","d","r","u","d","u","d","u","d","l","d" ]
-    },
-    {
-      "type": "level",
-      "number": 18,
-      "mode": "vanilla",
-      "contents": [9,9,10,4,7,10,8,10,11],
-      "initialSelected": { "x": 0, "y": 2 },
-      "solution": [ "u","d","u","d","u","u","d","r","l","d","u","r","d","u","l","r","r","u","l","l","r" ]
-    },
-    {
-      "type": "level",
-      "number": 19,
-      "mode": "vanilla",
-      "contents": [-2,-1,1,0,2,2,3,3,3],
-      "initialSelected": { "x": 0, "y": 2 },
-      "solution": [ "u","u","d","u","r","l","d","u","r","r","d","u","l","l","r","d" ]
-    },
-    {
-      "type": "level",
-      "number": 20,
-      "mode": "vanilla",
-      "contents": [-4,-7,-7,-4,-9,-9,-3,-3,-4],
-      "initialSelected": { "x": 1, "y": 2 },
-      "solution": [ "u","r","l","r","l","u","r","l","d","r","l","r","u","l","l","d","r","r","u","l","r","d","d" ]
-    },
-    {
-      "type": "level",
-      "number": 21,
-      "mode": "vanilla",
-      "contents": [4,1,1,2,-1,-1,2,0,1],
-      "initialSelected": { "x": 2, "y": 2 },
-      "solution": [ "u","l","r","l","r","d","l","r","u","u","l","r","l","d","d","r","l","l","u","d","r","u","l","r","u","r","d" ]
-    },
-    {
-      "type": "level",
-      "number": 22,
-      "mode": "vanilla",
-      "contents": [-6,-6,-5,-6,-9,-10,-5,-6,-8],
-      "initialSelected": { "x": 2, "y": 2 },
-      "solution": [ "u","l","u","d","d","r","u","d","u","d","u","l","r","l","l","u" ]
-    },
-    {
-      "type": "level",
-      "number": 23,
-      "mode": "vanilla",
-      "contents": [6,6,4,6,4,1,6,3,2],
-      "initialSelected": { "x": 1, "y": 2 },
-      "solution": [ "u","r","d","l","r","l","r","u","l","r","u","d","u","d","d","l" ]
-    },
-    {
-      "type": "level",
-      "number": 24,
-      "mode": "vanilla",
-      "contents": [6,5,7,5,2,7,5,4,7],
-      "initialSelected": { "x": 1, "y": 0 },
-      "solution": [ "d","u","l","r","d","d","l","u","d","r","u","d","u","l","r" ]
-    },
-    {
-      "type": "level",
-      "number": 25,
-      "mode": "vanilla",
-      "contents": [-2,-4,-3,-1,-2,-4,-1,-1,-1],
-      "initialSelected": { "x": 2, "y": 0 },
-      "solution": [ "l","r","d","d","l","l","u","u","r","r","l","l","r","d","r","l","r","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 26,
-      "mode": "vanilla",
-      "contents": [2,-1,0,1,-3,-1,3,1,1],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "d","u","l","l","r","d","u","u","d","l","u","r","d","d","u","r","u","l","r","d","d","u","u","l" ]
-    },
-    {
-      "type": "level",
-      "number": 27,
-      "mode": "vanilla",
-      "contents": [-4,-7,-5,-4,-5,-4,-4,-5,-4],
-      "initialSelected": { "x": 2, "y": 2 },
-      "solution": [ "u","d","l","l","u","u","r","r","l","d","d","u","u","r","l" ]
-    },
-    {
-      "type": "level",
-      "number": 28,
-      "mode": "vanilla",
-      "contents": [6,7,8,4,6,7,5,7,7],
-      "initialSelected": { "x": 1, "y": 0 },
-      "solution": [ "l","d","d","u","u","d","d","u","d","r","u","u","d","r","d" ]
-    },
-    {
-      "type": "level",
-      "number": 29,
-      "mode": "vanilla",
-      "contents": [0,1,4,-2,0,4,1,2,4],
-      "initialSelected": { "x": 0, "y": 1 },
-      "solution": [ "u","r","d","d","u","l","d","u","u","d","r","d","l","u","u","r","l","r","d","l","d","u" ]
-    },
-    {
-      "type": "level",
-      "number": 30,
-      "mode": "vanilla",
-      "contents": [0,-2,0,0,-1,1,-1,-2,-1],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "d","l","r","l","l","r","u","u","d","u","r","l","l","d","d" ]
-    },
-    {
-      "type": "level",
-      "number": 31,
-      "mode": "vanilla",
-      "contents": [3,-1,-2,3,-1,-3,3,0,-1],
-      "initialSelected": { "x": 2, "y": 0 },
-      "solution": [ "l","r","d","u","d","d","u","d","l","r","u","u","l","d","d","r","u","u","l","d","r","l","d","u","u","r" ]
-    },
-    {
-      "type": "level",
-      "number": 32,
-      "mode": "vanilla",
-      "contents": [-2,-2,-2,-2,-3,-4,-3,-4,-2],
-      "initialSelected": { "x": 1, "y": 1 },
-      "solution": [ "d","r","u","u","d","l","r","u","l","l","r","l","d","d","u","r","d","l","r","l","r","r","u","l" ]
-    },
-    {
-      "type": "level",
-      "number": 33,
-      "mode": "vanilla",
-      "contents": [-3,-7,-7,-3,-7,-8,-2,-2,-4],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "u","l","r","l","r","d","d","u","d","u","l","r","l","l","r","r","l","u","d","u","l","r","r","d","u" ]
-    },
-    {
-      "type": "level",
-      "number": 34,
-      "mode": "vanilla",
-      "contents": [6,4,3,3,1,1,3,2,4],
-      "initialSelected": { "x": 2, "y": 0 },
-      "solution": [ "d","l","u","d","l","d","r","r","u","l","l","r","r","u","d","u","l","r","d","d","l","l","r","u","d","l","u" ]
-    },
-    {
-      "type": "level",
-      "number": 35,
-      "mode": "vanilla",
-      "contents": [2,3,5,4,6,5,8,8,6],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "u","l","l","r","d","l","u","r","r","d","l","l","u","r","l","d","u","d","u","r","r","d","d","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 36,
-      "mode": "vanilla",
-      "contents": [11,8,9,10,9,11,11,10,11],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "u","l","r","l","d","l","u","r","d","d","r","l","l","u","d","u","u","r","r","l","d","d","r","u","u","d","l" ]
-    },
-    {
-      "type": "level",
-      "number": 37,
-      "mode": "vanilla",
-      "contents": [4,5,5,0,4,5,1,3,4],
-      "initialSelected": { "x": 1, "y": 2 },
-      "solution": [ "l","r","r","l","r","l","l","u","r","r","u","l","d","l","u","d","u","d","d","u","d","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 38,
-      "mode": "vanilla",
-      "contents": [-3,-6,-6,-3,-5,-8,-3,-5,-9],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "u","l","r","d","d","u","d","u","d","l","r","l","r","u","d","u","l","u","r","l","d" ]
-    },
-    {
-      "type": "level",
-      "number": 39,
-      "mode": "vanilla",
-      "contents": [12,10,12,11,12,13,12,11,12],
-      "initialSelected": { "x": 1, "y": 1 },
-      "solution": [ "l","u","r","r","d","d","l","r","l","u","u","r","l","d","u","l","d","d","u","d","r" ]
-    },
-    {
-      "type": "level",
-      "number": 40,
-      "mode": "vanilla",
-      "contents": [11,10,12,10,9,11,11,11,12],
-      "initialSelected": { "x": 2, "y": 0 },
-      "solution": [ "l","d","u","d","l","u","d","d","r","u","r","l","d","l","u","u","r","r","d","d" ]
-    },
-    {
-      "type": "level",
-      "number": 41,
-      "mode": "vanilla",
-      "contents": [8,7,5,8,5,2,6,5,6],
-      "initialSelected": { "x": 0, "y": 1 },
-      "solution": [ "r","r","u","d","l","u","r","d","d","u","l","r","u","d","d","l","l","r","l","r" ]
-    },
-    {
-      "type": "level",
-      "number": 42,
-      "mode": "vanilla",
-      "contents": [-5,-4,-5,-7,-4,-7,-6,-4,-4],
-      "initialSelected": { "x": 0, "y": 0 },
-      "solution": [ "r","l","d","d","u","u","d","d","u","d","r","u","r","d","u","u","d","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 43,
-      "mode": "vanilla",
-      "contents": [-7,-6,-5,-12,-13,-7,-6,-5,-5],
-      "initialSelected": { "x": 0, "y": 1 },
-      "solution": [ "r","u","d","l","r","r","l","l","d","u","u","d","r","l","u","d","r","l","r","r","l" ]
-    },
-    {
-      "type": "level",
-      "number": 44,
-      "mode": "vanilla",
-      "contents": [8,8,14,12,10,13,14,13,14],
-      "initialSelected": { "x": 1, "y": 0 },
-      "solution": [ "l","r","l","r","l","r","l","r","l","d","r","d","u","l","r","r","l","u","l","r" ]
-    },
-    {
-      "type": "level",
-      "number": 45,
-      "mode": "vanilla",
-      "contents": [-1,-1,1,-3,-6,0,-1,-3,1],
-      "initialSelected": { "x": 1, "y": 0 },
-      "solution": [ "d","u","d","l","r","r","l","d","u","l","d","r","l","u","u","r","l","d","r","d","u","d" ]
-    },
-    {
-      "type": "level",
-      "number": 46,
-      "mode": "vanilla",
-      "contents": [6,5,6,5,3,7,6,4,7],
-      "initialSelected": { "x": 1, "y": 1 },
-      "solution": [ "l","r","d","u","d","l","u","r","d","u","u","l","r","r" ]
-    },
-    {
-      "type": "level",
-      "number": 47,
-      "mode": "vanilla",
-      "contents": [3,2,3,4,1,-2,4,2,-1],
-      "initialSelected": { "x": 2, "y": 1 },
-      "solution": [ "l","d","r","l","r","u","l","r","l","u","l","r","r","d","d","u","d","u","d","u" ]
-    },
-    {
-      "type": "level",
-      "number": 48,
-      "mode": "vanilla",
-      "contents": [1,1,2,-3,0,2,-2,0,2],
-      "initialSelected": { "x": 2, "y": 2 },
-      "solution": [ "l","l","u","r","d","l","u","d","u","d","u","u","r","d","l" ]
-    },
-  {
-    "type": "instruction",
-    "title": "Black & White",
-    "text": "The following few puzzles get even more complicated...",
-    "button": "uh oh"
-  },
-  {
-    "type": "instruction",
-    "title": "Black & White",
-    "text": "The board contains black and white tiles, each of which has different behaviour",
-    "button": "continue"
-  },
-  {
-    "type": "instruction",
-    "title": "Black & White",
-    "text": "Stepping on white tiles increases the numbers by one...",
-    "button": "continue"
-  },
-  {
-    "type": "instruction",
-    "title": "Black & White",
-    "text": "...whereas stepping on black tiles decreases the numbers by one.",
-    "button": "okay, let's do this"
-  },
-  {
-    "type": "level",
-    "number": 12,
-    "mode": "b&w",
-    "contents": [ 0,3,0,3,-2,3,0,2,0 ],
-    "colors": ["w","b","w","b","w","b","w","b","w"],
-    "initialSelected": { "x":2, "y":2 }
-  },
-  {
-    "type": "level",
-    "number": 13,
-    "mode": "b&w",
-    "contents": [ 7,2,6,3,9,1,7,3,7 ],
-    "colors": ["b","w","b","w","b","w","b","w","b"],
-    "initialSelected": { "x":1, "y":1 }
-  },
-  {
-    "type": "level",
-    "number": 14,
-    "mode": "b&w",
-    "contents": [ 5,0,2,6,7,4,5,1,2 ],
-    "colors": ["b","w","w","b","b","b","b","w","w"],
-    "initialSelected": { "x":1, "y":0 }
-  },
-{
-  "type": "level",
-  "number": 15,
-  "mode": "b&w",
-  "contents": [ 10,11,9,6,5,10,8,6,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":0, "y":2 }
-},
-{
-  "type": "level",
-  "number": 16,
-  "mode": "b&w",
-  "contents": [ 7,1,11,4,13,11,4,3,7 ],
-  "colors": ["b","w","b","w","b","b","w","w","b"],
-  "initialSelected": { "x":2, "y":1 }
-},
-{
-  "type": "level",
-  "number": 17,
-  "mode": "b&w",
-  "contents": [ 5,8,6,1,-3,6,4,1,2 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":1, "y":1 }
-},
-{
-  "type": "level",
-  "number": 18,
-  "mode": "b&w",
-  "contents": [ 9,11,9,7,3,10,9,5,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":2, "y":0 }
-},
-{
-  "type": "level",
-  "number": 19,
-  "mode": "b&w",
-  "contents": [ 9,11,9,3,2,10,8,5,6 ],
-  "colors": ["b","b","b","w","w","b","b","w","w"],
-  "initialSelected": { "x":0, "y":2 }
-},
-{
-  "type": "level",
-  "number": 20,
-  "mode": "b&w",
-  "contents": [ 10,8,11,7,15,7,12,8,11 ],
-  "colors": ["b","w","b","w","b","w","b","w","b"],
-  "initialSelected": { "x":1, "y":1 }
-},
-{
-  "type": "instruction",
-  "title": "The End",
-  "text": "Congratulations, you've successfully finished all the levels in the game. "
-}
+    "name": "Black & White",
+    "levels": [
+      {
+        "type": "instruction",
+        "title": "Black & White",
+        "text": "The following few puzzles get even more complicated...",
+        "button": "uh oh"
+      },
+      {
+        "type": "instruction",
+        "title": "Black & White",
+        "text": "The board contains black and white tiles, each of which has different behaviour",
+        "button": "continue"
+      },
+      {
+        "type": "instruction",
+        "title": "Black & White",
+        "text": "Stepping on white tiles increases the numbers by one...",
+        "button": "continue"
+      },
+      {
+        "type": "instruction",
+        "title": "Black & White",
+        "text": "...whereas stepping on black tiles decreases the numbers by one.",
+        "button": "okay, let's do this"
+      },
+      {
+        "type": "level",
+        "number": 12,
+        "mode": "b&w",
+        "contents": [ 0,3,0,3,-2,3,0,2,0 ],
+        "colors": ["w","b","w","b","w","b","w","b","w"],
+        "initialSelected": { "x":2, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 13,
+        "mode": "b&w",
+        "contents": [ 7,2,6,3,9,1,7,3,7 ],
+        "colors": ["b","w","b","w","b","w","b","w","b"],
+        "initialSelected": { "x":1, "y":1 }
+      },
+      {
+        "type": "level",
+        "number": 14,
+        "mode": "b&w",
+        "contents": [ 5,0,2,6,7,4,5,1,2 ],
+        "colors": ["b","w","w","b","b","b","b","w","w"],
+        "initialSelected": { "x":1, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 15,
+        "mode": "b&w",
+        "contents": [ 10,11,9,6,5,10,8,6,6 ],
+        "colors": ["b","b","b","w","w","b","b","w","w"],
+        "initialSelected": { "x":0, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 16,
+        "mode": "b&w",
+        "contents": [ 7,1,11,4,13,11,4,3,7 ],
+        "colors": ["b","w","b","w","b","b","w","w","b"],
+        "initialSelected": { "x":2, "y":1 }
+      },
+      {
+        "type": "level",
+        "number": 17,
+        "mode": "b&w",
+        "contents": [ 5,8,6,1,-3,6,4,1,2 ],
+        "colors": ["b","b","b","w","w","b","b","w","w"],
+        "initialSelected": { "x":1, "y":1 }
+      },
+      {
+        "type": "level",
+        "number": 18,
+        "mode": "b&w",
+        "contents": [ 9,11,9,7,3,10,9,5,6 ],
+        "colors": ["b","b","b","w","w","b","b","w","w"],
+        "initialSelected": { "x":2, "y":0 }
+      },
+      {
+        "type": "level",
+        "number": 19,
+        "mode": "b&w",
+        "contents": [ 9,11,9,3,2,10,8,5,6 ],
+        "colors": ["b","b","b","w","w","b","b","w","w"],
+        "initialSelected": { "x":0, "y":2 }
+      },
+      {
+        "type": "level",
+        "number": 20,
+        "mode": "b&w",
+        "contents": [ 10,8,11,7,15,7,12,8,11 ],
+        "colors": ["b","w","b","w","b","w","b","w","b"],
+        "initialSelected": { "x":1, "y":1 }
+      }
+    ]
+  }
 ]
