@@ -3,7 +3,9 @@
 
 Parity is a simple numbers puzzle game written in Javascript. It was inspired by OCD-like impulses to make sure the icons on my desktop were all selected the same number of times.
 
-![Gameplay of Parity][parity-screenshot]
+<p align="center">
+  <img src="images/screenshot.png" />
+</p>
 
 How to play
 ===========
@@ -20,5 +22,3 @@ Parity is mobile-friendly. Simply visit the website on your device's browser to 
 License
 =======
 Parity is licensed under the [MIT license.](https://github.com/abejfehr/parity/blob/master/LICENSE.txt)
-
-[parity-screenshot]: images/screenshot.png "Gameplay of Parity"
