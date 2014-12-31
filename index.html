@@ -5,9 +5,21 @@
     <script data-main="scripts/core" src="scripts/require.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans' rel='stylesheet' type='text/css'>
     <link href="styles/style.css" rel="stylesheet" type="text/css" />
+    <link href="styles/mobile.css" rel="stylesheet" type="text/css" media="screen and (max-device-width:800px)" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width; initial-scale=0.6;" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-30977471-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
     <div id="container">
@@ -18,6 +30,8 @@
             <img src="images/loader.gif" />
             <p>Loading...</p>
           </div>
+        </div>
+        <div id="levelSelect">
         </div>
         <div id="overlay">
           <h1></h1>
@@ -48,14 +62,13 @@
             <tr>
               <td colspan="2"><a id="level" href="#" class="light poiret left">level #</a></td>
               <td colspan="2" class="right">
-                <a id="toggle_mute" href="#" class="poiret">mute</a>&nbsp;
-                <a id="reset" href="#" class="poiret">reset</a>
+                <a id="reset" href="#" class="poiret"><img src="images/reset.png" style="width:7vh;" /></a>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p id="about" class="light poiret center">A numbers puzzle game by <a href="http://www.abefehr.com/">Abe Fehr</a></p>
+      <p id="about" class="light poiret center">A numbers puzzle game by <a href="http://abefehr.com/">Abe Fehr</a></p>
     </div>
   </body>
 </html>

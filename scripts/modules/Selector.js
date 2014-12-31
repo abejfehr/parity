@@ -30,11 +30,21 @@ var Selector = (function() {
     selector.fadeOut(options['fade']);
   }
 
+  var quickHide = function() {
+    selector.hide();
+  }
+
+  var quickShow = function() {
+    selector.show();
+  }
+  
   return {
     snapTo: snapTo,
     resnap: resnap,
     fadeIn: fadeIn,
-    fadeOut: fadeOut
+    fadeOut: fadeOut,
+    quickHide: quickHide,
+    quickShow: quickShow
   }
 }())
 
@@ -45,3 +55,5 @@ Selector.subscribe('selector_snap_to', Selector.snapTo);
 Selector.subscribe('window_resized', Selector.resnap);
 Selector.subscribe('board_faded_in', Selector.fadeIn);
 Selector.subscribe('board_fade_out', Selector.fadeOut);
+
+Selector.subscribe('story_select_levels', Selector.quickHide);

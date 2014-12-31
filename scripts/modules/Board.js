@@ -198,9 +198,23 @@ var Board = (function() {
     mediator.publish('board_fade_out');
   }
 
+  var showLevelSelect = function() {
+    mediator.publish('story_select_levels');
+  }
+
+  var quickHide = function() {
+    board.hide();
+  }
+
+  var quickShow = function() {
+    board.show();
+
+  }
+
   // Event bindings
   resetLink.on('click', reset);
   toggleMuteLink.on('click', toggleMute);
+  levelLink.on('click', showLevelSelect);
 
   // The facade
   return {
@@ -211,7 +225,9 @@ var Board = (function() {
     right: right,
     setNumLevels: setNumLevels,
     setInactive: setInactive,
-    updateMuteButton: updateMuteButton
+    updateMuteButton: updateMuteButton,
+    quickHide: quickHide,
+    quickShow: quickShow
   }
 }())
 
@@ -242,3 +258,5 @@ Board.subscribe('story_num_levels', Board.setNumLevels);
 
 // Listen for volume changes
 Board.subscribe('sound_volume_changed', Board.updateMuteButton);
+
+Board.subscribe('story_select_levels', Board.quickHide);
