@@ -142,5 +142,4 @@ mediator.subscribe('story_advance', Story.advance);
 
 // Advance the story when notified that the current level has been completed
 mediator.subscribe('board_level_complete', Story.advance);
-
 mediator.subscribe('story_select_levels', Story.drawLevelSelect);
