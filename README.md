@@ -2,9 +2,9 @@ Parity
 ======
 
 Parity is a simple numbers puzzle game written in Javascript. It was inspired by OCD-like impulses to make sure the icons on my desktop were all selected the same number of times.
-
+<div style="text-align:center">
 ![Gameplay of Parity][parity-screenshot]
-
+</div>
 How to play
 ===========
 
