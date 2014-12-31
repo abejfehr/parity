@@ -16,17 +16,16 @@ var StateData = (function() {
     */
     var name = "parity_save_data=";
     var cookieArray = document.cookie.split(';');
-    var saveObject = { level: -1, visited_instructions: [] }
+    var saveObject = {
+      played_levels: [],
+      visited_instructions: [],
+      last_level: -1
+    };
     for(var i=0; i<cookieArray.length; ++i) {
       var cookie = cookieArray[i].trim();
       if (cookie.indexOf(name) == 0) {
         saveObject = JSON.parse(cookie.substring(name.length,cookie.length));
       }
-    }
-
-    var hash = parseInt(window.location.hash.substring(1));
-    if(hash) {// && hash <= saveObject.level) {
-      saveObject.level = hash;
     }
 
     return saveObject;
@@ -39,9 +38,6 @@ var StateData = (function() {
     d.setTime(d.getTime()+(365*24*60*60*1000));
     var expires = "expires="+d.toGMTString();
     document.cookie = "parity_save_data=" + JSON.stringify(saveObject) + "; " + expires;
-
-    // Updates the hash with the level number
-    document.location.hash = "#" + saveObject.level;
   }
 
   // The public facade
