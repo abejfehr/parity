@@ -2,6 +2,16 @@
 <html>
   <head>
     <title>parity</title>
+    <!-- Begin Facebook Metadata -->
+
+    <meta property="fb:app_id" content="916448168386651" />
+    <meta property="og:url" content="http://abefehr.com/parity/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Parity" />
+    <meta property="og:image" content="http://abefehr.com/parity/images/screenshot.png" />
+    <meta name="description" content="An addicting numbers puzzle game.">
+
+    <!-- End Facebook Metadata -->
     <script data-main="scripts/core" src="scripts/require.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans' rel='stylesheet' type='text/css'>
     <link href="styles/style.css" rel="stylesheet" type="text/css" />
@@ -22,6 +32,26 @@
     </script>
   </head>
   <body>
+    <!-- Begin Facebook SDK -->
+    <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '916448168386651',
+        xfbml      : true,
+        version    : 'v2.2'
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- End Facebook SDK -->
+
     <div id="container">
       <h1 id="title" class="light poiret center">parity.</h1>
       <div id="box">
@@ -70,5 +100,8 @@
       </div>
       <p id="about" class="light poiret center">A numbers puzzle game by <a href="http://abefehr.com/">Abe Fehr</a></p>
     </div>
+    <!-- Begin Facebook Like Button -->
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    <!-- End Facebook Like Button -->
   </body>
 </html>
