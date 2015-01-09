@@ -2,10 +2,7 @@ var Loader = (function() {
 
   // Libraries to load
   var libs = [
-//  'lib/jquery.jrumble.1.3.min',
   'lib/jquery.touchSwipe.min'
-//  'lib/riffwave',
-//  'lib/fade'
 ];
 
   // Available modules to load
@@ -15,7 +12,6 @@ var Loader = (function() {
     'modules/Manager',
     'modules/Overlay',
     'modules/Selector',
-//    'modules/Sound',
     'modules/StateData',
     'modules/Story',
     'modules/Swipe',

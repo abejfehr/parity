@@ -14,7 +14,7 @@ var StateData = (function() {
     *
     * If there is no cookie, start at the beginning.
     */
-    var name = "parity_save_data=";
+    var name = options['cookieName'] + '=';
     var cookieArray = document.cookie.split(';');
     var saveObject = {
       played_levels: [],
@@ -25,6 +25,7 @@ var StateData = (function() {
       var cookie = cookieArray[i].trim();
       if (cookie.indexOf(name) == 0) {
         saveObject = JSON.parse(cookie.substring(name.length,cookie.length));
+        //alert(JSON.stringify(saveObject));
       }
     }
 
@@ -37,7 +38,7 @@ var StateData = (function() {
     var d = new Date();
     d.setTime(d.getTime()+(365*24*60*60*1000));
     var expires = "expires="+d.toGMTString();
-    document.cookie = "parity_save_data=" + JSON.stringify(saveObject) + "; " + expires;
+    document.cookie = options['cookieName'] + '=' + JSON.stringify(saveObject) + "; " + expires;
   }
 
   // The public facade

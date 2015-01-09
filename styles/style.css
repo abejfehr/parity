@@ -297,3 +297,9 @@ a:hover {
   visibility: hidden;
   display:table-cell;
 }
+
+.fb-like {
+  position:absolute !important;
+  bottom:20px;
+  left:20px;
+}

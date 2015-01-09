@@ -4,7 +4,6 @@ var Story = (function() {
   var story;
   var bookmark;
   var saveObject;
-  var storybook;
 
   // Get things from the screen
   var selectDiv = $('#levelSelect');
@@ -12,8 +11,7 @@ var Story = (function() {
   // Load the story
   var getStory = function() {
     $.getJSON('story.json', function(data) {
-      storybook = data;
-      story = storybook[0].levels;
+      story = data;
       mediator.publish('story_num_levels', getNumLevels());
       mediator.publish('story_story_loaded');
     });
@@ -37,12 +35,16 @@ var Story = (function() {
     // Render it, and save it if it's a playable item
     if(story[bookmark].type == 'instruction') {
       mediator.publish('overlay_render', story[bookmark]);
-      saveObject.visited_instructions.push(bookmark);
+      if(saveObject.visited_instructions.indexOf(bookmark) < 0)
+        saveObject.visited_instructions.push(bookmark);
       mediator.publish('cookie_data_save', saveObject);
     }
     else {
       mediator.publish('board_render', story[bookmark]);
-      saveObject.played_levels.push(story[bookmark].number);
+      if(saveObject.played_levels.indexOf(story[bookmark].number) < 0) {
+        saveObject.played_levels.push(story[bookmark].number);
+        saveObject.last_level = story[bookmark].number;
+      }
       mediator.publish('cookie_data_save', saveObject);
     }
   }
@@ -71,7 +73,7 @@ var Story = (function() {
     }
 
     for(var i=0;i<story.length;++i) {
-      if(story[i].number == saveObject.level) {
+      if(story[i].number == saveObject.last_level) {
         setBookmark(i);
         return;
       }
