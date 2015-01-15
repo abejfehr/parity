@@ -432,7 +432,7 @@
   },
   {
     "type": "level",
-    "number": 12,
+    "number": 51,
     "mode": "b&w",
     "contents": [ 0,3,0,3,-2,3,0,2,0 ],
     "colors": ["w","b","w","b","w","b","w","b","w"],
@@ -440,7 +440,7 @@
   },
   {
     "type": "level",
-    "number": 13,
+    "number": 52,
     "mode": "b&w",
     "contents": [ 7,2,6,3,9,1,7,3,7 ],
     "colors": ["b","w","b","w","b","w","b","w","b"],
@@ -448,7 +448,7 @@
   },
   {
     "type": "level",
-    "number": 14,
+    "number": 53,
     "mode": "b&w",
     "contents": [ 5,0,2,6,7,4,5,1,2 ],
     "colors": ["b","w","w","b","b","b","b","w","w"],
@@ -456,7 +456,7 @@
   },
   {
     "type": "level",
-    "number": 15,
+    "number": 54,
     "mode": "b&w",
     "contents": [ 10,11,9,6,5,10,8,6,6 ],
     "colors": ["b","b","b","w","w","b","b","w","w"],
@@ -464,7 +464,7 @@
   },
   {
     "type": "level",
-    "number": 16,
+    "number": 55,
     "mode": "b&w",
     "contents": [ 7,1,11,4,13,11,4,3,7 ],
     "colors": ["b","w","b","w","b","b","w","w","b"],
@@ -472,7 +472,7 @@
   },
   {
     "type": "level",
-    "number": 17,
+    "number": 56,
     "mode": "b&w",
     "contents": [ 5,8,6,1,-3,6,4,1,2 ],
     "colors": ["b","b","b","w","w","b","b","w","w"],
@@ -480,7 +480,7 @@
   },
   {
     "type": "level",
-    "number": 18,
+    "number": 57,
     "mode": "b&w",
     "contents": [ 9,11,9,7,3,10,9,5,6 ],
     "colors": ["b","b","b","w","w","b","b","w","w"],
@@ -488,7 +488,7 @@
   },
   {
     "type": "level",
-    "number": 19,
+    "number": 58,
     "mode": "b&w",
     "contents": [ 9,11,9,3,2,10,8,5,6 ],
     "colors": ["b","b","b","w","w","b","b","w","w"],
@@ -496,10 +496,385 @@
   },
   {
     "type": "level",
-    "number": 20,
+    "number": 59,
     "mode": "b&w",
     "contents": [ 10,8,11,7,15,7,12,8,11 ],
     "colors": ["b","w","b","w","b","w","b","w","b"],
     "initialSelected": { "x":1, "y":1 }
+  },
+  {
+    "type": "level",
+    "number": 60,
+    "mode": "b&w",
+    "contents": [5,5,5,4,-1,1,7,3,5],
+    "colors": ["w","b","b","w","w","w","b","w","w"],
+    "initialSelected": { "x": 0, "y": 1 },
+    "solution": [ "d","u","r","r","l","d","u","r","l","r","l","r","l","d","l" ]
+  },
+  {
+    "type": "level",
+    "number": 61,
+    "mode": "b&w",
+    "contents": [1,0,-1,8,4,5,9,5,1],
+    "colors": ["w","w","w","b","b","b","b","b","w"],
+    "initialSelected": { "x": 0, "y": 2 },
+    "solution": [ "r","l","r","l","r","l","u","d","u","d","u","r","r","l","l","d","u","d","u","u","r","r","l","r","d","u","d","d" ]
+  },
+  {
+    "type": "level",
+    "number": 62,
+    "mode": "b&w",
+    "contents": [18,19,11,20,9,11,17,15,14],
+    "colors": ["b","b","w","b","w","w","b","b","w"],
+    "initialSelected": { "x": 1, "y": 2 },
+    "solution": [ "l","u","r","r","u","d","l","u","l","d","d","r","l","u","u","r","l","d","u","d","r","r","l","u","r","l","r","l","d","l" ]
+  },
+  {
+    "type": "level",
+    "number": 63,
+    "mode": "b&w",
+    "contents": [9,11,15,21,19,14,13,12,13],
+    "colors": ["w","w","b","b","b","w","w","w","w"],
+    "initialSelected": { "x": 2, "y": 2 },
+    "solution": [ "l","r","u","d","l","u","l","u","r","d","u","l","r","l","r","l","d","r","l","u","d","d","r","l","u","u","d","r" ]
+  },
+  {
+    "type": "level",
+    "number": 64,
+    "mode": "b&w",
+    "contents": [0,6,-3,4,7,4,4,-3,0],
+    "colors": ["w","b","w","b","b","b","b","w","w"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "r","d","l","l","r","u","l","r","d","l","r","u","u","r","l","r","d","l","r","u","l","r","l","l","d","d","u","r","u","d" ]
+  },
+  {
+    "type": "level",
+    "number": 65,
+    "mode": "b&w",
+    "contents": [5,7,4,-5,-2,-2,-3,0,0],
+    "colors": ["b","b","b","w","w","w","w","b","w"],
+    "initialSelected": { "x": 0, "y": 1 },
+    "solution": [ "u","r","l","r","r","l","r","l","r","d","l","r","u","l","d","l","u","d","d","u","d","u","d","u","u","r","l","r" ]
+  },
+  {
+    "type": "level",
+    "number": 66,
+    "mode": "b&w",
+    "contents": [21,15,18,22,14,16,17,17,17],
+    "colors": ["b","w","b","b","w","w","b","w","w"],
+    "initialSelected": { "x": 2, "y": 1 },
+    "solution": [ "l","l","u","r","d","r","u","l","l","d","u","d","r","l","u","d" ]
+  },
+  {
+    "type": "level",
+    "number": 67,
+    "mode": "b&w",
+    "contents": [20,23,15,20,22,16,19,19,19],
+    "colors": ["b","b","w","b","b","w","w","b","b"],
+    "initialSelected": { "x": 2, "y": 1 },
+    "solution": [ "u","d","u","l","d","u","d","u","r","l","l","d","r","r","u","d" ]
+  },
+  {
+    "type": "level",
+    "number": 68,
+    "mode": "b&w",
+    "contents": [18,7,11,17,9,17,16,12,14],
+    "colors": ["b","w","w","b","w","b","b","w","w"],
+    "initialSelected": { "x": 0, "y": 1 },
+    "solution": [ "u","d","r","r","l","d","r","l","u","u","d","r","u","l","r","l","r","l","d","u","l","r","l","d","d","r","u","u","r","l" ]
+  },
+  {
+    "type": "level",
+    "number": 69,
+    "mode": "b&w",
+    "contents": [5,0,11,6,2,3,7,6,8],
+    "colors": ["w","w","b","w","w","w","b","w","b"],
+    "initialSelected": { "x": 2, "y": 0 },
+    "solution": [ "l","d","r","u","l","r","l","r","d","l","u","d","d","u","r","d","u","u","l","l","d","u","r","d","u" ]
+  },
+  {
+    "type": "level",
+    "number": 70,
+    "mode": "b&w",
+    "contents": [9,8,6,9,10,5,10,13,13],
+    "colors": ["w","w","w","w","b","w","b","b","b"],
+    "initialSelected": { "x": 2, "y": 2 },
+    "solution": [ "u","u","l","r","d","l","d","r","u","u","d","d","l","l","r","r","l","r" ]
+  },
+  {
+    "type": "level",
+    "number": 71,
+    "mode": "b&w",
+    "contents": [-3,0,-6,-4,0,1,-4,-5,-7],
+    "colors": ["b","b","w","w","b","b","w","w","w"],
+    "initialSelected": { "x": 1, "y": 2 },
+    "solution": [ "u","u","d","u","r","l","l","r","r","d","d","u","l","r","d","u","l","d","r","u" ]
+  },
+  {
+    "type": "level",
+    "number": 72,
+    "mode": "b&w",
+    "contents": [12,15,13,11,12,10,10,9,9],
+    "colors": ["b","b","b","w","b","w","w","w","w"],
+    "initialSelected": { "x": 0, "y": 0 },
+    "solution": [ "r","r","l","l","r","r","l","d","r","d","l","l","r","r" ]
+  },
+  {
+    "type": "level",
+    "number": 73,
+    "mode": "b&w",
+    "contents": [-10,-11,-6,-10,-13,-5,-10,-13,-13],
+    "colors": ["b","w","b","w","w","b","b","w","w"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "r","d","l","r","l","u","r","d","u","d","d","l","r","l","r","l","u","r","u" ]
+  },
+  {
+    "type": "level",
+    "number": 74,
+    "mode": "b&w",
+    "contents": [5,3,1,-3,-4,-4,1,5,-3],
+    "colors": ["b","b","w","w","w","w","w","b","w"],
+    "initialSelected": { "x": 1, "y": 2 },
+    "solution": [ "r","u","u","d","d","u","l","l","u","r","d","r","d","l","u","l","u","d","u","d","d","r","u","l","r","d","r","u","d","u","l" ]
+  },
+  {
+    "type": "level",
+    "number": 75,
+    "mode": "b&w",
+    "contents": [-1,-3,-5,-11,-9,-6,-8,-2,-4],
+    "colors": ["b","b","b","w","w","w","w","b","b"],
+    "initialSelected": { "x": 0, "y": 2 },
+    "solution": [ "u","r","r","d","l","u","l","r","u","l","d","u","d","u","r","l","d","d","r","l","u","r","d","l" ]
+  },
+  {
+    "type": "level",
+    "number": 76,
+    "mode": "b&w",
+    "contents": [24,13,17,23,23,19,19,20,19],
+    "colors": ["b","w","w","b","b","w","b","b","b"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "d","u","l","u","r","d","l","r","l","r","u","r","l","l","r","l","d","u","r","l","r","r" ]
+  },
+  {
+    "type": "level",
+    "number": 77,
+    "mode": "b&w",
+    "contents": [5,6,7,11,2,8,3,13,6],
+    "colors": ["w","w","w","b","w","b","w","b","w"],
+    "initialSelected": { "x": 0, "y": 2 },
+    "solution": [ "r","r","l","u","l","u","r","d","l","r","d","l","r","l","r","l","r","u","r","l","l","d","u","u" ]
+  },
+  {
+    "type": "level",
+    "number": 78,
+    "mode": "b&w",
+    "contents": [4,-2,0,2,0,-1,2,-1,-1],
+    "colors": ["b","w","w","b","w","w","b","w","w"],
+    "initialSelected": { "x": 0, "y": 1 },
+    "solution": [ "u","d","d","r","u","u","l","r","l","r","r","d","d","l","r","u" ]
+  },
+  {
+    "type": "level",
+    "number": 79,
+    "mode": "b&w",
+    "contents": [-3,-16,-11,-4,-3,-9,-7,-6,-9],
+    "colors": ["b","w","w","b","b","w","b","b","w"],
+    "initialSelected": { "x": 0, "y": 1 },
+    "solution": [ "r","u","r","l","d","l","u","r","r","l","d","d","u","d","l","u","u","d","u","d","u","r","d","l","u","r","l","r","d","d","l" ]
+  },
+  {
+    "type": "level",
+    "number": 80,
+    "mode": "b&w",
+    "contents": [11,9,14,12,6,16,11,10,11],
+    "colors": ["w","w","b","b","w","b","b","w","b"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "u","d","d","u","r","u","d","l","l","r","u","r","d","l","r","u","d" ]
+  },
+  {
+    "type": "level",
+    "number": 81,
+    "mode": "b&w",
+    "contents": [-10,-10,0,-12,-4,0,-5,-7,-7],
+    "colors": ["w","w","b","w","b","b","b","b","w"],
+    "initialSelected": { "x": 0, "y": 0 },
+    "solution": [ "r","r","d","l","r","u","d","u","d","l","l","r","r","u","d","u","l","r","d","u","l","l","d","d","u","d","u","u","d","u" ]
+  },
+  {
+    "type": "level",
+    "number": 82,
+    "mode": "b&w",
+    "contents": [17,23,24,19,22,27,18,19,14],
+    "colors": ["w","b","b","b","b","b","w","b","w"],
+    "initialSelected": { "x": 2, "y": 2 },
+    "solution": [ "u","d","u","u","l","r","d","l","r","u","d","d","u","l","u","d","u","r","l","r","d","u","l","l","d","r","d","r","u","d","u" ]
+  },
+  {
+    "type": "level",
+    "number": 83,
+    "mode": "b&w",
+    "contents": [8,8,7,9,11,6,4,17,12],
+    "colors": ["b","b","w","b","b","w","w","b","b"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "d","r","l","r","l","u","d","u","d","l","u","d","r","u","d","l","r","r","u","u","d","d","l","l" ]
+  },
+  {
+    "type": "level",
+    "number": 84,
+    "mode": "b&w",
+    "contents": [7,7,10,12,12,11,7,8,10],
+    "colors": ["w","w","w","b","b","b","w","w","b"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "r","l","l","d","r","u","u","l","r","l","r","l","d","d","r","l" ]
+  },
+  {
+    "type": "level",
+    "number": 85,
+    "mode": "b&w",
+    "contents": [-12,-8,-9,-15,-4,-9,-13,-5,-12],
+    "colors": ["w","b","b","w","b","b","w","b","w"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "d","l","u","d","d","r","u","d","u","d","l","u","u","d","r","u","r","l","d","r","d","l","r","l","l","u","r" ]
+  },
+  {
+    "type": "level",
+    "number": 86,
+    "mode": "b&w",
+    "contents": [9,12,13,6,8,12,11,11,14],
+    "colors": ["w","w","w","w","w","w","w","w","b"],
+    "initialSelected": { "x": 1, "y": 2 },
+    "solution": [ "r","l","u","r","l","l","d","u","u","d","u","d","r","l","r","u","l","d","u","d","d","r","u" ]
+  },
+  {
+    "type": "level",
+    "number": 87,
+    "mode": "b&w",
+    "contents": [9,9,13,8,13,16,9,9,8],
+    "colors": ["b","w","b","w","b","b","b","b","w"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "r","d","d","u","u","d","l","l","r","r","u","d","l","r","l","r","u" ]
+  },
+  {
+    "type": "level",
+    "number": 88,
+    "mode": "b&w",
+    "contents": [4,-2,-1,-7,-4,0,3,3,0],
+    "colors": ["b","w","w","w","w","b","b","b","w"],
+    "initialSelected": { "x": 0, "y": 0 },
+    "solution": [ "d","r","d","l","u","d","r","u","l","d","r","u","l","u","d","u","d","u","d","r","u","r","l","l" ]
+  },
+  {
+    "type": "level",
+    "number": 89,
+    "mode": "b&w",
+    "contents": [2,-1,3,-2,-6,5,3,1,3],
+    "colors": ["b","w","b","w","w","b","b","w","b"],
+    "initialSelected": { "x": 1, "y": 2 },
+    "solution": [ "r","u","l","r","l","r","l","u","r","l","d","l","r","l","d","u","r","u","d","l","r","d" ]
+  },
+  {
+    "type": "level",
+    "number": 90,
+    "mode": "b&w",
+    "contents": [-2,-4,-6,-13,-1,-6,-8,-2,-8],
+    "colors": ["b","b","w","w","b","b","w","b","w"],
+    "initialSelected": { "x": 0, "y": 2 },
+    "solution": [ "u","r","l","u","d","d","r","u","l","u","r","l","d","r","l","r","l","d","r","r","l","r","l","u","u","l" ]
+  },
+  {
+    "type": "level",
+    "number": 91,
+    "mode": "b&w",
+    "contents": [-5,-12,-7,-5,-6,-8,-9,-8,-8],
+    "colors": ["b","w","b","b","b","b","w","b","w"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "u","l","r","d","l","d","u","r","u","l","d","u","r","r" ]
+  },
+  {
+    "type": "level",
+    "number": 92,
+    "mode": "b&w",
+    "contents": [13,11,11,13,10,10,12,17,11],
+    "colors": ["w","w","w","b","w","w","w","b","w"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "d","l","r","r","l","u","r","d","u","u","l","r","l","d","d","u","r" ]
+  },
+  {
+    "type": "level",
+    "number": 93,
+    "mode": "b&w",
+    "contents": [-5,-8,-2,-5,-1,-9,-5,-4,-6],
+    "colors": ["w","w","b","w","b","w","w","b","w"],
+    "initialSelected": { "x": 2, "y": 2 },
+    "solution": [ "l","u","u","r","d","u","l","d","r","l","r","d","u","l","u","r" ]
+  },
+  {
+    "type": "level",
+    "number": 94,
+    "mode": "b&w",
+    "contents": [-9,-9,-10,-14,-10,-7,-3,-6,-6],
+    "colors": ["w","w","w","w","w","b","b","b","b"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "r","d","d","u","d","l","l","u","d","u","d","u","d","u","d","r","u","l","d","r","r" ]
+  },
+  {
+    "type": "level",
+    "number": 95,
+    "mode": "b&w",
+    "contents": [0,1,-2,4,-7,1,3,-6,0],
+    "colors": ["b","b","w","b","w","b","b","w","b"],
+    "initialSelected": { "x": 1, "y": 1 },
+    "solution": [ "l","u","r","d","l","d","r","u","d","l","r","l","u","d","u","r","r","d","l","u","d","u","r","u","l","d","l" ]
+  },
+  {
+    "type": "level",
+    "number": 96,
+    "mode": "b&w",
+    "contents": [9,11,12,8,4,2,9,8,5],
+    "colors": ["b","b","b","w","w","w","w","w","w"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "r","d","l","r","l","r","u","d","d","u","u","l","d","l","r","u","d","r","d","l","r","u","d" ]
+  },
+  {
+    "type": "level",
+    "number": 97,
+    "mode": "b&w",
+    "contents": [11,20,13,13,12,11,17,11,11],
+    "colors": ["w","b","w","w","w","w","b","w","w"],
+    "initialSelected": { "x": 2, "y": 1 },
+    "solution": [ "l","l","u","r","l","r","l","d","d","r","r","u","d","u","l","d","l","r","r","u","d","l","u","r","u","l","r","l","l","r" ]
+  },
+  {
+    "type": "level",
+    "number": 98,
+    "mode": "b&w",
+    "contents": [15,12,13,11,13,12,10,16,16],
+    "colors": ["b","w","w","w","w","w","w","b","b"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "l","r","l","d","d","r","r","u","d","l","l","u","d","r","r" ]
+  },
+  {
+    "type": "level",
+    "number": 99,
+    "mode": "b&w",
+    "contents": [11,11,10,16,6,8,5,17,8],
+    "colors": ["b","b","w","b","w","w","w","b","w"],
+    "initialSelected": { "x": 1, "y": 0 },
+    "solution": [ "d","r","l","l","d","u","d","u","d","r","u","d","l","r","l","u","d","r","u","l","r","r","u","d","d","l","r","l","r" ]
+  },
+  {
+    "type": "level",
+    "number": 100,
+    "mode": "b&w",
+    "contents": [4,2,8,10,11,6,7,4,6],
+    "colors": ["w","w","b","b","b","w","b","w","w"],
+    "initialSelected": { "x": 2, "y": 1 },
+    "solution": [ "l","u","l","d","u","d","r","l","d","r","u","l","r","u","r","l","r","l","d","d" ]
+  },
+  {
+    "type": "instruction",
+    "title": "The End!",
+    "text": "You've successfully completed all of the levels Parity currently has to offer. If you enjoyed the challenge, please make sure to like Parity on Facebook!",
+    "button": "%fb%"
   }
 ]
