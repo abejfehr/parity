@@ -29,8 +29,8 @@ var Overlay = (function() {
       $('#overlay > #content').html(content);
       if(action) {
         // There's a very special case here if the game has been completed
-        if(action = "%fb%") {
-          $('#holder').html('<a href="#">let me do it again.</a>');
+        if(action == "%fb%") {
+//          $('#holder').html('<a href="#">let me do it again.</a>');
         }
         else {
           button.show();
