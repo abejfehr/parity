@@ -11,15 +11,16 @@ var doThing = function() {
   var minMoves = parseInt(document.getElementById("minMoves").value);
   var maxMoves = parseInt(document.getElementById("maxMoves").value);
   var start = parseInt(document.getElementById("start").value);
+  var mode = document.getElementById("mode").value;
 
-  generate(n,minEnd,maxEnd,minMoves,maxMoves,start);
+  generate(n,minEnd,maxEnd,minMoves,maxMoves,start, mode);
 }
 
 var randRange = function(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start) {
+var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start, mode) {
 
   var outputString = "[\n";
   for (var i = 0; i < n; i++) {
@@ -28,14 +29,26 @@ var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start) {
 
     // Create the end of the level
     var data = [];
+    var colors = [];
     for (var j = 0; j < 9; j++) {
       data.push(end);
+    }
+
+    //generate random colors
+    if(mode == "b&w") {
+      for (var a = 0; a < 9; ++a) {
+        var color = randRange(0,2);
+        colors.push((color < 1) ? "b" : "w");
+      }
     }
 
     var selected = randRange(0,9);
     var solution = [];
 
-    data[selected] -= 1;
+    if(colors[selected] == "b")
+      data[selected] += 1;
+    else
+      data[selected] -= 1;
 
     // Figure out the number of moves
     var moves = randRange(minMoves, maxMoves);
@@ -45,33 +58,48 @@ var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start) {
       var roll = -1;
       do {
         roll = randRange(0,4);
-      }
-      while(!possible(data, selected, roll))
+      } while(!possible(data, selected, roll))
 
       switch(roll) {
         case 0: // Up
           selected -= 3;
           solution.push("\"d\"");
-          if(j+1 != moves)
-            data[selected] -= 1;
+          if(j+1 != moves) {
+            if(mode == "b&w" && colors[selected] == "b")
+              data[selected] += 1;
+            else
+              data[selected] -= 1;
+          }
           break;
         case 1: // Down
           selected += 3;
           solution.push("\"u\"");
-          if(j+1 != moves)
-            data[selected] -= 1;
+          if(j+1 != moves) {
+            if(mode == "b&w" && colors[selected] == "b")
+              data[selected] += 1;
+            else
+              data[selected] -= 1;
+          }
           break;
         case 2: // Left
           selected -= 1;
           solution.push("\"r\"");
-          if(j+1 != moves)
-            data[selected] -= 1;
+          if(j+1 != moves) {
+            if(mode == "b&w" && colors[selected] == "b")
+              data[selected] += 1;
+            else
+              data[selected] -= 1;
+          }
           break;
         case 3: // Right
           selected += 1;
           solution.push("\"l\"");
-          if(j+1 != moves)
-            data[selected] -= 1;
+          if(j+1 != moves) {
+            if(mode == "b&w" && colors[selected] == "b")
+              data[selected] += 1;
+            else
+              data[selected] -= 1;
+          }
           break;
       }
     }
@@ -83,17 +111,23 @@ var generate = function(n,minEnd,maxEnd,minMoves,maxMoves,start) {
     // Get the solution
     solution = solution.reverse();
 
+    // Add quotes around each color
+    for (var a = 0; a < colors.length; a++) {
+      colors[a] = '\"' + colors[a] + '\"'
+    }
+
     // Add the level to the list
     outputString += '  {\n    ';
     outputString += '"type": "level",\n    "number": ' + start++ + ',\n    ';
-    outputString += '"mode": "vanilla",\n    ';
-    outputString += '"contents": [' + data + '],\n    "initialSelected": ';
+    outputString += '"mode": ' + (mode == "b&w" ? '"b&w"' : '"vanilla"') + ',\n    ';
+    outputString += '"contents": [' + data + '],\n';
+    outputString += (mode == "b&w" ? '    "colors": [' + colors + '],\n' : '') + '    "initialSelected": ';
     outputString += '{ "x": ' + x + ', "y": ' + y + ' },\n    "solution": ';
     outputString += '[ ' + solution + ' ]\n';
     outputString += '  }'
     if(i + 1 != n)
-      outputString+=','
-    outputString += '\n'
+      outputString+=',';
+    outputString += '\n';
   }
   outputString += ']';
   // Show the output string
@@ -128,12 +162,16 @@ var possible = function(data, selected, roll) {
   <body>
     <h1>Parity Level Generator</h1>
     <h2>Parameters</h2>
-    Number of levels to generate: <input id="n" type="text" value="1" /><br />
-    Min end of level value: <input id="minEnd" type="text" value="2" /><br />
-    Max end of level value: <input id="maxEnd" type="text" value="8" /><br />
-    Min # of moves: <input id="minMoves" type="text" value="9" /><br />
-    Max # of moves: <input id="maxMoves" type="text" value="18" /><br />
+    Number of levels to generate: <input id="n" type="text" value="5" /><br />
+    Min end of level value: <input id="minEnd" type="text" value="-10" /><br />
+    Max end of level value: <input id="maxEnd" type="text" value="20" /><br />
+    Min # of moves: <input id="minMoves" type="text" value="14" /><br />
+    Max # of moves: <input id="maxMoves" type="text" value="32" /><br />
     Starting level number <input id="start" type="text" value="1" /><br />
+    Level mode: <select id="mode">
+      <option value="vanilla">Vanilla</option>
+      <option value="b&w">B&amp;W</option>
+    </select>
     <button onclick="doThing()">Generate</button><br />
     <h2>Output</h2>
     <textarea id="output" style="width:400px;height:300px;"></textarea>
