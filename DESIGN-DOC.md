@@ -32,6 +32,7 @@ The ControlModule is going to handle input from the user.
 - controls_key_up
 - controls_key_right
 - controls_key_down
+- controls_key_r
 
 ###CookieDataModule
 The CookieDataModule handles saving and loading the game's progress by means of cookies. It also handles reading the hash of the page url and (hopefully soon)
