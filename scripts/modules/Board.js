@@ -223,6 +223,7 @@ var Board = (function() {
     down: down,
     left: left,
     right: right,
+    reset: reset,
     setNumLevels: setNumLevels,
     setInactive: setInactive,
     updateMuteButton: updateMuteButton,
@@ -252,6 +253,9 @@ Board.subscribe('swipe_down_board', Board.down);
 Board.subscribe('swipe_left_board', Board.left);
 Board.subscribe('swipe_right_board', Board.right);
 Board.subscribe('swipe_up_board', Board.up);
+
+// Listen to the keyboard for extra functionality
+Board.subscribe('controls_key_r', Board.reset);
 
 // Set the number of levels in this module
 Board.subscribe('story_num_levels', Board.setNumLevels);

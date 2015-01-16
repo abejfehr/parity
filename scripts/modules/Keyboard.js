@@ -20,6 +20,9 @@ var Keyboard = (function() {
     else if(event.keyCode == 40) {
       mediator.publish('controls_key_down');
     }
+    else if(event.keyCode == 82) {
+      mediator.publish('controls_key_r');
+    }
   });
 
   // This module doesn't need any public interface, it only publishes
