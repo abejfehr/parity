@@ -58,6 +58,9 @@ var Board = (function() {
         mediator.publish('board_level_complete');
         mediator.publish('board_faded_out');
       });
+      // Hide the intro tutorial if needbe
+      $('#introtutorial').fadeOut(options['fade']);
+
 
       mediator.publish('board_fade_out');
     }
@@ -141,6 +144,11 @@ var Board = (function() {
     mediator.publish('overlay_set_inactive');
 
     level = data;
+
+    // Show the level 1 tutorial if necessary
+    if(level.number == "1") {
+      $('#introtutorial').show();
+    }
 
     // Parse the level data
     for(var i = 0; i < level.contents.length; ++i) {
