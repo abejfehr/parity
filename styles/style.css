@@ -16,6 +16,13 @@ body {
   margin:0;
   max-height:100%;
   overflow:hidden;
+
+  /* Begin disable text-selection */
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  /* End disable text-selection */
 }
 
 p {
