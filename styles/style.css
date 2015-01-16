@@ -80,6 +80,20 @@ a:hover {
   transform:translateY(-50%);
 }
 
+
+/* The Tutorial overlay that shows on Level 1 of the game */
+#introtutorial {
+  background-image:url('../images/introtutorial.png');
+  width:66vh;
+  height:59vh;
+  background-position: center center;
+  background-size:contain;
+  background-repeat:no-repeat;
+  position: fixed;
+  display:none;
+  opacity:0.5;
+}
+
 #board {
   border-spacing:0;
   margin:0 auto;
@@ -222,6 +236,7 @@ a:hover {
 }
 
 #selector {
+  z-index:50000;
   float: left;
   height:20vh;
   width:20vh;
@@ -302,4 +317,9 @@ a:hover {
   position:absolute !important;
   bottom:20px;
   left:20px;
+}
+
+/* Hides the "flyout" comment box when Facebook like button is clicked */
+.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
+  display: none !important;
 }
