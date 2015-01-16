@@ -204,7 +204,7 @@ a:hover {
 }
 
 .black {
-  background-color:#333;
+  background-color:#292929; /* one shade darker than #333 */
 }
 
 .white {
