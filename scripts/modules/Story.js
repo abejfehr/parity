@@ -86,55 +86,12 @@ var Story = (function() {
     }
   }
 
-  var drawStorySelect = function() {
-    selectDiv.html('');
-
-    var table = $('<table></table>').addClass('selectTable');
-
-    for (var i = 0; i < storybook.length; ++i) {
-      var row = $('<tr></tr>').addClass('storySelectRow');
-      var cell = $('<td></td>').addClass('storySelectCell');
-      cell.html(storybook[i].name);
-      row.append(cell);
-      table.append(row);
-    }
-
-    selectDiv.append(table);
-  }
-
-  var drawLevelSelect = function() {
-    selectDiv.show();
-    selectDiv.html('');
-
-    var table = $('<table></table>').addClass('selectTable');
-
-    for (var i = 0, k = 0; i < story.length; ++i) {
-
-      // Only create a new row one in 5 times
-      if(k % 5 == 0)
-        var row = $('<tr></tr>').addClass('levelSelectRow');
-
-      var cell = $('<td><img src="#"></td>').addClass('levelSelectCell');
-      var inner = $('<div></div>').addClass('inner');
-      if(story[i] && story[i].number) {
-        inner.html(story[i].number);
-        cell.append(inner);
-        row.append(cell);
-        ++k;
-      }
-      table.append(row);
-    }
-    selectDiv.append(table);
-  }
-
   // The publicly visible methods are available by this facade
   return {
     getStory: getStory,
     setBookmark: setBookmark,
     setBookmarkAtLevel: setBookmarkAtLevel,
     advance: advance,
-    drawStorySelect: drawStorySelect,
-    drawLevelSelect: drawLevelSelect
   }
 }())
 
@@ -150,4 +107,3 @@ mediator.subscribe('story_advance', Story.advance);
 
 // Advance the story when notified that the current level has been completed
 mediator.subscribe('board_level_complete', Story.advance);
-mediator.subscribe('story_select_levels', Story.drawLevelSelect);

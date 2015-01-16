@@ -222,7 +222,6 @@ var Board = (function() {
   // Event bindings
   resetLink.on('click', reset);
   toggleMuteLink.on('click', toggleMute);
-  levelLink.on('click', showLevelSelect);
 
   // The facade
   return {
@@ -270,5 +269,3 @@ Board.subscribe('story_num_levels', Board.setNumLevels);
 
 // Listen for volume changes
 Board.subscribe('sound_volume_changed', Board.updateMuteButton);
-
-Board.subscribe('story_select_levels', Board.quickHide);
