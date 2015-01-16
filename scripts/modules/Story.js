@@ -75,9 +75,9 @@ var Story = (function() {
     for(var i=0;i<story.length;++i) {
       var level_index = saveObject.last_level;
       // THIS CODE IS FOR CHEATING, REMOVE IT AFTER THE ACTUAL GAME IS RELEASED
-      if(parseInt(window.location.hash.substring(1)) > 0) {
-        level_index = parseInt(window.location.hash.substring(1))
-      }
+      //if(parseInt(window.location.hash.substring(1)) > 0) {
+      //  level_index = parseInt(window.location.hash.substring(1))
+      //}
       // THE ABOVE CODE IS FOR CHEATING, IT CAN BE REMOVED
       if(story[i].number == level_index) {
         setBookmark(i);
