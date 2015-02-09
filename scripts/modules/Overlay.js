@@ -1,7 +1,7 @@
 var Overlay = (function() {
   // Parts of the DOM
-  var button = $('#overlay > #holder > button');
-  var overlay = $('#overlay');
+  var button;
+  var overlay;
 
   // Other variables
   var active = false;
@@ -12,13 +12,14 @@ var Overlay = (function() {
       button.addClass('active'); //TODO: implement this properly
       mediator.publish('story_advance');
     }
-  }
+  };
 
   // Renders the overlay
   var render = function(data) {
-    overlay.fadeOut(options['fade'], function() {
+    alert('overlay is rendering!');
+    overlay.fadeOut(options.fade, function() {
       mediator.publish('board_set_inactive');
-      overlay.fadeIn(options['fade']);
+      overlay.fadeIn(options.fade);
       active = true;
 
       var title   = data.title;
@@ -39,25 +40,31 @@ var Overlay = (function() {
       }
       else
         button.hide();
-    })
-  }
+    });
+  };
 
   // Fades out the overlay and sets it as inactive
   var setInactive = function() {
-    overlay.fadeOut(options['fade']);
+    overlay.fadeOut(options.fade);
     active = false;
-  }
+  };
 
-  // Event Bindings
-  button.on('click', pressButton);
+  var domReady = function() {
+    button = $('#overlay > #holder > button');
+    overlay = $('#overlay');
+
+    // Event Bindings
+    button.on('click', pressButton);
+  };
 
   // The facade
   return {
     pressButton: pressButton,
     render: render,
-    setInactive: setInactive
-  }
-}())
+    setInactive: setInactive,
+    domReady: domReady
+  };
+}());
 
 // Add the mediator to the module
 mediator.installTo(Overlay);
@@ -73,3 +80,5 @@ Overlay.subscribe('overlay_render', Overlay.render);
 
 // Listen for instruction to deactivate this overlay
 Overlay.subscribe('overlay_set_inactive', Overlay.setInactive);
+
+Overlay.subscribe('loader_dom_ready', Overlay.domReady);

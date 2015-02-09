@@ -1,12 +1,12 @@
 var Board = (function() {
 
-  // Components of the DOM
-  var board = $('#board');
+  // DOM Elements
+  var board;
   var cells = [];
-  var levelLink = $('#level');
-  var overlay = $('#overlay');
-  var resetLink = $('#reset');
-  var toggleMuteLink = $('#toggle_mute');
+  var levelLink;
+  var overlay;
+  var resetLink;
+
 
   // Variables for the page
   var active = false;
@@ -16,20 +16,12 @@ var Board = (function() {
   // Resets the level to its original state
   var reset = function() {
     render(level);
-  }
+  };
 
   // Toggles between mute and unmute
   var toggleMute = function() {
     mediator.publish('sound_toggle_mute');
-  }
-
-  // Populates cells array with links to cells in DOM
-  for(var i = 0; i < 4; ++i) {
-    cells.push([]);
-    for(var j = 0; j < 4; ++j) {
-      cells[i].push($('td[data-x="' + i + '"][data-y="' + j + '"]'));
-    }
-  }
+  };
 
   // Updates the board, called whenever a change is made
   var update = function() {
@@ -48,27 +40,27 @@ var Board = (function() {
         }
         else {
           cells[x][y].removeClass('black');
-          cells[x][y].addClass('white')
+          cells[x][y].addClass('white');
         }
       }
     }
 
     if(isWin()) {
-      board.fadeOut(options['fade'], function() {
+      board.fadeOut(options.fade, function() {
         mediator.publish('board_level_complete');
         mediator.publish('board_faded_out');
       });
       // Hide the intro tutorial if needbe
-      $('#introtutorial').fadeOut(options['fade']);
+      $('#introtutorial').fadeOut(options.fade);
 
 
       mediator.publish('board_fade_out');
     }
-  }
+  };
 
   var updateMuteButton = function(volume) {
     toggleMuteLink.html(volume ? 'mute' : 'unmute');
-  }
+  };
 
   // Looks for a winning condition on the board, returns true or false
   function isWin() {
@@ -76,7 +68,7 @@ var Board = (function() {
     for(var i = 0; i < 3; ++i) {
       for(var j = 0; j < 3; ++j) {
         if(cell(i,j) != value)
-          return false
+          return false;
       }
     }
     return true;
@@ -124,7 +116,7 @@ var Board = (function() {
       cell(sel.x, sel.y, cell(sel.x, sel.y)+1);
     }
     // Move the selector
-    mediator.publish('selector_snap_to', x, y)
+    mediator.publish('selector_snap_to', x, y);
 
     // Play the tone
     mediator.publish('sound_play_tone', cell(sel.x, sel.y));
@@ -162,7 +154,7 @@ var Board = (function() {
         }
         else {
           cells[x][y].removeClass('black');
-          cells[x][y].addClass('white')
+          cells[x][y].addClass('white');
         }
       }
     }
@@ -176,7 +168,7 @@ var Board = (function() {
     levelLink.html('level ' + level.number + '/' + numLevels);
 
     // Fade in once populated
-    board.fadeIn(options['fade'], function() {
+    board.fadeIn(options.fade, function() {
       // Move the selector to the right place
       mediator.publish('selector_snap_to', level.selected.x, level.selected.y);
 
@@ -189,39 +181,55 @@ var Board = (function() {
 
     // Update to select the appropriate cell
     update();
-  }
+  };
 
   // Can be called by other modules, setting the total number of levels
   var setNumLevels = function(num) {
     if(numLevels < 0) // This is a dirty workaround to bug #15, but it works
       numLevels = num;
-  }
+  };
 
   // Fades out the board and sets it as inactive
   var setInactive = function() {
-    board.fadeOut(options['fade']);
+    board.fadeOut(options.fade);
     active = false;
 
     // Tell everyone we're fading out
     mediator.publish('board_fade_out');
-  }
+  };
 
   var showLevelSelect = function() {
     mediator.publish('story_select_levels');
-  }
+  };
 
   var quickHide = function() {
     board.hide();
-  }
+  };
 
   var quickShow = function() {
     board.show();
 
-  }
+  };
 
-  // Event bindings
-  resetLink.on('click', reset);
-  toggleMuteLink.on('click', toggleMute);
+  // Populates the elements that have DOM objects in them
+  var domReady = function() {
+
+    board = $('#board');
+    levelLink = $('#level');
+    overlay = $('#overlay');
+    resetLink = $('#reset');
+
+    // Cells on the board
+    for(var i = 0; i < 4; ++i) {
+      cells.push([]);
+      for(var j = 0; j < 4; ++j) {
+        cells[i].push($('td[data-x="' + i + '"][data-y="' + j + '"]'));
+      }
+    }
+
+    // Event bindings
+    resetLink.on('click', reset);
+  };
 
   // The facade
   return {
@@ -235,9 +243,10 @@ var Board = (function() {
     setInactive: setInactive,
     updateMuteButton: updateMuteButton,
     quickHide: quickHide,
-    quickShow: quickShow
-  }
-}())
+    quickShow: quickShow,
+    domReady: domReady
+  };
+}());
 
 // Add the mediator to the module
 mediator.installTo(Board);
@@ -267,5 +276,5 @@ Board.subscribe('controls_key_r', Board.reset);
 // Set the number of levels in this module
 Board.subscribe('story_num_levels', Board.setNumLevels);
 
-// Listen for volume changes
-Board.subscribe('sound_volume_changed', Board.updateMuteButton);
+// Listen for the DOM to be loaded, from the loader for now
+Board.subscribe('loader_dom_ready', Board.domReady);

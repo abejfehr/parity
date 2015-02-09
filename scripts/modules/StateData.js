@@ -14,7 +14,7 @@ var StateData = (function() {
     *
     * If there is no cookie, start at the beginning.
     */
-    var name = options['cookieName'] + '=';
+    var name = options.cookieName + '=';
     var cookieArray = document.cookie.split(';');
     var saveObject = {
       played_levels: [],
@@ -23,14 +23,14 @@ var StateData = (function() {
     };
     for(var i=0; i<cookieArray.length; ++i) {
       var cookie = cookieArray[i].trim();
-      if (cookie.indexOf(name) == 0) {
+      if (cookie.indexOf(name) === 0) {
         saveObject = JSON.parse(cookie.substring(name.length,cookie.length));
         //alert(JSON.stringify(saveObject));
       }
     }
 
     return saveObject;
-  }
+  };
 
   // Saves the level in the cookie and updates the URL
   var save = function(saveObject) {
@@ -38,15 +38,15 @@ var StateData = (function() {
     var d = new Date();
     d.setTime(d.getTime()+(365*24*60*60*1000));
     var expires = "expires="+d.toGMTString();
-    document.cookie = options['cookieName'] + '=' + JSON.stringify(saveObject) + "; " + expires;
-  }
+    document.cookie = options.cookieName + '=' + JSON.stringify(saveObject) + "; " + expires;
+  };
 
   // The public facade
   return {
     save: save,
     load: load
-  }
-}())
+  };
+}());
 
 // Add the mediator to the module
 mediator.installTo(StateData);
