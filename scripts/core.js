@@ -31,10 +31,15 @@ var mediator = (function() {
 var options = {
     fade: 300, //the time in ms for the fade
     cookieName: 'parity_save_data'
-  }
+  };
 
+// Notify that the story is loaded
+mediator.subscribe('story_story_loaded', function() {
+  mediator.publish('loader_story_loaded');
+});
 
-//load the loader, the only thing that needs to be loaded here
-require(['modules/Loader'], function() {
-  mediator.publish('loader_load_modules');
+// Start the game when the DOM is ready
+$(document).ready(function() {
+  mediator.publish('loader_dom_ready'); // Notify everyone we can work now
+  mediator.publish('story_get_story');
 });

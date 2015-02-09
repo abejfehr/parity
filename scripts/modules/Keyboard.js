@@ -26,8 +26,8 @@ var Keyboard = (function() {
   });
 
   // This module doesn't need any public interface, it only publishes
-  return { }
-}())
+  return { };
+}());
 
 // Add the mediator to the module
 mediator.installTo(Keyboard);

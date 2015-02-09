@@ -15,7 +15,7 @@ var Story = (function() {
       mediator.publish('story_num_levels', getNumLevels());
       mediator.publish('story_story_loaded');
     });
-  }
+  };
 
   // Gets the total number of levels in the story
   var getNumLevels = function() {
@@ -26,7 +26,7 @@ var Story = (function() {
       }
     }
     return c;
-  }
+  };
 
   // Set the bookmark of the current level
   var setBookmark = function(val) {
@@ -47,7 +47,7 @@ var Story = (function() {
       }
       mediator.publish('cookie_data_save', saveObject);
     }
-  }
+  };
 
   // Advances the story
   var advance = function() {
@@ -56,13 +56,13 @@ var Story = (function() {
       while(visited(++bookmark) && bookmark != story.length - 1) { }
       setBookmark(bookmark);
     }
-  }
+  };
 
   // Returns whether or not the instruction screen at the bookmark has
   // previously been visited
   var visited = function(bookmarkNo) {
     return (saveObject.visited_instructions.indexOf(bookmarkNo) >= 0);
-  }
+  };
 
   // Sets the bookmark to the given point
   var setBookmarkAtLevel = function(so) {
@@ -74,17 +74,24 @@ var Story = (function() {
 
     for(var i=0;i<story.length;++i) {
       var level_index = saveObject.last_level;
-      // THIS CODE IS FOR CHEATING, REMOVE IT AFTER THE ACTUAL GAME IS RELEASED
-      //if(parseInt(window.location.hash.substring(1)) > 0) {
-      //  level_index = parseInt(window.location.hash.substring(1))
-      //}
-      // THE ABOVE CODE IS FOR CHEATING, IT CAN BE REMOVED
+
+      /**
+       * The below code is for use with cheating, so any level can be visited
+       * just by changing the URL to contain a hash with the level number.
+       */
+
+      /*
+      if(parseInt(window.location.hash.substring(1)) > 0) {
+        level_index = parseInt(window.location.hash.substring(1))
+      }
+      */
+
       if(story[i].number == level_index) {
         setBookmark(i);
         return;
       }
     }
-  }
+  };
 
   // The publicly visible methods are available by this facade
   return {
@@ -92,8 +99,8 @@ var Story = (function() {
     setBookmark: setBookmark,
     setBookmarkAtLevel: setBookmarkAtLevel,
     advance: advance,
-  }
-}())
+  };
+}());
 
 // Add the mediator to the module
 mediator.installTo(Story);
