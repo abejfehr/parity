@@ -6,3 +6,5 @@ daily_tasks.md
 *.csv
 
 *.xlsx
+
+node_modules
