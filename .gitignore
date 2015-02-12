@@ -8,3 +8,5 @@ daily_tasks.md
 *.xlsx
 
 node_modules
+
+*.zip
