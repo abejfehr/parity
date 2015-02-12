@@ -399,7 +399,6 @@ var Overlay = (function() {
 
   // Renders the overlay
   var render = function(data) {
-    alert('overlay is rendering!');
     overlay.fadeOut(options.fade, function() {
       mediator.publish('board_set_inactive');
       overlay.fadeIn(options.fade);
