@@ -529,6 +529,7 @@ Selector.subscribe('board_faded_in', Selector.fadeIn);
 Selector.subscribe('board_fade_out', Selector.fadeOut);
 
 Selector.subscribe('loader_dom_ready', Selector.domReady);
+
 var StateData = (function() {
 
   // Loads the appropriate level from the cookie/anchor
@@ -677,11 +678,11 @@ var Story = (function() {
        * just by changing the URL to contain a hash with the level number.
        */
 
-
+      /*
       if(parseInt(window.location.hash.substring(1)) > 0) {
-        level_index = parseInt(window.location.hash.substring(1));
+        level_index = parseInt(window.location.hash.substring(1))
       }
-
+      */
 
       if(story[i].number == level_index) {
         setBookmark(i);
@@ -715,9 +716,9 @@ var Swipe = (function() {
 
   var domReady = function() {
     // Adds an event listener to the entire document
-    $('#board,#selector,#introtutorial').swipe( {
+    $('#swipeArea').swipe({
       //Generic swipe handler for all directions
-      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
         if(direction == 'left')
           mediator.publish('swipe_left_board');
         else if(direction == 'right')
@@ -728,8 +729,8 @@ var Swipe = (function() {
           mediator.publish('swipe_down_board');
       },
       //Default is 75px, set to 0 for demo so any distance triggers swipe
-       threshold:0,
-       allowPageScroll:"none"
+       threshold: 0,
+       allowPageScroll: "none"
     });
   };
 
