@@ -42,6 +42,24 @@ module.exports = function(grunt) {
           src: 'scripts/production.js',
           dest: 'scripts/production.min.js'
         }
+      },
+      compress: {
+        prod: {
+          options: {
+            archive: 'archive.zip'
+          },
+          files: [
+            {src: 'index.html'},
+            {src: 'scripts/production.min.js'},
+            {src: 'story.json'},
+            {src: 'LICENSE.txt'},
+            {src: 'README.md'},
+            {src: 'styles/mobile.css'},
+            {src: 'styles/style.css'},
+            {src: 'images/introtutorial.png'},
+            {src: 'images/reset.png'}
+          ]
+        }
       }
     });
 
@@ -49,6 +67,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
-    grunt.registerTask('default', ['jshint','concat','uglify']);
+    grunt.registerTask('default', ['jshint','concat','uglify','compress']);
 };

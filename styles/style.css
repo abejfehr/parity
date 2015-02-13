@@ -101,6 +101,17 @@ a:hover {
   opacity:0.5;
 }
 
+/* A giant transparent overlay for swiping. It simplifies everything */
+#swipeArea {
+  width:66vh;
+  height:59vh;
+  background-position: center center;
+  background-size:contain;
+  background-repeat:no-repeat;
+  position: fixed;
+  z-index:99999999;
+}
+
 #board {
   border-spacing:0;
   margin:0 auto;

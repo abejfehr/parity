@@ -2,9 +2,9 @@ var Swipe = (function() {
 
   var domReady = function() {
     // Adds an event listener to the entire document
-    $('#board,#selector,#introtutorial').swipe( {
+    $('#swipeArea').swipe({
       //Generic swipe handler for all directions
-      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
         if(direction == 'left')
           mediator.publish('swipe_left_board');
         else if(direction == 'right')
@@ -15,8 +15,8 @@ var Swipe = (function() {
           mediator.publish('swipe_down_board');
       },
       //Default is 75px, set to 0 for demo so any distance triggers swipe
-       threshold:0,
-       allowPageScroll:"none"
+       threshold: 0,
+       allowPageScroll: "none"
     });
   };
 
