@@ -45,25 +45,19 @@ a:hover {
 /* Begin IDs */
 
 #title {
-  font-size:11vh;
-  margin:3vh auto 5vh;
-}
-
-#about {
-  font-size:2.5vh;
-  margin:2vh;
+  font-size:6vh;
+  margin-top:-1vh;
 }
 
 #container {
   margin:0 auto;
-  overflow:hidden;
   width:65vh;
 }
 
 #box {
   background-color:#333;
   overflow:hidden;
-  height:72vh;
+  height:69vh;
 }
 
 #level {
